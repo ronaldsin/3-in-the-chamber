@@ -21,14 +21,13 @@ function proj(x, y, r, name)
 
 	-- stats
 	proj.speed = 2000
-	proj.damage = 10
 
 	-- trig to calculate xspeed y speed
 	proj.yVel = proj.speed * math.sin(r - (math.pi / 2))
 	proj.xVel = proj.speed * math.cos(r - (math.pi / 2))
 
 	-- image
-	proj.Image = love.graphics.newImage("Bullet.png")
+	proj.Image = love.graphics.newImage("resources/Bullet.png")
 
 
 	-- updates the projectile on screen, based on ticks with dt length

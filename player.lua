@@ -1,4 +1,4 @@
-function Player()
+function Player(name)
 	--[[
 	Player - Object that holds player information like movement commands and stats
 	]]--
@@ -6,13 +6,15 @@ function Player()
 	-- local to keep it not global
 	local player = {}
 
-	player.name = "lmao"
+	player.name = name
 
 	-- sprites
-	player.Image = love.graphics.newImage("Player.png")
-	player.weapon = love.graphics.newImage("Revolver.png")
+	player.Image = love.graphics.newImage("resources/Player.png")
+	player.weapon = love.graphics.newImage("resources/Revolver.png")
+	player.gunfire = love.graphics.newImage("resources/gunfire.png")
 
-
+	player.gunCd = 0.33
+	player.damage = 10
 
 	-- x and y coord's
 	player.x = 100
@@ -36,25 +38,6 @@ function Player()
 
 	-- movement and shooting
 	function player.update(dt)
-		player.xspeed = 0
-		player.yspeed = 0
-
-		-- wasd movement
-		if love.keyboard.isDown("s") then
-			player.y = player.y + player.speed * dt
-		end
-
-		if love.keyboard.isDown("d") then
-			player.x = player.x + player.speed * dt
-		end
-
-		if love.keyboard.isDown("w") then
-			player.y = player.y - player.speed * dt
-		end
-
-		if love.keyboard.isDown("a") then
-			player.x = player.x - player.speed * dt
-		end
 
 		player.hitReg(dt)
 
@@ -68,8 +51,10 @@ function Player()
 			if hitReg(player.x - player.width / hitboxScale, player.x + player.width / hitboxScale, player.y - player.height / hitboxScale, player.y + player.height / hitboxScale, v.x - v.width / hitboxScale, v.x + v.width / hitboxScale, v.y - v.height / hitboxScale, v.y + v.height / hitboxScale) then
 				if not(player.name == v.name) then
 					print(player.name)
+					player.health = player.health - player.damage
 					hit = true
-					setCursor("Hitmarker.png")
+					setCursor("resources/Hitmarker.png")
+					playSound(oof)
 					table.remove(bullets, i)
 
 				end
@@ -79,14 +64,19 @@ function Player()
 
 	-- drawing to screen
 	function player.draw()
+
+		if player.health <= 0 then
+			love.graphics.setColor(1, 0, 0)
+		end
 		love.graphics.draw(player.Image, player.x, player.y, player.rotation, 1 * sizeScale, 1 * sizeScale, player.Image:getWidth() / 2, player.Image:getHeight() / 2)
 		love.graphics.draw(player.weapon, player.x, player.y, player.rotation, 1 * sizeScale, 1 * sizeScale, player.weapon:getWidth() / 2, player.weapon:getHeight() / 2)
+
 		if displayHitbox then
 			love.graphics.rectangle("line", player.x - player.width / (hitboxScale * 2), player.y - player.height / (hitboxScale * 2), player.width / hitboxScale, player.height / hitboxScale)
 		end
+
+		love.graphics.setColor(1, 1, 1 )
 	end
-
-
 
 	-- rotate player model to mouse
 	function player.rotate()

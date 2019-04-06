@@ -1,3 +1,12 @@
-gunshot = love.audio.newSource("pew.mp3", "static")
-gunshot:setVolume(0.2)
-gunshot:setPitch(4.0)
+gunshot = love.audio.newSource("resources/Pew.wav", "static")
+gunshot:setVolume(0.3)
+
+oof = love.audio.newSource("resources/Oof1.wav", "static")
+oof:setVolume(0.2)
+
+function playSound(source)
+
+	local clone = source:clone()
+	clone:play()
+
+end
