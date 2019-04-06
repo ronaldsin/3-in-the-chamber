@@ -1,8 +1,7 @@
-# Updates
+# Change Log
 
-
-## 4/6/2019
-### Additions and updates
+## 2019-06-04
+### Added
 - added gun fire
 - added pausing 
 - added rate of fire
@@ -11,11 +10,11 @@
 - player and enemy char control independently 
 - player and enemy gun both fire
 
-### adjustments
+### Changed
 - adjusted hitbox size of player
 - adjusted hitbox size of player
 - adjusted volume of sounds
 
-### other
+### Other
 - sperate file to store keybinding
 - sepreated input related functions into another file
