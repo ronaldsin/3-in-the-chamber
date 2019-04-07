@@ -1,20 +1,26 @@
 function keyboardDown(dt)
 	-- player wasd movement
+	p.moving = false
 	if love.keyboard.isDown(input_player_down) then
 		p.y = p.y + p.speed * dt
+		p.moving = true
 	end
 
 	if love.keyboard.isDown(input_player_right) then
 		p.x = p.x + p.speed * dt
+		p.moving = true
 	end
 
 	if love.keyboard.isDown(input_player_up) then
 		p.y = p.y - p.speed * dt
+		p.moving = true
 	end
 
 	if love.keyboard.isDown(input_player_left) then
 		p.x = p.x - p.speed * dt
+		p.moving = true
 	end
+
 
 	-- wasd movement
 	if love.keyboard.isDown(input_monster_down) then
@@ -52,15 +58,24 @@ function love.keypressed(key)
 	if key == input_game_pause then
 		pause = not pause
 	end
+
+	if key == input_player_interact then
+		-- check hitbox around Player
+		-- interact depending on the hitbox
+		-- ie npc -> talk for shop or something
+		-- gun to change weapon
+		-- interact w/ environment like doors
+	end
+
 end
 
 -- press mouse 1 to shoot
 function love.mousepressed(x, y, button, isTouch)
 	if not pause then
-		if cd > p.gunCd then
+		if cd > p.weapon.gunCd then
 			if button == input_player_shoot then
-				fire(p.x, p.y, p.rotation, p.name)
-				fire(e.x, e.y, e.rotation, e.name)
+				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range)
+				fire(e.x, e.y, e.rotation, e.name, 2000, 500)
 				cd = 0
 			end
 		end

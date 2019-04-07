@@ -1,4 +1,4 @@
-function proj(x, y, r, name)
+function proj(x, y, r, name, speed, range)
 	--[[
 	proj - Object that holds projectile information like coordinates and speed
 	]]
@@ -11,7 +11,7 @@ function proj(x, y, r, name)
 	proj.y = y
 
 	-- range and keeps track of how far the bullet has traveled
-	proj.range = 1000
+	proj.range = range
 	proj.traveled = 0
 	proj.width = 5
 	proj.height = 10
@@ -20,7 +20,9 @@ function proj(x, y, r, name)
 	proj.r = r
 
 	-- stats
-	proj.speed = 2000
+	proj.speed = speed
+
+	print(speed)
 
 	-- trig to calculate xspeed y speed
 	proj.yVel = proj.speed * math.sin(r - (math.pi / 2))

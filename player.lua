@@ -8,19 +8,23 @@ function Player(name)
 
 	player.name = name
 
-	-- sprites
-	player.Image = love.graphics.newImage("resources/Player.png")
-	player.weapon = love.graphics.newImage("resources/Revolver.png")
-	player.gunfire = love.graphics.newImage("resources/gunfire.png")
+	player.moving = false
 
-	player.gunCd = 0.33
+
+
+	-- createAnimation(name, frames, fps, r, c, iframe, fheight, fwidth)
+	player.idle = createAnimation("PonytailIdle", 4, 2, 2, 2, 1, 256, 256)
+	player.legs = createAnimation("PonytailLegs", 3, 10, 2, 2, 1, 256, 256)
+
+	player.weapon = createWeapon("Revolver", 10, 0.33, 2000, 500, 6)
+
 	player.damage = 10
 
 	-- x and y coord's
 	player.x = 100
 	player.y = 100
-	player.width = player.Image:getWidth()
-	player.height = player.Image:getHeight()
+	player.width = player.idle.frame_width
+	player.height = player.idle.frame_height
 
 	-- stats
 	player.speed = 300
@@ -35,9 +39,16 @@ function Player(name)
 	-- the rotation of the sprite in radians
 	player.rotation = 0
 
-
 	-- movement and shooting
 	function player.update(dt)
+
+		if p.moving then
+			player.legs.update(dt)
+		else
+			player.legs.idle()
+		end
+
+		player.idle.update(dt)
 
 		player.hitReg(dt)
 
@@ -62,14 +73,17 @@ function Player(name)
 		end
 	end
 
+
 	-- drawing to screen
 	function player.draw()
 
 		if player.health <= 0 then
 			love.graphics.setColor(1, 0, 0)
 		end
-		love.graphics.draw(player.Image, player.x, player.y, player.rotation, 1 * sizeScale, 1 * sizeScale, player.Image:getWidth() / 2, player.Image:getHeight() / 2)
-		love.graphics.draw(player.weapon, player.x, player.y, player.rotation, 1 * sizeScale, 1 * sizeScale, player.weapon:getWidth() / 2, player.weapon:getHeight() / 2)
+
+		player.legs.draw(player.x, player.y, player.rotation)
+		player.idle.draw(player.x, player.y, player.rotation)
+		player.weapon.draw(player.x, player.y, player.rotation)
 
 		if displayHitbox then
 			love.graphics.rectangle("line", player.x - player.width / (hitboxScale * 2), player.y - player.height / (hitboxScale * 2), player.width / hitboxScale, player.height / hitboxScale)
