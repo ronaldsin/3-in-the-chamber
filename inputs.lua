@@ -46,6 +46,16 @@ function keyboardDown(dt)
 		e.x = e.x - e.speed * dt
 		e.moving = true
 	end
+
+	if love.mouse.isDown(input_player_shoot) then
+		if cd > p.weapon.gunCd and p.shoot <= 0 then
+			if p.weapon.mode == 1 then
+				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range)
+				fire(e.x, e.y, e.rotation, e.name, 2000, 500)
+				cd = 0
+			end
+		end
+	end
 end
 
 function love.keypressed(key)
@@ -78,8 +88,8 @@ function love.keypressed(key)
 				print(g.name .. " " .. p.weapon.name)
 				local name1 = string.sub(g.name, 1, - 5)
 				local name2 = p.weapon.name .. "Icon"
-				local temp1 = createWeapon(name1, g.damage, g.gunCd, g.speed, g.range, g.magazine, true)
-				local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, false)
+				local temp1 = createWeapon(name1, g.damage, g.gunCd, g.speed, g.range, g.magazine, true, g.mode)
+				local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, false, p.weapon.mode)
 				g = temp2
 				p.weapon = temp1
 			end
@@ -93,9 +103,11 @@ function love.mousepressed(x, y, button, isTouch)
 	if not pause then
 		if cd > p.weapon.gunCd and p.shoot <= 0 then
 			if button == input_player_shoot then
-				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range)
-				fire(e.x, e.y, e.rotation, e.name, 2000, 500)
-				cd = 0
+				if p.weapon.mode == 0 then
+					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range)
+					fire(e.x, e.y, e.rotation, e.name, 2000, 500)
+					cd = 0
+				end
 			end
 		end
 		if button == input_player_secondary and p.abilityCD <= 0 then

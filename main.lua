@@ -27,7 +27,7 @@ function love.load()
 	p = Player("lmao")
 	e = Monster("not lmao")
 
-	g = createWeapon("FrontlinerIcon", 10, 0.33, 2000, 500, 6, false)
+	g = createWeapon("FrontlinerIcon", 1, 0.12, 2000, 500, 6, false, 1)
 	g.image.idle()
 	-- set enemy start temp
 	e.x = 500

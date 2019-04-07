@@ -1,4 +1,4 @@
-function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
+function createWeapon(name, damage, cd, speed, range, magazine, pickUp, mode)
 	local weapon = {}
 
 	-- sprites
@@ -21,13 +21,21 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 	weapon.bottom = weapon.y + weapon.height / (hitboxScale / 4.5)
 
 	-- stats
-	weapon.state = "ranged"
+	-- states:
+	-- 0: ranged
+	-- 1: melee
+	-- modes:
+	-- 0: semi-auto
+	-- 1: full auto
+	-- 2: TO BE ADDED IN THE FUTURE
+	weapon.state = 0
 	weapon.damage = damage
 	weapon.magazine = magazine
 	weapon.clip = magazine
 	weapon.gunCd = cd
 	weapon.speed = speed
 	weapon.range = range
+	weapon.mode = mode
 
 	-- function weapon.reload()
 	-- 	-- play animation
