@@ -14,7 +14,7 @@ function Player(name)
 	player.idle = createAnimation("PonytailIdle", 4, 2, 2, 2, 1, 256, 256)
 	player.legs = createAnimation("PonytailLegs", 3, 10, 2, 2, 1, 256, 256)
 
-	player.weapon = createWeapon("Revolver", 10, 0.33, 2000, 500, 6)
+	player.weapon = createWeapon("Revolver", 10, 0.33, 2000, 500, 6, true)
 
 	player.damage = 10
 
@@ -30,17 +30,19 @@ function Player(name)
 	player.power = 100
 	player.armor = 0
 
-	--status effects -- in
+	--status effects
 	player.shoot = 0 -- 0<= means able to shoot
 	player.invincible = 0 -- 0<= means not invincible
+	player.moveControl = 0 --0<= means can move normally
+	player.directionLock = 0 -- 0->neutral, 1->up, 2->right, 3->down, 4->left
 
-	--abilitiy
+	--ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
 	player.ability = "roll"
 
-	-- boolean movement
-	player.xmoving = false
-	player.ymoving = false
+	-- direction lock for forced movement
+	player.xLock = 0
+	player.yLock = 0
 
 	-- the rotation of the sprite in radians
 	player.rotation = 0
@@ -75,6 +77,11 @@ function Player(name)
 		if(player.invincible > 0) then
 			player.invincible = player.invincible - dt
 			--print("invincible" .. player.invincible .. "\n")
+		end
+
+		if(player.moveControl > 0) then
+			player.moveControl = player.moveControl - dt
+			--print("moveControl" .. moveControl .. "\n")
 		end
 
 		--ability updates

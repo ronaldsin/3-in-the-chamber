@@ -1,9 +1,11 @@
-function createWeapon(name, damage, cd, speed, range, magazine)
+function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 	local weapon = {}
 
 	-- sprites
 	weapon.gunfire = love.graphics.newImage("resources/gunfire.png")
 	weapon.image = love.graphics.newImage("resources/" .. name .. ".png")
+
+	weapon.pickUp = pickUp
 
 	-- orientation
 	weapon.r = 0 -- edit this to have an angle if it exists later
@@ -37,8 +39,10 @@ function createWeapon(name, damage, cd, speed, range, magazine)
 	-- end
 
 	function weapon.update()
-		if hitReg(weapon.left, weapon.right, weapon.top, weapon.bottom, p.x - p.width / hitboxScale, p.x + p.width / hitboxScale, p.y - p.height / hitboxScale, p.y + p.height / hitboxScale ) then
-			print("hit")
+		if not(pickUp) then
+			if hitReg(weapon.left, weapon.right, weapon.top, weapon.bottom, p.x - p.width / hitboxScale, p.x + p.width / hitboxScale, p.y - p.height / hitboxScale, p.y + p.height / hitboxScale ) then
+				print("hit")
+			end
 		end
 		-- if clip > 0 and LMB clicked
 		-- shoot, clip -= 1
@@ -66,7 +70,9 @@ function createWeapon(name, damage, cd, speed, range, magazine)
 		love.graphics.draw(weapon.image, x, y, r, 1 * sizeScale, 1 * sizeScale, weapon.image:getWidth() / 2, weapon.image:getHeight() / 2)
 
 		if displayHitbox then
-			love.graphics.rectangle("line", weapon.x - weapon.width / (hitboxScale * 2), weapon.y - weapon.height / (hitboxScale * 2), weapon.width / hitboxScale, weapon.height / hitboxScale)
+			if not(pickUp) then
+				love.graphics.rectangle("line", weapon.x - weapon.width / (hitboxScale * 2), weapon.y - weapon.height / (hitboxScale * 2), weapon.width / hitboxScale, weapon.height / hitboxScale)
+			end
 		end
 	end
 

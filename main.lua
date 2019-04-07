@@ -27,7 +27,7 @@ function love.load()
 	p = Player("lmao")
 	e = Monster("not lmao")
 
-	g = createWeapon("Revolver", 10, 0.33, 2000, 500, 6)
+	g = createWeapon("RevolverFloor", 10, 0.33, 2000, 500, 6, false)
 	-- set enemy start temp
 	e.x = 500
 	e.y = 500
@@ -112,7 +112,9 @@ function love.draw()
 		bullets[i].draw()
 	end
 
-	g.draw(100, 100, 0)
+	g.draw(50, 50, 0)
+
+	love.graphics.line(p.x, p.y, 50, 50)
 
 	-- draw player
 	e.draw()

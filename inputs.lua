@@ -1,26 +1,29 @@
 function keyboardDown(dt)
 	-- player wasd movement
 	p.moving = false
-	if love.keyboard.isDown(input_player_down) then
-		p.y = p.y + p.speed * dt
-		p.moving = true
-	end
+	if(p.moveControl <= 0) then
+		if love.keyboard.isDown(input_player_down) then
+			p.y = p.y + p.speed * dt
+			p.moving = true
+		end
+		if love.keyboard.isDown(input_player_right) then
+			p.x = p.x + p.speed * dt
+			p.moving = true
+		end
 
-	if love.keyboard.isDown(input_player_right) then
-		p.x = p.x + p.speed * dt
-		p.moving = true
+		if love.keyboard.isDown(input_player_up) then
+			p.y = p.y - p.speed * dt
+			p.moving = true
+		end
+		if love.keyboard.isDown(input_player_left) then
+			p.x = p.x - p.speed * dt
+			p.moving = true
+		end
+	else
+		--force movement
+		p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
+		p.y = p.y - 2 * p.speed * dt * p.yLock
 	end
-
-	if love.keyboard.isDown(input_player_up) then
-		p.y = p.y - p.speed * dt
-		p.moving = true
-	end
-
-	if love.keyboard.isDown(input_player_left) then
-		p.x = p.x - p.speed * dt
-		p.moving = true
-	end
-
 
 	-- wasd movement
 	if love.keyboard.isDown(input_monster_down) then
