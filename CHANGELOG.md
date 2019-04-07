@@ -5,7 +5,7 @@
   - weapons on the floor appear as icons
 - added Frontliner (gun)
 - added recoil animations to Pathfinder and Frontliner
-- added invulnerability frames for 0.5s after taking damage
+- added invulnerability frames for 0.5s after taking damage (players only)
 - added flexibility for future weapons (different modes)
 
 ### Changed
