@@ -50,7 +50,7 @@ function Player(name)
 
 	-- movement and shooting
 	function player.update(dt)
-
+		g.update(dt)
 		if p.moving then
 			player.legs.update(dt)
 		else

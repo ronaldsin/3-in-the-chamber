@@ -27,7 +27,8 @@ function love.load()
 	p = Player("lmao")
 	e = Monster("not lmao")
 
-	g = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, false)
+	g = createWeapon("FrontlinerIcon", 10, 0.33, 2000, 500, 6, false)
+	g.image.idle()
 	-- set enemy start temp
 	e.x = 500
 	e.y = 500
@@ -69,7 +70,13 @@ function love.update(dt)
 			e.weapon.image.idle()
 		end
 
-		g.update(dt)
+		if g.pickedUp then
+			g.update(dt)
+		else
+			g.image.idle()
+		end
+
+
 
 		-- update data for player
 		p.update(dt)
@@ -121,7 +128,7 @@ function love.draw()
 		bullets[i].draw()
 	end
 
-	g.draw(50, 50, 0)
+	g.draw(200, 200, 0)
 
 	-- draw player
 	e.draw()

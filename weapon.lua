@@ -6,19 +6,19 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 
 	weapon.image = createAnimation(name, 4, 20, 2, 2, 1, 256, 256)
 
-	weapon.pickUp = pickUp
+	weapon.pickedUp = pickUp
 
 	-- orientation
 	weapon.r = 0 -- edit this to have an angle if it exists later
-	weapon.x = 50
-	weapon.y = 50
+	weapon.x = 200
+	weapon.y = 200
 	weapon.width = 256
 	weapon.height = 256
 
-	weapon.left = weapon.x - weapon.width / hitboxScale
-	weapon.right = weapon.x + weapon.width / hitboxScale
-	weapon.top = weapon.y - weapon.height / hitboxScale
-	weapon.bottom = weapon.y + weapon.height / hitboxScale
+	weapon.left = weapon.x - weapon.width / (hitboxScale / 4.5)
+	weapon.right = weapon.x + weapon.width / (hitboxScale / 4.5)
+	weapon.top = weapon.y - weapon.height / (hitboxScale / 4.5)
+	weapon.bottom = weapon.y + weapon.height / (hitboxScale / 4.5)
 
 	-- stats
 	weapon.state = "ranged"
@@ -69,7 +69,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 
 		if displayHitbox then
 			if not(pickUp) then
-				love.graphics.rectangle("line", weapon.x - weapon.width / (hitboxScale / 1.5), weapon.y - weapon.height / (hitboxScale / 1.5), weapon.width / (hitboxScale / 3), weapon.height / (hitboxScale / 3))
+				love.graphics.rectangle("line", weapon.x - weapon.width / (hitboxScale / 4.5), weapon.y - weapon.height / (hitboxScale / 4.5), weapon.width / (hitboxScale / 3), weapon.height / (hitboxScale / 3))
 			end
 		end
 	end

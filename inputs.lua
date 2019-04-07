@@ -69,16 +69,17 @@ function love.keypressed(key)
 
 	if key == input_player_interact then
 		-- probably gonna have an array("table") of dropped items later in the future(tm to not break encoding)
-		if g.pickUp then
+		if not(g.pickedUp) then
 			if hitReg(g.left, g.right, g.top, g.bottom, p.x - p.width / hitboxScale, p.x + p.width / hitboxScale, p.y - p.height / hitboxScale, p.y + p.height / hitboxScale ) then
 				-- name1 is the ground weapon name with Icon removed from it's name
 				-- name2 is player weapon name but Icon concatenated
 				-- temp1 is a new weapon with name1 and the equivalent stats of the ground item
 				-- temp2 is the same as temp1 but for playear weapon
+				print(g.name .. " " .. p.weapon.name)
 				local name1 = string.sub(g.name, 1, - 5)
 				local name2 = p.weapon.name .. "Icon"
-				local temp1 = createWeapon(name1, g.damage, g.gunCd, g.speed, g.range, g.magazine, false)
-				local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, true)
+				local temp1 = createWeapon(name1, g.damage, g.gunCd, g.speed, g.range, g.magazine, true)
+				local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, false)
 				g = temp2
 				p.weapon = temp1
 			end
