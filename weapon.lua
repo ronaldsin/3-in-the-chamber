@@ -71,7 +71,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 
 		if displayHitbox then
 			if not(pickUp) then
-				love.graphics.rectangle("line", weapon.x - weapon.width / (hitboxScale * 2), weapon.y - weapon.height / (hitboxScale * 2), weapon.width / hitboxScale, weapon.height / hitboxScale)
+				love.graphics.rectangle("line", weapon.x - weapon.width / (hitboxScale / 1.5), weapon.y - weapon.height / (hitboxScale / 1.5), weapon.width / (hitboxScale / 3), weapon.height / (hitboxScale / 3))
 			end
 		end
 	end

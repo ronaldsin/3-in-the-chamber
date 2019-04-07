@@ -114,8 +114,6 @@ function love.draw()
 
 	g.draw(50, 50, 0)
 
-	love.graphics.line(p.x, p.y, 50, 50)
-
 	-- draw player
 	e.draw()
 	p.draw()

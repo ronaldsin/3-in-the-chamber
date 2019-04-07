@@ -17,6 +17,7 @@ function Player(name)
 	player.weapon = createWeapon("Revolver", 10, 0.33, 2000, 500, 6, true)
 
 	player.damage = 10
+	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit
 
 	-- x and y coord's
 	player.x = 100
@@ -98,6 +99,7 @@ function Player(name)
 				if not(player.name == v.name) then
 					print(player.name)
 					if(player.invincible <= 0) then
+						player.invincible = player.invincibleAfterHit
 						player.health = player.health - player.damage
 						hit = true
 						setCursor("resources/Hitmarker.png")
