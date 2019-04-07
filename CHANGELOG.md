@@ -6,6 +6,8 @@
 - added pausing 
 - added rate of fire
 - added player animation
+- added roll
+- added iFrames to roll
 - updated player image
 - player and enemy char now turn red when dead
 - player and enemy char control independently 
