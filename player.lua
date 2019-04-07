@@ -10,8 +10,6 @@ function Player(name)
 
 	player.moving = false
 
-
-
 	-- createAnimation(name, frames, fps, r, c, iframe, fheight, fwidth)
 	player.idle = createAnimation("PonytailIdle", 4, 2, 2, 2, 1, 256, 256)
 	player.legs = createAnimation("PonytailLegs", 3, 10, 2, 2, 1, 256, 256)
@@ -31,6 +29,14 @@ function Player(name)
 	player.health = 100
 	player.power = 100
 	player.armor = 0
+
+	--status effects -- in
+	player.shoot = 0 -- 0<= means able to shoot
+	player.invincible = 0 -- 0<= means not invincible
+
+	--abilitiy
+	player.abilityCD = 0 --time in seconds for abiliity to go off CD
+	player.ability = "roll"
 
 	-- boolean movement
 	player.xmoving = false
@@ -54,6 +60,28 @@ function Player(name)
 
 		-- update rotation
 		player.rotate()
+
+		--status updates --note, status duration and "time" hard coded
+		player.statusAbilityUpdate(dt)
+	end
+
+	function player.statusAbilityUpdate(dt)
+		--status updates
+		if(player.shoot > 0) then
+			player.shoot = player.shoot - dt
+			--print("shoot" .. player.shoot .. "\n")
+		end
+
+		if(player.invincible > 0) then
+			player.invincible = player.invincible - dt
+			--print("invincible" .. player.invincible .. "\n")
+		end
+
+		--ability updates
+		if(player.abilityCD > 0) then
+			player.abilityCD = player.abilityCD - dt
+			--print("abilityCD" .. player.abilityCD .. "\n")
+		end
 	end
 
 	function player.hitReg(dt)
@@ -62,10 +90,12 @@ function Player(name)
 			if hitReg(player.x - player.width / hitboxScale, player.x + player.width / hitboxScale, player.y - player.height / hitboxScale, player.y + player.height / hitboxScale, v.x - v.width / hitboxScale, v.x + v.width / hitboxScale, v.y - v.height / hitboxScale, v.y + v.height / hitboxScale) then
 				if not(player.name == v.name) then
 					print(player.name)
-					player.health = player.health - player.damage
-					hit = true
-					setCursor("resources/Hitmarker.png")
-					playSound(oof)
+					if(player.invincible <= 0) then
+						player.health = player.health - player.damage
+						hit = true
+						setCursor("resources/Hitmarker.png")
+						playSound(oof)
+					end
 					table.remove(bullets, i)
 
 				end
@@ -85,7 +115,7 @@ function Player(name)
 		player.idle.draw(player.x, player.y, player.rotation)
 		player.weapon.draw(player.x, player.y, player.rotation)
 
-		if displayHitbox then
+		if displayHitbox then -- I dont know how the math here works i monkeyed it out at like 6am i no longer rember
 			love.graphics.rectangle("line", player.x - player.width / (hitboxScale * 2), player.y - player.height / (hitboxScale * 2), player.width / hitboxScale, player.height / hitboxScale)
 		end
 

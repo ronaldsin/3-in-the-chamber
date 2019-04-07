@@ -6,6 +6,7 @@ input_player_right = "d"
 input_player_interact = "e"
 
 input_player_shoot = 1
+input_player_secondary = 2
 
 input_monster_up = "up"
 input_monster_down = "down"

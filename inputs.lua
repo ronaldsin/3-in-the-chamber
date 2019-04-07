@@ -65,19 +65,42 @@ function love.keypressed(key)
 		-- ie npc -> talk for shop or something
 		-- gun to change weapon
 		-- interact w/ environment like doors
-	end
 
+
+		-- possible solution: get the hitbox of all items in a "table" and check if they're in the player's hitbox
+		-- need to find a way to get all hitboxes..... maybe store them in an array when they're initialized?
+		-- keep measuring distance
+
+
+		--[[if hitReg(
+			p.x - p.width / (hitboxScale * 2),
+			p.x + p.width / (hitboxScale * 2),
+			p.y - p.height / (hitboxScale * 2),
+			p.y + p.height / (hitboxScale * 2),
+			asdf.weapon.x - asdf.weapon.width / (hitboxScale * 2),
+			asdf.weapon.x + asdf.weapon.width / (hitboxScale * 2),
+			asdf.weapon.y - asdf.weapon.height / (hitboxScale * 2),
+		asdf.weapon.y + asdf.weapon.height / (hitboxScale * 2)) then
+			p.swapWep()
+
+		end
+		]]
+	end
 end
+
 
 -- press mouse 1 to shoot
 function love.mousepressed(x, y, button, isTouch)
 	if not pause then
-		if cd > p.weapon.gunCd then
+		if cd > p.weapon.gunCd and p.shoot <= 0 then
 			if button == input_player_shoot then
 				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range)
 				fire(e.x, e.y, e.rotation, e.name, 2000, 500)
 				cd = 0
 			end
+		end
+		if button == input_player_secondary and p.abilityCD <= 0 then
+			ability(p)
 		end
 	end
 end

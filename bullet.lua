@@ -22,8 +22,6 @@ function proj(x, y, r, name, speed, range)
 	-- stats
 	proj.speed = speed
 
-	print(speed)
-
 	-- trig to calculate xspeed y speed
 	proj.yVel = proj.speed * math.sin(r - (math.pi / 2))
 	proj.xVel = proj.speed * math.cos(r - (math.pi / 2))

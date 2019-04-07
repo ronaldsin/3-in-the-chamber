@@ -6,7 +6,7 @@
 function love.load()
 	sizeScale = 1 -- default 1
 
-	hitboxConst = 10
+	hitboxConst = 10 -- i dont know
 	hitboxScale = hitboxConst / sizeScale -- based on sizeScale
 
 	displayHitbox = false
@@ -21,10 +21,13 @@ function love.load()
 	require ("keyBindings")
 	require ("animation")
 	require ("weapon")
+	require ("abilities")
 
 	-- create player obj
 	p = Player("lmao")
 	e = Monster("not lmao")
+
+	g = createWeapon("Revolver", 10, 0.33, 2000, 500, 6)
 	-- set enemy start temp
 	e.x = 500
 	e.y = 500
@@ -57,6 +60,8 @@ end
 
 function love.update(dt)
 	if not pause then
+		g.update()
+
 		-- update data for player
 		p.update(dt)
 		e.update(dt)
@@ -94,6 +99,7 @@ end
 -- draw elements onto screen
 function love.draw()
 
+
 	love.graphics.draw(background, 0, 0, 0, 0.9, 0.9)
 
 	if fire_ani <= fireTimer then
@@ -106,9 +112,12 @@ function love.draw()
 		bullets[i].draw()
 	end
 
+	g.draw(100, 100, 0)
+
 	-- draw player
 	e.draw()
 	p.draw()
+
 
 	if pause then
 		love.graphics.print("Game is paused", 350, 280)
