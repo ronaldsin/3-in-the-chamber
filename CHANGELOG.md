@@ -5,6 +5,7 @@
 - added gun fire
 - added pausing 
 - added rate of fire
+- added player animation
 - updated player image
 - player and enemy char now turn red when dead
 - player and enemy char control independently 
@@ -18,3 +19,5 @@
 ### Other
 - sperate file to store keybinding
 - sepreated input related functions into another file
+- seperated weapon related functions into weapon file
+- created animation file
