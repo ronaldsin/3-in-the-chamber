@@ -9,17 +9,18 @@ function Monster(name)
 	monster.name = name
 
 	-- sprites
-	monster.Image = love.graphics.newImage("resources/Player2.png")
-	monster.weapon = love.graphics.newImage("resources/Revolver.png")
-	monster.gunfire = love.graphics.newImage("resources/gunfire.png")
+	monster.idle = createAnimation("MarineIdle", 4, 3, 2, 2, 1, 256, 256)
+	monster.legs = createAnimation("MarineLegs", 14, 30, 4, 4, 1, 256, 256)
+
+	monster.weapon = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, true)
 
 
 
 	-- x and y coord's
 	monster.x = 100
 	monster.y = 100
-	monster.width = monster.Image:getWidth()
-	monster.height = monster.Image:getHeight()
+	monster.width = monster.idle.frame_width
+	monster.height = monster.idle.frame_height
 
 	-- stats
 	monster.speed = 300
@@ -27,16 +28,21 @@ function Monster(name)
 	monster.power = 100
 	monster.armor = 0
 
-	-- boolean movement
-	monster.xmoving = false
-	monster.ymoving = false
-
 	-- the rotation of the sprite in radians
 	monster.rotation = 0
+
+	monster.moving = false
 
 
 	-- movement and shooting
 	function monster.update(dt)
+		if e.moving then
+			monster.legs.update(dt)
+		else
+			monster.legs.idle()
+		end
+
+		monster.idle.update(dt)
 
 		monster.hitReg(dt)
 
@@ -66,11 +72,14 @@ function Monster(name)
 	-- drawing to screen
 	function monster.draw()
 
+
 		if monster.health <= 0 then
 			love.graphics.setColor(1, 0, 0)
 		end
-		love.graphics.draw(monster.Image, monster.x, monster.y, monster.rotation, 1 * sizeScale, 1 * sizeScale, monster.Image:getWidth() / 2, monster.Image:getHeight() / 2)
-		love.graphics.draw(monster.weapon, monster.x, monster.y, monster.rotation, 1 * sizeScale, 1 * sizeScale, monster.weapon:getWidth() / 2, monster.weapon:getHeight() / 2)
+		monster.legs.draw(monster.x, monster.y, monster.rotation)
+		monster.idle.draw(monster.x, monster.y, monster.rotation)
+		monster.weapon.draw(monster.x, monster.y, monster.rotation)
+
 		if displayHitbox then
 			love.graphics.rectangle("line", monster.x - monster.width / (hitboxScale * 2), monster.y - monster.height / (hitboxScale * 2), monster.width / hitboxScale, monster.height / hitboxScale)
 		end

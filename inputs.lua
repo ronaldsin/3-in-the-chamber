@@ -25,21 +25,26 @@ function keyboardDown(dt)
 		p.y = p.y - 2 * p.speed * dt * p.yLock
 	end
 
-	-- wasd movement
+	-- monster movement
+	e.moving = false
 	if love.keyboard.isDown(input_monster_down) then
 		e.y = e.y + e.speed * dt
+		e.moving = true
 	end
 
 	if love.keyboard.isDown(input_monster_right) then
 		e.x = e.x + e.speed * dt
+		e.moving = true
 	end
 
 	if love.keyboard.isDown(input_monster_up) then
 		e.y = e.y - e.speed * dt
+		e.moving = true
 	end
 
 	if love.keyboard.isDown(input_monster_left) then
 		e.x = e.x - e.speed * dt
+		e.moving = true
 	end
 end
 
@@ -63,31 +68,21 @@ function love.keypressed(key)
 	end
 
 	if key == input_player_interact then
-		-- check hitbox around Player
-		-- interact depending on the hitbox
-		-- ie npc -> talk for shop or something
-		-- gun to change weapon
-		-- interact w/ environment like doors
-
-
-		-- possible solution: get the hitbox of all items in a "table" and check if they're in the player's hitbox
-		-- need to find a way to get all hitboxes..... maybe store them in an array when they're initialized?
-		-- keep measuring distance
-
-
-		--[[if hitReg(
-			p.x - p.width / (hitboxScale * 2),
-			p.x + p.width / (hitboxScale * 2),
-			p.y - p.height / (hitboxScale * 2),
-			p.y + p.height / (hitboxScale * 2),
-			asdf.weapon.x - asdf.weapon.width / (hitboxScale * 2),
-			asdf.weapon.x + asdf.weapon.width / (hitboxScale * 2),
-			asdf.weapon.y - asdf.weapon.height / (hitboxScale * 2),
-		asdf.weapon.y + asdf.weapon.height / (hitboxScale * 2)) then
-			p.swapWep()
-
+		-- probably gonna have an array("table") of dropped items later in the future(tm to not break encoding)
+		if g.pickUp then
+			if hitReg(g.left, g.right, g.top, g.bottom, p.x - p.width / hitboxScale, p.x + p.width / hitboxScale, p.y - p.height / hitboxScale, p.y + p.height / hitboxScale ) then
+				-- name1 is the ground weapon name with Icon removed from it's name
+				-- name2 is player weapon name but Icon concatenated
+				-- temp1 is a new weapon with name1 and the equivalent stats of the ground item
+				-- temp2 is the same as temp1 but for playear weapon
+				local name1 = string.sub(g.name, 1, - 5)
+				local name2 = p.weapon.name .. "Icon"
+				local temp1 = createWeapon(name1, g.damage, g.gunCd, g.speed, g.range, g.magazine, false)
+				local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, true)
+				g = temp2
+				p.weapon = temp1
+			end
 		end
-		]]
 	end
 end
 

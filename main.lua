@@ -27,7 +27,7 @@ function love.load()
 	p = Player("lmao")
 	e = Monster("not lmao")
 
-	g = createWeapon("RevolverFloor", 10, 0.33, 2000, 500, 6, false)
+	g = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, false)
 	-- set enemy start temp
 	e.x = 500
 	e.y = 500
@@ -42,7 +42,7 @@ function love.load()
 	hitTimer = 0.15
 
 	--fire timer
-	fireTimer = 0.1
+	fireTimer = 0.2
 	fire_ani = fireTimer
 
 	--gun cd timer
@@ -60,7 +60,16 @@ end
 
 function love.update(dt)
 	if not pause then
-		g.update()
+
+		if fire_ani <= fireTimer then
+			p.weapon.image.update(dt)
+			e.weapon.image.update(dt)
+		else
+			p.weapon.image.idle()
+			e.weapon.image.idle()
+		end
+
+		g.update(dt)
 
 		-- update data for player
 		p.update(dt)
@@ -103,8 +112,8 @@ function love.draw()
 	love.graphics.draw(background, 0, 0, 0, 0.9, 0.9)
 
 	if fire_ani <= fireTimer then
-		love.graphics.draw(p.weapon.gunfire, p.x, p.y, p.rotation, 1 * sizeScale, 1 * sizeScale, p.weapon.gunfire:getWidth() / 2, p.weapon.gunfire:getHeight() / 2)
-		love.graphics.draw(e.gunfire, e.x, e.y, e.rotation, 1 * sizeScale, 1 * sizeScale, e.gunfire:getWidth() / 2, e.gunfire:getHeight() / 2)
+		p.weapon.image.draw(p.x, p.y, p.rotation)
+		p.weapon.image.draw(e.x, e.y, e.rotation)
 	end
 
 	-- draw bullets to screen

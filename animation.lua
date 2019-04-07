@@ -7,6 +7,8 @@ function createAnimation(name, frames, fps, r, c, iframe, fheight, fwidth)
 	animation.fps = fps
 	animation.image = love.graphics.newImage("resources/" .. name .. ".png")
 
+	animation.isrepeat = true
+
 	animation.idleFrame = iframe
 
 	animation.frame_width = fwidth
@@ -34,6 +36,7 @@ function createAnimation(name, frames, fps, r, c, iframe, fheight, fwidth)
 	function animation.update(dt)
 		animation.currentFrame = animation.currentFrame + animation.fps * dt
 		if math.floor(animation.currentFrame) > animation.maxFrames then
+
 			animation.currentFrame = 1
 		end
 	end

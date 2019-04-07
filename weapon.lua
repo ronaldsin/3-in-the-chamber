@@ -2,8 +2,9 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 	local weapon = {}
 
 	-- sprites
-	weapon.gunfire = love.graphics.newImage("resources/gunfire.png")
-	weapon.image = love.graphics.newImage("resources/" .. name .. ".png")
+	weapon.name = name
+
+	weapon.image = createAnimation(name, 4, 20, 2, 2, 1, 256, 256)
 
 	weapon.pickUp = pickUp
 
@@ -11,8 +12,8 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 	weapon.r = 0 -- edit this to have an angle if it exists later
 	weapon.x = 50
 	weapon.y = 50
-	weapon.width = weapon.image:getWidth()
-	weapon.height = weapon.image:getHeight()
+	weapon.width = 256
+	weapon.height = 256
 
 	weapon.left = weapon.x - weapon.width / hitboxScale
 	weapon.right = weapon.x + weapon.width / hitboxScale
@@ -38,12 +39,9 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 	--
 	-- end
 
-	function weapon.update()
-		if not(pickUp) then
-			if hitReg(weapon.left, weapon.right, weapon.top, weapon.bottom, p.x - p.width / hitboxScale, p.x + p.width / hitboxScale, p.y - p.height / hitboxScale, p.y + p.height / hitboxScale ) then
-				print("hit")
-			end
-		end
+	function weapon.update(dt)
+		weapon.image.update(dt)
+
 		-- if clip > 0 and LMB clicked
 		-- shoot, clip -= 1
 		-- elseif clip = 0 and LMB clicked
@@ -67,7 +65,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp)
 	end
 
 	function weapon.draw(x, y, r)
-		love.graphics.draw(weapon.image, x, y, r, 1 * sizeScale, 1 * sizeScale, weapon.image:getWidth() / 2, weapon.image:getHeight() / 2)
+		weapon.image.draw(x, y, r)
 
 		if displayHitbox then
 			if not(pickUp) then

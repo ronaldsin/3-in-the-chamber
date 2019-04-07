@@ -14,7 +14,7 @@ function Player(name)
 	player.idle = createAnimation("PonytailIdle", 4, 2, 2, 2, 1, 256, 256)
 	player.legs = createAnimation("PonytailLegs", 3, 10, 2, 2, 1, 256, 256)
 
-	player.weapon = createWeapon("Revolver", 10, 0.33, 2000, 500, 6, true)
+	player.weapon = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, true)
 
 	player.damage = 10
 	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit
