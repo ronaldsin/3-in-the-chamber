@@ -12,7 +12,7 @@ function Monster(name)
 	monster.idle = createAnimation("MarineIdle", 4, 3, 2, 2, 1, 256, 256)
 	monster.legs = createAnimation("MarineLegs", 14, 30, 4, 4, 1, 256, 256)
 
-	monster.weapon = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, true)
+	--monster.weapon = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, true, 1, 1, 0)
 
 
 
@@ -21,6 +21,8 @@ function Monster(name)
 	monster.y = 100
 	monster.width = monster.idle.frame_width
 	monster.height = monster.idle.frame_height
+
+	monster.hitbox = createHitbox(monster.x, monster.y, monster.width, monster.height)
 
 	-- stats
 	monster.speed = 300
@@ -36,6 +38,11 @@ function Monster(name)
 
 	-- movement and shooting
 	function monster.update(dt)
+
+		monster.hitbox.update(monster.x, monster.y)
+
+		--monster.weapon.update(monster.x, monster.y, monster.rotation)
+
 		if e.moving then
 			monster.legs.update(dt)
 		else
@@ -53,10 +60,10 @@ function Monster(name)
 	function monster.hitReg(dt)
 		-- bullet hit reg (does not work rn)
 		for i, v in ipairs(bullets) do
-			if hitReg(monster.x - monster.width / hitboxScale, monster.x + monster.width / hitboxScale, monster.y - monster.height / hitboxScale, monster.y + monster.height / hitboxScale, v.x - v.width / hitboxScale, v.x + v.width / hitboxScale, v.y - v.height / hitboxScale, v.y + v.height / hitboxScale) then
+			if hitReg(monster.hitbox, v.hitbox) then
 				if not(monster.name == v.name) then
-					print(monster.name)
-					monster.health = monster.health - p.damage
+					monster.health = monster.health - p.weapon.damage
+					print(monster.health)
 					hit = true
 					setCursor("resources/Hitmarker.png")
 					playSound(oof)
@@ -78,11 +85,11 @@ function Monster(name)
 		end
 		monster.legs.draw(monster.x, monster.y, monster.rotation)
 		monster.idle.draw(monster.x, monster.y, monster.rotation)
-		monster.weapon.draw(monster.x, monster.y, monster.rotation)
+		--monster.weapon.draw(monster.x, monster.y, monster.rotation)
 
-		if displayHitbox then
-			love.graphics.rectangle("line", monster.x - monster.width / (hitboxScale * 2), monster.y - monster.height / (hitboxScale * 2), monster.width / hitboxScale, monster.height / hitboxScale)
-		end
+		monster.hitbox.draw()
+
+		--monster.weapon.draw()
 
 		love.graphics.setColor(1, 1, 1 )
 	end

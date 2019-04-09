@@ -1,7 +1,7 @@
-function hitReg(a_left, a_right, a_top, a_bottom, b_left, b_right, b_top, b_bottom)
+function hitReg(hitbox_a, hitbox_b)
 
 	--QED Hitreg
-	if a_right > b_left and a_left < b_right and a_bottom > b_top and a_top < b_bottom then
+	if hitbox_a.right > hitbox_b.left and hitbox_a.left < hitbox_b.right and hitbox_a.bottom > hitbox_b.top and hitbox_a.top < hitbox_b.bottom then
 		return true
 	else
 		return false

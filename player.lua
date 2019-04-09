@@ -14,7 +14,12 @@ function Player(name)
 	player.idle = createAnimation("PonytailIdle", 4, 2, 2, 2, 1, 256, 256)
 	player.legs = createAnimation("PonytailLegs", 3, 10, 2, 2, 1, 256, 256)
 
-	player.weapon = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, true, 0)
+	player.stances = {}
+
+	table.insert(player.stances, createAnimation("PonytailIdle", 4, 3, 2, 2, 1, 256, 256))
+	table.insert(player.stances, createAnimation("Ponytail_AssaultRifle", 4, 3, 2, 2, 1, 256, 256))
+
+	player.weapon = createWeapon("Pathfinder", 40, 0.33, 2000, 400, 6, 6, 1, true, 1, 1, 1, 0)
 
 	player.damage = 10
 	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit
@@ -25,8 +30,10 @@ function Player(name)
 	player.width = player.idle.frame_width
 	player.height = player.idle.frame_height
 
+	player.hitbox = createHitbox(player.x, player.y, player.width, player.height)
+
 	-- stats
-	player.speed = 300
+	player.speed = 500 -- default 300
 	player.health = 100
 	player.power = 100
 	player.armor = 0
@@ -50,7 +57,11 @@ function Player(name)
 
 	-- movement and shooting
 	function player.update(dt)
-		g.update(dt)
+
+		player.hitbox.update(player.x, player.y)
+
+		player.weapon.update(player.x, player.y, player.rotation, dt)
+
 		if p.moving then
 			player.legs.update(dt)
 		else
@@ -66,6 +77,11 @@ function Player(name)
 
 		--status updates --note, status duration and "time" hard coded
 		player.statusAbilityUpdate(dt)
+	end
+
+	function player.updateStance()
+		player.idle = player.stances[player.weapon.stance]
+
 	end
 
 	function player.statusAbilityUpdate(dt)
@@ -95,12 +111,11 @@ function Player(name)
 	function player.hitReg(dt)
 		-- bullet hit reg (does not work rn)
 		for i, v in ipairs(bullets) do
-			if hitReg(player.x - player.width / hitboxScale, player.x + player.width / hitboxScale, player.y - player.height / hitboxScale, player.y + player.height / hitboxScale, v.x - v.width / hitboxScale, v.x + v.width / hitboxScale, v.y - v.height / hitboxScale, v.y + v.height / hitboxScale) then
+			if hitReg(player.hitbox, v.hitbox) then
 				if not(player.name == v.name) then
-					print(player.name)
 					if(player.invincible <= 0) then
 						player.invincible = player.invincibleAfterHit
-						player.health = player.health - player.damage
+						player.health = player.health - e.weapon.damage
 						hit = true
 						setCursor("resources/Hitmarker.png")
 						playSound(oof)
@@ -116,6 +131,7 @@ function Player(name)
 	-- drawing to screen
 	function player.draw()
 
+
 		if player.health <= 0 then
 			love.graphics.setColor(1, 0, 0)
 		end
@@ -124,9 +140,9 @@ function Player(name)
 		player.idle.draw(player.x, player.y, player.rotation)
 		player.weapon.draw(player.x, player.y, player.rotation)
 
-		if displayHitbox then -- I dont know how the math here works i monkeyed it out at like 6am i no longer rember
-			love.graphics.rectangle("line", player.x - player.width / (hitboxScale * 2), player.y - player.height / (hitboxScale * 2), player.width / hitboxScale, player.height / hitboxScale)
-		end
+		player.hitbox.draw()
+
+		player.weapon.draw()
 
 		love.graphics.setColor(1, 1, 1 )
 	end

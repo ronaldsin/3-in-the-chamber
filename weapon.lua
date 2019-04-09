@@ -1,41 +1,45 @@
-function createWeapon(name, damage, cd, speed, range, magazine, pickUp, mode)
+function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, reload, pickup, mode, stance, rng)
 	local weapon = {}
 
 	-- sprites
 	weapon.name = name
 
-	weapon.image = createAnimation(name, 4, 20, 2, 2, 1, 256, 256)
+	weapon.image = createAnimation(name, 4, 20 + (5 / (cd * 4)), 2, 2, 1, 256, 256)
 
-	weapon.pickedUp = pickUp
+	weapon.pickedUp = pickup
 
 	-- orientation
 	weapon.r = 0 -- edit this to have an angle if it exists later
-	weapon.x = 200
-	weapon.y = 200
+	weapon.x = 0
+	weapon.y = 0
 	weapon.width = 256
 	weapon.height = 256
 
-	weapon.left = weapon.x - weapon.width / (hitboxScale / 4.5)
-	weapon.right = weapon.x + weapon.width / (hitboxScale / 4.5)
-	weapon.top = weapon.y - weapon.height / (hitboxScale / 4.5)
-	weapon.bottom = weapon.y + weapon.height / (hitboxScale / 4.5)
+	weapon.rng = rng
+
+
+	weapon.hitbox = createHitbox(weapon.x, weapon.y, weapon.width * 4, weapon.height * 2)
 
 	-- stats
 	-- states:
 	-- 0: ranged
 	-- 1: melee
 	-- modes:
-	-- 0: semi-auto
-	-- 1: full auto
-	-- 2: TO BE ADDED IN THE FUTURE
+	-- 1: semi-auto
+	-- 2: full auto
+	-- 3: TO BE ADDED IN THE FUTURE
 	weapon.state = 0
 	weapon.damage = damage
 	weapon.magazine = magazine
-	weapon.clip = magazine
+	weapon.currentAmmo = currentAmmo
+	weapon.reload = reload
 	weapon.gunCd = cd
 	weapon.speed = speed
 	weapon.range = range
 	weapon.mode = mode
+	weapon.stance = stance -- 1 = small, 2 = large
+
+	weapon.counter = 0
 
 	-- function weapon.reload()
 	-- 	-- play animation
@@ -46,9 +50,40 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp, mode)
 	-- function weapon.fire()
 	--
 	-- end
+	function weapon.fire()
+		print("current ammo " .. weapon.currentAmmo)
+		if weapon.currentAmmo > 0 then
+			weapon.currentAmmo = weapon.currentAmmo - 1
+		else
+			weapon.counter = weapon.reload
 
-	function weapon.update(dt)
-		weapon.image.update(dt)
+			for i = 1, 2 do
+				playSound(reloadingStart)
+			end
+		end
+
+	end
+
+
+	function weapon.update(x, y, r, dt)
+		weapon.x = x
+		weapon.y = y
+		weapon.r = r
+
+		weapon.hitbox.update(x, y)
+
+		if weapon.counter > 0 then
+			--print("reloading")
+			weapon.counter = weapon.counter - dt
+
+			if weapon.counter <= 0 then
+				playSound(reloadingEnd)
+				p.shoot = 0.4
+
+				weapon.currentAmmo = weapon.magazine
+				print("current ammo " .. weapon.currentAmmo)
+			end
+		end
 
 		-- if clip > 0 and LMB clicked
 		-- shoot, clip -= 1
@@ -72,14 +107,17 @@ function createWeapon(name, damage, cd, speed, range, magazine, pickUp, mode)
 		]]
 	end
 
-	function weapon.draw(x, y, r)
-		weapon.image.draw(x, y, r)
+	function weapon.draw()
+		weapon.image.draw(weapon.x, weapon.y, weapon.r)
 
-		if displayHitbox then
-			if not(pickUp) then
-				love.graphics.rectangle("line", weapon.x - weapon.width / (hitboxScale / 4.5), weapon.y - weapon.height / (hitboxScale / 4.5), weapon.width / (hitboxScale / 3), weapon.height / (hitboxScale / 3))
-			end
+		if weapon.counter > 0 then
+			love.graphics.print("Reloading...", 350, 280)
 		end
+
+		if weapon.pickedUp == false then
+			weapon.hitbox.draw()
+		end
+
 	end
 
 	return weapon
