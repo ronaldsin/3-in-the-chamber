@@ -44,6 +44,12 @@ function Player(name)
 	player.moveControl = 0 --0<= means can move normally
 	player.directionLock = 0 -- 0->neutral, 1->up, 2->right, 3->down, 4->left
 
+	--flat Damage Over Time
+	player.flatDOT = 0		--amount of damage
+	player.flatDOTchunk = 0 -- amount DOT does each interval
+	player.flatDOTtimerReset = 3 --seconds for damage to apply
+	player.flatDOTtimer = 0
+
 	--ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
 	player.ability = "bulletTime"
@@ -101,7 +107,23 @@ function Player(name)
 
 		if(player.moveControl > 0) then
 			player.moveControl = player.moveControl - dt
-			--print("moveControl" .. moveControl .. "\n")
+			--print("moveControl" .. player.moveControl .. "\n")
+		end
+
+		if(player.flatDOT > 0) then
+			player.flatDOTtimer = player.flatDOTtimer - dt
+			if (player.flatDOTtimer < 0) then
+				player.flatDOTtimer = player.flatDOTtimerReset
+				if (player.flatDOTchunk > player.flatDOT) then
+					player.health = player.health - player.flatDOT
+					player.flatDOT = 0
+					--print("health" .. player.health .. "\n")
+				else
+					player.health = player.health - player.flatDOTchunk
+					player.flatDOT = player.flatDOT - player.flatDOTchunk
+					--print("health" .. player.health .. "\n")
+				end
+			end
 		end
 
 		--ability updates
