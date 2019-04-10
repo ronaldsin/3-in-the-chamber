@@ -8,14 +8,16 @@
 - added reloading and clip size
 - added walls
 - added a placeholder menu
-- added bullet spread
+- added bullet spread of varying degrees to all weapons (excluding The Bear Trap)
+- added multiple character sprites (not playable)
 
 ### Changed
 - reworked hitboxes to be much more accurate
-- 
+- rebalanced weapon stats (damage, attack speed, clip size, etc)
+- changed 
 
 ### Other
-- 
+- N/A
 
 
 
@@ -31,6 +33,10 @@
 ### Changed
 - updated enemy model (in black holding a dagger and gun)
 - changed string-based variables to integer (i.e. "ranged" to 0, "melee" to 1)
+
+### Other
+- N/A
+
 
 
 ## 2019-04-06
