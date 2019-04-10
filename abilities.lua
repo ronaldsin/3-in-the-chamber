@@ -1,5 +1,6 @@
 function ability(player)
-	if (player.ability == "roll") then
+	pa = player.ability
+	if (pa == "roll") then -- moves player a short distance while invincible and unable to shoot
 		--status
 		player.invincible = .4 -- status' in seconds
 		player.shoot = .4
@@ -22,6 +23,34 @@ function ability(player)
 		end
 
 		--ability cooldown
+		player.abilityCD = 5
+
+	elseif (pa == "bulletTime") then -- activate to freeze bullets, re-activate to continue moving them
+		--toggle
+		if player.bulletTime == false then
+			player.bulletTime = true
+		else
+			player.bulletTime = false
+		end
+
+		--bullets
+		for i, v in ipairs(bullets) do
+			if(v.name == player.name) then
+				print("bullet")
+				if(player.bulletTime == true) then
+					v.speed = 0
+					v.xVel = 0
+					v.yVel = 0
+				else
+					v.speed = v.OGspeed
+					v.xVel = v.OGxVel
+					v.yVel = v.OGyVel
+				end
+			end
+		end
+
+		--ability cooldown
 		player.abilityCD = 0
+
 	end
 end
