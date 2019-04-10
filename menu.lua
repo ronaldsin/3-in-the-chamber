@@ -21,7 +21,8 @@ function start()
 
 	walls = {}
 
-	table.insert(walls, createWall(400, 20, 100 * (hitboxScale), 600 * (hitboxScale)))
+	table.insert(walls, createWall(108, 51, 605, 55))
+	--table.insert
 
 	-- set enemy start temp
 	e.x = 500

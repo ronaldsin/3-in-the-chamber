@@ -99,13 +99,6 @@ function love.keypressed(key)
 		e.health = 100
 	end
 
-	if key == input_player_reload then
-		p.weapon.counter = p.weapon.reload
-		for i = 1, 2 do
-			playSound(reloadingStart)
-		end
-	end
-
 	if key == input_player_interact then
 		-- probably gonna have an array("table") of dropped items later in the future(tm to not break encoding)
 		for i = 1, #gunPickUp do

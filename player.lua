@@ -25,8 +25,8 @@ function Player(name)
 	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit
 
 	-- x and y coord's
-	player.x = 100
-	player.y = 100
+	player.x = 200
+	player.y = 200
 	player.width = player.idle.frame_width
 	player.height = player.idle.frame_height
 
@@ -44,15 +44,9 @@ function Player(name)
 	player.moveControl = 0 --0<= means can move normally
 	player.directionLock = 0 -- 0->neutral, 1->up, 2->right, 3->down, 4->left
 
-	--flat Damage Over Time
-	player.flatDOT = 0		--amount of damage
-	player.flatDOTchunk = 0 -- amount DOT does each interval
-	player.flatDOTtimerReset = 3 --seconds for damage to apply
-	player.flatDOTtimer = 0
-
 	--ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
-	player.ability = "bulletTime"
+	player.ability = "roll"
 
 	-- direction lock for forced movement
 	player.xLock = 0
@@ -63,9 +57,6 @@ function Player(name)
 
 	player.ly = player.y
 	player.lx = player.x
-
-	-- toggle "bullet time" ability
-	player.bulletTime = false
 
 	-- movement and shooting
 	function player.update(dt)
@@ -110,24 +101,9 @@ function Player(name)
 
 		if(player.moveControl > 0) then
 			player.moveControl = player.moveControl - dt
-			--print("moveControl" .. player.moveControl .. "\n")
+			--print("moveControl" .. moveControl .. "\n")
 		end
 
-		if(player.flatDOT > 0) then
-			player.flatDOTtimer = player.flatDOTtimer - dt
-			if (player.flatDOTtimer < 0) then
-				player.flatDOTtimer = player.flatDOTtimerReset
-				if (player.flatDOTchunk > player.flatDOT) then
-					player.health = player.health - player.flatDOT
-					player.flatDOT = 0
-					--print("health" .. player.health .. "\n")
-				else
-					player.health = player.health - player.flatDOTchunk
-					player.flatDOT = player.flatDOT - player.flatDOTchunk
-					--print("health" .. player.health .. "\n")
-				end
-			end
-		end
 		--ability updates
 		if(player.abilityCD > 0) then
 			player.abilityCD = player.abilityCD - dt
