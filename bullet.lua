@@ -36,6 +36,11 @@ function proj(x, y, r, name, speed, range, type, spread)
 	proj.yVel = proj.yVel + (math.pow(proj.yVel, - 1)) + ((rng:random(-spread, spread) / 2) )
 	proj.xVel = proj.xVel + (math.pow(proj.xVel, - 1)) + ((rng:random(-spread, spread) / 2) )
 
+	--bulletTime
+	proj.OGspeed = proj.speed
+	proj.OGxVel = proj.xVel
+	proj.OGyVel = proj.yVel
+
 
 	-- updates the projectile on screen, based on ticks with dt length
 	function proj.update(dt)

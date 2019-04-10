@@ -46,11 +46,14 @@ function Player(name)
 
 	--ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
-	player.ability = "roll"
+	player.ability = "bulletTime"
 
 	-- direction lock for forced movement
 	player.xLock = 0
 	player.yLock = 0
+
+	-- toggle "bullet time" ability
+	player.bulletTime = false
 
 	-- the rotation of the sprite in radians
 	player.rotation = 0

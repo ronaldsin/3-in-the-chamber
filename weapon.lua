@@ -27,7 +27,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	-- modes:
 	-- 1: semi-auto
 	-- 2: full auto
-	-- 3: TO BE ADDED IN THE FUTURE
+	-- 3: burst fire
 	weapon.state = 0
 	weapon.damage = damage
 	weapon.magazine = magazine
@@ -40,6 +40,9 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	weapon.stance = stance -- 1 = small, 2 = large
 
 	weapon.counter = 0
+
+	--for ability
+	weapon.OGspeed = speed
 
 	-- function weapon.reload()
 	-- 	-- play animation

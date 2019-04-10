@@ -90,5 +90,16 @@ function fire(x, y, r, n, speed, range, spread)
 			playSound(gunshot)
 		end
 
+		--bulletTime ability
+		for i, v in ipairs(bullets) do
+			if(v.name == p.name) then
+				if(p.bulletTime == true) then
+					v.speed = 0
+					v.xVel = 0
+					v.yVel = 0
+				end
+			end
+		end
+
 	end
 end
