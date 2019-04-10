@@ -67,12 +67,6 @@ function fire(x, y, r, n, speed, range, spread)
 			for i = 1, 7 do
 				--b = proj(x + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), y + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), r + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 800), n, speed, range, "ShotgunShell", , spread)
 				b = proj(x, y, r, n, speed, range, "ShotgunShell", spread)
-				--bulletTime ability
-				if(p.bulletTime == true) then
-					b.speed = 0
-					b.xVel = 0
-					b.yVel = 0
-				end
 				table.insert(bullets, b)
 
 			end
@@ -84,23 +78,21 @@ function fire(x, y, r, n, speed, range, spread)
 
 			if p.weapon.name == "Strikeout" then
 				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread )
+				table.insert(bullets, b)
 				playSound(machineGun)
 			elseif p.weapon.name == "Frontliner" then
 				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread)
+				table.insert(bullets, b)
 				playSound(assaultRifle)
 			elseif p.weapon.name == "TheBeartrap" then
 				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread)
+				table.insert(bullets, b)
 				playSound(sniperRifle)
 			else
 				b = proj(x, y, r, n, speed, range, "PistolBullet", spread)
+				table.insert(bullets, b)
 				playSound(gunshot)
 			end
-			if(p.bulletTime == true) then
-				b.speed = 0
-				b.xVel = 0
-				b.yVel = 0
-			end
-			table.insert(bullets, b)
 		end
 	end
 end
