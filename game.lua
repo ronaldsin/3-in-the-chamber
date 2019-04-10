@@ -51,7 +51,7 @@ function gameDraw()
 	love.graphics.draw(background, 0, 0, 0, 0.9, 0.9)
 
 	for i = 1, #walls do
-		walls[i].draw()
+		walls[i].hitbox.draw()
 	end
 
 	-- draw bullets to screen
@@ -62,9 +62,6 @@ function gameDraw()
 	for i = 1, #gunPickUp do
 		gunPickUp[i].draw()
 	end
-
-	print("x" .. love.mouse.getX())
-	print("y" .. love.mouse.getY())
 
 	-- draw player
 	e.draw()
