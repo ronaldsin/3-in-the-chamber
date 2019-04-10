@@ -10,6 +10,7 @@
 - added a placeholder menu
 - added bullet spread of varying degrees to all weapons (excluding The Bear Trap)
 - added multiple character sprites (not playable)
+- https://www.youtube.com/watch?v=fxq2BphfbCw
 
 ### Changed
 - reworked hitboxes to be much more accurate
