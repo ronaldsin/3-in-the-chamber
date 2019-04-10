@@ -1,5 +1,25 @@
 # Change Log
-## 2019-07-06
+## 2019-06-09
+### Added
+- added the following guns (with their corresponding SFX):
+  - Accelerant
+  - Strikeout
+  - The Bear Trap
+- added reloading and clip size
+- added walls
+- added a placeholder menu
+- added bullet spread
+
+### Changed
+- reworked hitboxes to be much more accurate
+- 
+
+### Other
+- 
+
+
+
+## 2019-04-07
 ### Added
 - added weapon swapping
   - weapons on the floor appear as icons
@@ -12,12 +32,10 @@
 - updated enemy model (in black holding a dagger and gun)
 - changed string-based variables to integer (i.e. "ranged" to 0, "melee" to 1)
 
-### Other
-- 
 
 ## 2019-04-06
 ### Added
-- added Pathfinder (gun)
+- added Pathfinder (gun) and SFX
 - added gun fire
 - added pausing 
 - added rate of fire
