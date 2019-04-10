@@ -1,5 +1,5 @@
 # Change Log
-## 2019-06-07
+## 2019-07-06
 ### Added
 - added weapon swapping
   - weapons on the floor appear as icons
@@ -15,7 +15,7 @@
 ### Other
 - 
 
-## 2019-06-04
+## 2019-04-06
 ### Added
 - added Pathfinder (gun)
 - added gun fire
