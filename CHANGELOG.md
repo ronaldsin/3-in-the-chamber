@@ -15,7 +15,6 @@
 ### Changed
 - reworked hitboxes to be much more accurate
 - rebalanced weapon stats (damage, attack speed, clip size, etc)
-- changed 
 
 ### Other
 - N/A
