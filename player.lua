@@ -25,8 +25,8 @@ function Player(name)
 	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit
 
 	-- x and y coord's
-	player.x = 100
-	player.y = 100
+	player.x = 200
+	player.y = 200
 	player.width = player.idle.frame_width
 	player.height = player.idle.frame_height
 
@@ -45,7 +45,7 @@ function Player(name)
 	player.directionLock = 0 -- 0->neutral, 1->up, 2->right, 3->down, 4->left
 
 	--flat Damage Over Time
-	player.flatDOT = 0		--amount of damage
+	player.flatDOT = 0 --amount of damage
 	player.flatDOTchunk = 0 -- amount DOT does each interval
 	player.flatDOTtimerReset = 3 --seconds for damage to apply
 	player.flatDOTtimer = 0
@@ -110,7 +110,7 @@ function Player(name)
 
 		if(player.moveControl > 0) then
 			player.moveControl = player.moveControl - dt
-			--print("moveControl" .. player.moveControl .. "\n")
+			--print("moveControl" .. moveControl .. "\n")
 		end
 
 		if(player.flatDOT > 0) then
@@ -128,6 +128,7 @@ function Player(name)
 				end
 			end
 		end
+
 		--ability updates
 		if(player.abilityCD > 0) then
 			player.abilityCD = player.abilityCD - dt
