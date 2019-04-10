@@ -12,11 +12,11 @@ function proj(x, y, r, name, speed, range, type, spread)
 	proj.name = name
 
 	-- location of bullet
-	proj.x = x + 110 * math.sin(r)
-	proj.y = y - 110 * math.cos(r)
+	proj.x = x + (110 * sizeScale) * math.sin(r)
+	proj.y = y - (110 * sizeScale) * math.cos(r)
 
 	-- range and keeps track of how far the bullet has traveled
-	proj.range = range
+	proj.range = range * sizeScale
 	proj.traveled = 0
 	proj.width = proj.Image:getWidth()
 	proj.height = proj.Image:getHeight()
@@ -35,11 +35,6 @@ function proj(x, y, r, name, speed, range, type, spread)
 
 	proj.yVel = proj.yVel + (math.pow(proj.yVel, - 1)) + ((rng:random(-spread, spread) / 2) )
 	proj.xVel = proj.xVel + (math.pow(proj.xVel, - 1)) + ((rng:random(-spread, spread) / 2) )
-
-	--bulletTime
-	proj.OGspeed = proj.speed
-	proj.OGxVel = proj.xVel
-	proj.OGyVel = proj.yVel
 
 
 	-- updates the projectile on screen, based on ticks with dt length

@@ -27,7 +27,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	-- modes:
 	-- 1: semi-auto
 	-- 2: full auto
-	-- 3: burst fire
+	-- 3: TO BE ADDED IN THE FUTURE
 	weapon.state = 0
 	weapon.damage = damage
 	weapon.magazine = magazine
@@ -41,9 +41,6 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 
 	weapon.counter = 0
 
-	--for ability
-	weapon.OGspeed = speed
-
 	-- function weapon.reload()
 	-- 	-- play animation
 	-- 	-- delay for whatever amount
@@ -54,16 +51,22 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	--
 	-- end
 	function weapon.fire()
-		print("current ammo " .. weapon.currentAmmo)
-		if weapon.currentAmmo > 0 then
-			weapon.currentAmmo = weapon.currentAmmo - 1
-		else
+		if weapon.currentAmmo == 0 then
 			weapon.counter = weapon.reload
-
 			for i = 1, 2 do
 				playSound(reloadingStart)
 			end
+
+			return false
 		end
+
+		if weapon.currentAmmo > 0 then
+			weapon.currentAmmo = weapon.currentAmmo - 1
+			print("current ammo " .. weapon.currentAmmo)
+			return true
+		end
+
+
 
 	end
 

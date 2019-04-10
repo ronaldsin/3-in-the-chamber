@@ -18,6 +18,7 @@ function love.load()
 	require ("menu")
 	require ("game")
 	require ("hitbox")
+	require ("walls")
 
 	sizeScale = 1 -- default 1
 
@@ -59,46 +60,39 @@ end
 
 function fire(x, y, r, n, speed, range, spread)
 	if p.weapon.name == "BoomstickVI" then
-		fire_ani = 0
-		playSound(shotgun)
+		if p.weapon.fire() then
+			fire_ani = 0
+			playSound(shotgun)
 
-		for i = 1, 7 do
-			--b = proj(x + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), y + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), r + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 800), n, speed, range, "ShotgunShell", , spread)
-			b = proj(x, y, r, n, speed, range, "ShotgunShell", spread)
-			--bulletTime ability
-			if(p.bulletTime == true) then
-				b.speed = 0
-				b.xVel = 0
-				b.yVel = 0
+			for i = 1, 7 do
+				--b = proj(x + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), y + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), r + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 800), n, speed, range, "ShotgunShell", , spread)
+				b = proj(x, y, r, n, speed, range, "ShotgunShell", spread)
+				table.insert(bullets, b)
+
 			end
-			table.insert(bullets, b)
-			p.weapon.fire()
 		end
 	else
-		fire_ani = 0
-		p.weapon.fire()
 
-		if p.weapon.name == "Strikeout" then
-			b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread )
-			playSound(machineGun)
-		elseif p.weapon.name == "Frontliner" then
-			b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread)
-			playSound(assaultRifle)
-		elseif p.weapon.name == "TheBeartrap" then
-			b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread)
-			playSound(sniperRifle)
-		else
-			b = proj(x, y, r, n, speed, range, "PistolBullet", spread)
-			playSound(gunshot)
+		if p.weapon.fire() then
+			fire_ani = 0
+
+			if p.weapon.name == "Strikeout" then
+				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread )
+				table.insert(bullets, b)
+				playSound(machineGun)
+			elseif p.weapon.name == "Frontliner" then
+				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread)
+				table.insert(bullets, b)
+				playSound(assaultRifle)
+			elseif p.weapon.name == "TheBeartrap" then
+				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread)
+				table.insert(bullets, b)
+				playSound(sniperRifle)
+			else
+				b = proj(x, y, r, n, speed, range, "PistolBullet", spread)
+				table.insert(bullets, b)
+				playSound(gunshot)
+			end
 		end
-
-		--bulletTime ability
-		if(p.bulletTime == true) then
-			b.speed = 0
-			b.xVel = 0
-			b.yVel = 0
-		end
-		table.insert(bullets, b)
-
 	end
 end

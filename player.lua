@@ -12,14 +12,14 @@ function Player(name)
 
 	-- createAnimation(name, frames, fps, r, c, iframe, fheight, fwidth)
 	player.idle = createAnimation("PonytailIdle", 4, 2, 2, 2, 1, 256, 256)
-	player.legs = createAnimation("PonytailLegs", 3, 10, 2, 2, 1, 256, 256)
+	player.legs = createAnimation("PonytailLegs", 14, 20, 4, 4, 1, 256, 256)
 
 	player.stances = {}
 
 	table.insert(player.stances, createAnimation("PonytailIdle", 4, 3, 2, 2, 1, 256, 256))
 	table.insert(player.stances, createAnimation("Ponytail_AssaultRifle", 4, 3, 2, 2, 1, 256, 256))
 
-	player.weapon = createWeapon("Pathfinder", 40, 0.33, 2000, 400, 6, 6, 1, true, 1, 1, 1, 0)
+	player.weapon = createWeapon("Pathfinder", 40, 0.33, 450, 400, 6, 6, 2, true, 1, 1, 30)
 
 	player.damage = 10
 	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit
@@ -33,7 +33,7 @@ function Player(name)
 	player.hitbox = createHitbox(player.x, player.y, player.width, player.height)
 
 	-- stats
-	player.speed = 500 -- default 300
+	player.speed = 300 -- default 300
 	player.health = 100
 	player.power = 100
 	player.armor = 0
@@ -44,25 +44,19 @@ function Player(name)
 	player.moveControl = 0 --0<= means can move normally
 	player.directionLock = 0 -- 0->neutral, 1->up, 2->right, 3->down, 4->left
 
-	--flat Damage Over Time
-	player.flatDOT = 0		--amount of damage
-	player.flatDOTchunk = 0 -- amount DOT does each interval
-	player.flatDOTtimerReset = 3 --seconds for damage to apply
-	player.flatDOTtimer = 0
-
 	--ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
-	player.ability = "bulletTime"
+	player.ability = "roll"
 
 	-- direction lock for forced movement
 	player.xLock = 0
 	player.yLock = 0
 
-	-- toggle "bullet time" ability
-	player.bulletTime = false
-
 	-- the rotation of the sprite in radians
 	player.rotation = 0
+
+	player.ly = player.y
+	player.lx = player.x
 
 	-- movement and shooting
 	function player.update(dt)
@@ -107,23 +101,7 @@ function Player(name)
 
 		if(player.moveControl > 0) then
 			player.moveControl = player.moveControl - dt
-			--print("moveControl" .. player.moveControl .. "\n")
-		end
-
-		if(player.flatDOT > 0) then
-			player.flatDOTtimer = player.flatDOTtimer - dt
-			if (player.flatDOTtimer < 0) then
-				player.flatDOTtimer = player.flatDOTtimerReset
-				if (player.flatDOTchunk > player.flatDOT) then
-					player.health = player.health - player.flatDOT
-					player.flatDOT = 0
-					--print("health" .. player.health .. "\n")
-				else
-					player.health = player.health - player.flatDOTchunk
-					player.flatDOT = player.flatDOT - player.flatDOTchunk
-					--print("health" .. player.health .. "\n")
-				end
-			end
+			--print("moveControl" .. moveControl .. "\n")
 		end
 
 		--ability updates
@@ -155,7 +133,6 @@ function Player(name)
 
 	-- drawing to screen
 	function player.draw()
-
 
 		if player.health <= 0 then
 			love.graphics.setColor(1, 0, 0)

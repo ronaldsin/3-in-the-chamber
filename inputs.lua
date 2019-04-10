@@ -1,7 +1,18 @@
+
 function keyboardDown(dt)
 	-- player wasd movement
+
+	if checkWallCollision() then
+		p.x = p.lx
+		p.y = p.ly
+	else
+		p.lx = p.x
+		p.ly = p.y
+	end
+
 	p.moving = false
 	if(p.moveControl <= 0) then
+
 		if love.keyboard.isDown(input_player_down) then
 			p.y = p.y + p.speed * dt
 			p.moving = true
@@ -19,11 +30,13 @@ function keyboardDown(dt)
 			p.x = p.x - p.speed * dt
 			p.moving = true
 		end
+
 	else
 		--force movement
 		p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
 		p.y = p.y - 2 * p.speed * dt * p.yLock
 	end
+
 
 	-- monster movement
 	e.moving = false

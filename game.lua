@@ -50,6 +50,10 @@ end
 function gameDraw()
 	love.graphics.draw(background, 0, 0, 0, 0.9, 0.9)
 
+	for i = 1, #walls do
+		walls[i].hitbox.draw()
+	end
+
 	-- draw bullets to screen
 	for i = 1, #bullets do
 		bullets[i].draw()

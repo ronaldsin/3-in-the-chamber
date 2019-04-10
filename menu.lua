@@ -9,7 +9,7 @@ function start()
 	table.insert(gunPickUp, createWeapon("FrontlinerIcon", 25, 0.14, 450, 500, 30, 30, 1.75, false, 2, 2, 40)) -- 171dps
 	table.insert(gunPickUp, createWeapon("PathfinderIcon", 40, 0.33, 450, 400, 6, 6, 2, false, 1, 1, 30)) -- 120dps
 	table.insert(gunPickUp, createWeapon("AccelerantIcon", 25, 0.1, 550, 200, 20, 20, 1.2, false, 2, 2, 160)) -- 250dps
-	table.insert(gunPickUp, createWeapon("BoomstickVIIcon", 20, 0.75, 400, 250, 28, 28, 1, false, 1, 2, 400)) -- 187dps
+	table.insert(gunPickUp, createWeapon("BoomstickVIIcon", 6, 0.75, 400, 250, 28, 28, 1, false, 1, 2, 400)) -- 187dps
 	table.insert(gunPickUp, createWeapon("StrikeoutIcon", 40, 0.20, 375, 600, 80, 80, 3.3, false, 2, 2, 90)) -- 200dps
 	table.insert(gunPickUp, createWeapon("TheBeartrapIcon", 170, 1, 6000, 1000, 5, 5, 2.2, false, 1, 2, 0)) -- 170dps
 
@@ -17,6 +17,12 @@ function start()
 	for i = 1, #gunPickUp do
 		gunPickUp[i].image.idle()
 	end
+
+
+	walls = {}
+
+	table.insert(walls, createWall(400, 20, 100 * (hitboxScale), 600 * (hitboxScale)))
+
 	-- set enemy start temp
 	e.x = 500
 	e.y = 500
