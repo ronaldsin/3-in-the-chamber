@@ -1,5 +1,16 @@
 # Change Log
-## 2019-06-09
+
+## 2019-04-12
+### Added
+- added camera
+
+### Changed  
+- N/A
+
+### Other
+- N/A
+
+## 2019-04-09
 ### Added
 - added the following guns (with their corresponding SFX):
   - Accelerant
@@ -14,7 +25,6 @@
 ### Changed
 - reworked hitboxes to be much more accurate
 - rebalanced weapon stats (damage, attack speed, clip size, etc)
-- changed 
 
 ### Other
 - N/A
