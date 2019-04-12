@@ -63,15 +63,14 @@ function gameDraw()
 		gunPickUp[i].draw()
 	end
 
-	print("x" .. love.mouse.getX())
-	print("y" .. love.mouse.getY())
-
 	-- draw player
 	e.draw()
 	p.draw()
 
 
 	if pause then
-		love.graphics.print("Game is paused", 350, 280)
+		local font = love.graphics.getFont()
+		local width = font:getWidth("Game is paused")
+		love.graphics.print("Game is paused", camera.width + camera.x - width / 2, camera.height + camera.y)
 	end
 end

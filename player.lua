@@ -176,7 +176,7 @@ function Player(name)
 
 	-- rotate player model to mouse
 	function player.rotate()
-		player.rotation = (math.atan2(love.mouse.getY() - player.y, love.mouse.getX() - player.x) + (math.pi / 2))
+		player.rotation = (math.atan2(camera.getMouseY() - player.y, camera.getMouseX() - player.x) + (math.pi / 2))
 	end
 
 	return player

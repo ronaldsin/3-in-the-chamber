@@ -62,7 +62,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 
 		if weapon.currentAmmo > 0 then
 			weapon.currentAmmo = weapon.currentAmmo - 1
-			print("current ammo " .. weapon.currentAmmo)
+			print(weapon.name ..": Current Ammo " .. weapon.currentAmmo)
 			return true
 		end
 
@@ -117,7 +117,9 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 		weapon.image.draw(weapon.x, weapon.y, weapon.r)
 
 		if weapon.counter > 0 then
-			love.graphics.print("Reloading...", 350, 280)
+			local font = love.graphics.getFont()
+			local width = font:getWidth("Reloading...")
+			love.graphics.print("Reloading...", camera.width + camera.x - width / 2, camera.height + camera.y)
 		end
 
 		if weapon.pickedUp == false then

@@ -31,6 +31,8 @@ function keyboardDown(dt)
 			p.moving = true
 		end
 
+		p.update(dt)
+
 	else
 		--force movement
 		p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
@@ -95,8 +97,12 @@ function love.keypressed(key)
 		pause = not pause
 	end
 
-	if key == "space" then
+	if key == input_debug_resetHealth then
 		e.health = 100
+	end
+
+	if key == input_game_quit then
+		love.event.quit(0)
 	end
 
 	if key == input_player_reload then

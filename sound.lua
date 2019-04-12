@@ -30,6 +30,10 @@ reloadingEnd = love.audio.newSource("resources/ReloadEnd.wav", "static")
 reloadingEnd:setVolume(1)
 reloadingEnd:setPitch(1)
 
+prideShot = love.audio.newSource("resources/PrideShot.wav", "static")
+prideShot:setVolume(1)
+prideShot:setPitch(1)
+
 function playSound(source)
 	local clone = source:clone()
 	clone:play()

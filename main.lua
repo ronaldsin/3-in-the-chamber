@@ -19,6 +19,7 @@ function love.load()
 	require ("game")
 	require ("hitbox")
 	require ("walls")
+	require ("camera")
 
 	sizeScale = 1 -- default 1
 
@@ -38,6 +39,7 @@ function love.update(dt)
 	if gameState == "menu" then
 		menuUpdate(dt)
 	elseif gameState == "game" then
+		camera.update(dt)
 		gameUpdate(dt)
 	end
 end
@@ -47,6 +49,7 @@ function love.draw()
 	if gameState == "menu" then
 		menuDraw()
 	elseif gameState == "game" then
+		camera.draw()
 		gameDraw()
 	end
 end
@@ -88,6 +91,9 @@ function fire(x, y, r, n, speed, range, spread)
 			elseif p.weapon.name == "Frontliner" then
 				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread)
 				playSound(assaultRifle)
+			elseif p.weapon.name == "Pride" then
+				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread)
+				playSound(prideShot)
 			elseif p.weapon.name == "TheBeartrap" then
 				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread)
 				playSound(sniperRifle)
