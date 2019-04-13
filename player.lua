@@ -184,15 +184,7 @@ function Player(name)
 		pathNodes[1].y = player.y
 
 		--find closest
-		cnIndex = 2
-		dis1 = distanceF(player.x,player.y,pathNodes[cnIndex].x,pathNodes[cnIndex].y)
-		for i=2, #pathNodes, 1 do
-			dis2 = distanceF(player.x,player.y,pathNodes[i].x,pathNodes[i].y)
-			if (dis2<dis1) then
-				dis1 = dis2
-				cnIndex = i
-			end
-		end
+		cnIndex = findClosestNode(player.x,player.y,2)
 
 		--update connection
 		for i=1, #pathNodes, 1 do

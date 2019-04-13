@@ -29,3 +29,16 @@ end
 function distanceF(x1,y1,x2,y2)
   return math.sqrt((x1-x2)^2+(y1-y2)^2)
 end
+
+function findClosestNode(x,y,start)--start 1 for enemy, 2 for plater
+  close = start
+  dis1 = distanceF(x,y,pathNodes[start].x,pathNodes[start].y)
+  for i=start, #pathNodes, 1 do
+    dis2 = distanceF(x,y,pathNodes[i].x,pathNodes[i].y)
+    if (dis2<dis1) then
+      dis1 = dis2
+      close = i
+    end
+  end
+  return close
+end

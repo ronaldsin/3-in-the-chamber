@@ -77,7 +77,7 @@ function Monster(name)
 	end
 
 	function monster.ai(dt)
-		local index = findClosestNode()
+		local index = findClosestNode(monster.x,monster.y,1)
 
 		if pathNodes[index].x > monster.x then
 			monster.x = monster.x + monster.speed * dt
@@ -120,10 +120,6 @@ function Monster(name)
 	-- rotate monster model to mouse
 	function monster.rotate()
 		monster.rotation = (math.atan2(love.mouse.getY() - monster.y, love.mouse.getX() - monster.x) + (math.pi / 2))
-	end
-
-	function monster.basicMove()
-
 	end
 
 	return monster

@@ -1,3 +1,4 @@
+--[[
 function findClosestNode()
 	local lowest = 1000000000000
 	local lowestIndex
@@ -15,3 +16,4 @@ function findClosestNode()
 
 	return lowestIndex
 end
+]]
