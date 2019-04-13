@@ -39,6 +39,8 @@ function Monster(name)
 	-- movement and shooting
 	function monster.update(dt)
 
+		monster.ai(dt)
+
 		monster.hitbox.update(monster.x, monster.y)
 
 		--monster.weapon.update(monster.x, monster.y, monster.rotation)
@@ -74,6 +76,25 @@ function Monster(name)
 		end
 	end
 
+	function monster.ai(dt)
+		local index = findClosestNode()
+
+		if pathNodes[index].x > monster.x then
+			monster.x = monster.x + monster.speed * dt
+			monster.moving = true
+		elseif pathNodes[index].x < monster.x then
+			monster.x = monster.x - monster.speed * dt
+			monster.moving = true
+		end
+
+		if pathNodes[index].y > monster.y then
+			monster.y = monster.y + monster.speed * dt
+			monster.moving = true
+		elseif pathNodes[index].y < monster.y then
+			monster.y = monster.y - monster.speed * dt
+			monster.moving = true
+		end
+	end
 
 
 	-- drawing to screen

@@ -23,6 +23,7 @@ function love.load()
 	require ("camera")
 	require ("pathNodes")
 	require ("pathNodesData")
+	require ("ai")
 
 	sizeScale = 1 -- default 1
 
