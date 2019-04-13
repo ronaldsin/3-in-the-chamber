@@ -7,8 +7,8 @@
   - current ability
   - current weapon
   - current ammo
--added ability to change current ability using "f" key
--added new map
+- added ability to change current ability using "f" key
+- added new map
 
 ### Changed  
 - N/A
