@@ -1,6 +1,7 @@
 pathNodes = {}
 
 --wall corners
+table.insert(pathNodes,createPathNode(0, 0)) -- player node
 table.insert(pathNodes,createPathNode(1156 + 50, 1254 - 50))
 
 --connecting corridors
@@ -15,14 +16,14 @@ table.insert(pathNodes,createPathNode(3372 + 50, (2350+2500)/2)) -- right side
 
 
 --undirected graph
-adjMat =
-{{0,1,0,0,0,0,0},
-{1,0,1,0,0,0,0},
-{0,1,0,1,0,1,0},
-{0,0,1,0,1,1,0},
-{0,0,0,1,0,0,0},
-{0,0,1,1,0,0,1},
-{0,0,0,0,0,1,0},}
+adjMat ={{0,0,0,0,0,0,0,0},
+{0,0,1,0,0,0,0,0},
+{0,1,0,1,0,0,0,0},
+{0,0,1,0,1,0,1,0},
+{0,0,0,1,0,1,1,0},
+{0,0,0,0,1,0,0,0},
+{0,0,0,1,1,0,0,1},
+{0,0,0,0,0,0,1,0}}
 
 
 --[[

@@ -38,19 +38,19 @@ function Player(name)
 	player.power = 100
 	player.armor = 0
 
-	--status effects
+	-- status effects
 	player.shoot = 0 -- 0<= means able to shoot
 	player.invincible = 0 -- 0<= means not invincible
 	player.moveControl = 0 --0<= means can move normally
 	player.directionLock = 0 -- 0->neutral, 1->up, 2->right, 3->down, 4->left
 
-	--flat Damage Over Time
+	-- flat Damage Over Time
 	player.flatDOT = 0 --amount of damage
 	player.flatDOTchunk = 0 -- amount DOT does each interval
 	player.flatDOTtimerReset = 3 --seconds for damage to apply
 	player.flatDOTtimer = 0
 
-	--ability
+	-- ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
 	player.ability = "bulletTime"
 
@@ -177,6 +177,35 @@ function Player(name)
 	-- rotate player model to mouse
 	function player.rotate()
 		player.rotation = (math.atan2(camera.getMouseY() - player.y, camera.getMouseX() - player.x) + (math.pi / 2))
+	end
+
+	function player.playerNodeUpdate()
+		pathNodes[1].x = player.x
+		pathNodes[1].y = player.y
+
+		--find closest
+		cnIndex = 2
+		dis1 = distanceF(player.x,player.y,pathNodes[cnIndex].x,pathNodes[cnIndex].y)
+		for i=2, #pathNodes, 1 do
+			dis2 = distanceF(player.x,player.y,pathNodes[i].x,pathNodes[i].y)
+			if (dis2<dis1) then
+				dis1 = dis2
+				cnIndex = i
+			end
+		end
+
+		--update connection
+		for i=1, #pathNodes, 1 do
+			if (adjMat[1][i] == 1) then
+				adjMat[1][i] = 0
+				adjMat[i][1] = 0
+			end
+			if(i == cnIndex) then
+				adjMat[1][i] = 1
+				adjMat[i][1] = 1
+			end
+    end
+
 	end
 
 	return player

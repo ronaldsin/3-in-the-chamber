@@ -16,12 +16,16 @@ end
 
 function drawPaths()
   if displayHitbox then
-    for i=1, 7, 1 do
-      for j=i, 7, 1 do
+    for i=1, #pathNodes, 1 do
+      for j=i, #pathNodes, 1 do
         if(adjMat[i][j] > 0) then
           love.graphics.line(pathNodes[i].x,pathNodes[i].y,pathNodes[j].x,pathNodes[j].y)
         end
       end
     end
   end
+end
+
+function distanceF(x1,y1,x2,y2)
+  return math.sqrt((x1-x2)^2+(y1-y2)^2)
 end
