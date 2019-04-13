@@ -11,7 +11,7 @@
 - added new map
 
 ### Changed  
-- N/A
+- bullets now start at the tip of the gun, scaling to weapon
 
 ### Other
 - N/A
