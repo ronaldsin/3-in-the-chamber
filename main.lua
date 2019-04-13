@@ -21,6 +21,8 @@ function love.load()
 	require ("walls")
 	require ("wallsData")
 	require ("camera")
+	require ("pathNodes")
+	require ("pathNodesData")
 
 	sizeScale = 1 -- default 1
 
@@ -28,8 +30,6 @@ function love.load()
 	hitboxScale = hitboxConst / sizeScale -- based on sizeScale
 
 	displayHitbox = false
-
-
 
 	start()
 

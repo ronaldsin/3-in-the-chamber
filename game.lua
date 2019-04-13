@@ -63,6 +63,12 @@ function gameDraw()
 		gunPickUp[i].draw()
 	end
 
+	for i = 1, #pathNodes do
+		pathNodes[i].draw()
+	end
+
+	drawPaths()
+
 	-- draw player
 	e.draw()
 	p.draw()

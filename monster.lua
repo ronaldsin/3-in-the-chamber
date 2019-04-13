@@ -101,5 +101,9 @@ function Monster(name)
 		monster.rotation = (math.atan2(love.mouse.getY() - monster.y, love.mouse.getX() - monster.x) + (math.pi / 2))
 	end
 
+	function monster.basicMove()
+
+	end
+
 	return monster
 end
