@@ -142,7 +142,7 @@ function love.keypressed(key)
 					gunPickUp[i].pickedUp = true
 					gunPickUp[i].name = name1
 					gunPickUp[i].refreshImage()
-					gunPickUp[i].counter = 0w
+					gunPickUp[i].counter = 0
 
 					local temp = gunPickUp[i]
 					gunPickUp[i] = p.weapon
