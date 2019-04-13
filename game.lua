@@ -73,8 +73,8 @@ function gameDraw()
 	love.graphics.print("Ammo: " .. p.weapon.currentAmmo .. " / " .. p.weapon.magazine, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 3.5 * camera.yScale + camera.y))
 
 
-	print("X: " .. camera.getMouseX())
-	print("Y: " .. camera.getMouseY())
+	-- print("X: " .. camera.getMouseX())
+	-- print("Y: " .. camera.getMouseY())
 
 	if pause then
 		local font = love.graphics.getFont()
