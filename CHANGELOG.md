@@ -10,11 +10,12 @@
 - added new map
 
 ### Changed  
-- bullets now start at the tip of the gun, scaling to weapon
+- bullets now start at the tip of the gun, based on weapon length
 - changed cameras to follow player instead of being fixed
 
 ### Other
 - N/A
+
 
 ## 2019-04-09
 ### Added
