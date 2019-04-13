@@ -3,6 +3,12 @@
 ## 2019-04-12
 ### Added
 - added camera
+- added text to display:
+  - current ability
+  - current weapon
+  - current ammo
+-added ability to change current ability using "f" key
+-added new map
 
 ### Changed  
 - N/A
