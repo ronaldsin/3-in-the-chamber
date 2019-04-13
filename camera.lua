@@ -8,7 +8,7 @@ camera.height = love.graphics.getHeight() / 2
 
 -- camera.leadSpeed = 3
 -- camera.maxXLead = love.graphics.getWidth() * 0.2
--- camera.maxYLead = love.graphics.getHeight() * 0.2test
+-- camera.maxYLead = love.graphics.getHeight() * 0.2
 
 camera.xLead = 0
 camera.yLead = 0
