@@ -1,10 +1,8 @@
-function proj(x, y, r, name, speed, range, type, spread)
+function proj(x, y, r, name, speed, range, type, spread, length)
 	--[[
 	proj - Object that holds projectile information like coordinates and speed
 	]]
 	local proj = {}
-
-
 
 	-- image
 	proj.Image = love.graphics.newImage("resources/".. type ..".png")
@@ -12,8 +10,9 @@ function proj(x, y, r, name, speed, range, type, spread)
 	proj.name = name
 
 	-- location of bullet
-	proj.x = x + (110 * sizeScale) * math.sin(r)
-	proj.y = y - (110 * sizeScale) * math.cos(r)
+	proj.x = x + (length * sizeScale) * math.sin(r)
+	proj.y = y - (length * sizeScale) * math.cos(r)
+
 
 	-- range and keeps track of how far the bullet has traveled
 	proj.range = range * sizeScale

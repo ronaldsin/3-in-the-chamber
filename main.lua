@@ -64,7 +64,8 @@ function setCursor(file)
 	love.mouse.setCursor(cursor)
 end
 
-function fire(x, y, r, n, speed, range, spread)
+function fire(x, y, r, n, speed, range, spread, length)
+	print(length)
 	if p.weapon.name == "BoomstickVI" then
 		if p.weapon.fire() then
 			fire_ani = 0
@@ -72,7 +73,7 @@ function fire(x, y, r, n, speed, range, spread)
 
 			for i = 1, 7 do
 				--b = proj(x + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), y + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), r + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 800), n, speed, range, "ShotgunShell", , spread)
-				b = proj(x, y, r, n, speed, range, "ShotgunShell", spread)
+				b = proj(x, y, r, n, speed, range, "ShotgunShell", spread, length)
 				--bulletTime ability
 				if(p.bulletTime == true) then
 					b.speed = 0
@@ -89,19 +90,19 @@ function fire(x, y, r, n, speed, range, spread)
 			fire_ani = 0
 
 			if p.weapon.name == "Strikeout" then
-				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread )
+				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length)
 				playSound(machineGun)
 			elseif p.weapon.name == "Frontliner" then
-				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread)
+				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length)
 				playSound(assaultRifle)
 			elseif p.weapon.name == "Pride" then
-				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread)
+				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length)
 				playSound(prideShot)
 			elseif p.weapon.name == "TheBeartrap" then
-				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread)
+				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length)
 				playSound(sniperRifle)
 			else
-				b = proj(x, y, r, n, speed, range, "PistolBullet", spread)
+				b = proj(x, y, r, n, speed, range, "PistolBullet", spread, length)
 				playSound(gunshot)
 			end
 			if(p.bulletTime == true) then

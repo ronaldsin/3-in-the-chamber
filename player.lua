@@ -19,7 +19,7 @@ function Player(name)
 	table.insert(player.stances, createAnimation("PonytailIdle", 4, 3, 2, 2, 1, 256, 256))
 	table.insert(player.stances, createAnimation("Ponytail_AssaultRifle", 4, 3, 2, 2, 1, 256, 256))
 
-	player.weapon = createWeapon("Pathfinder", 40, 0.33, 450, 400, 6, 6, 2, true, 1, 1, 30)
+	player.weapon = createWeapon("Pathfinder", 40, 0.33, 450, 400, 6, 6, 2, true, 1, 1, 30, 100)
 
 	player.damage = 10
 	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit

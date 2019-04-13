@@ -5,13 +5,13 @@ function start()
 
 	gunPickUp = {}
 
-	-- createWeapon(name, dmg, bullet speed, range, clip size, reload time, pickup, fire mode, stance, spread)
-	table.insert(gunPickUp, createWeapon("FrontlinerIcon", 25, 0.14, 450, 500, 30, 30, 1.75, false, 2, 2, 40)) -- 171dps
-	table.insert(gunPickUp, createWeapon("PrideIcon", 60, 0.29, 600, 700, 8, 8, 1.9, false, 1, 1, 15)) -- 206.896551724138dps
-	table.insert(gunPickUp, createWeapon("AccelerantIcon", 25, 0.1, 550, 200, 20, 20, 1.2, false, 2, 2, 160)) -- 250dps
-	table.insert(gunPickUp, createWeapon("BoomstickVIIcon", 6, 0.75, 400, 250, 28, 28, 1, false, 1, 2, 400)) -- 187dps
-	table.insert(gunPickUp, createWeapon("StrikeoutIcon", 40, 0.20, 375, 600, 80, 80, 3.3, false, 2, 2, 90)) -- 200dps
-	table.insert(gunPickUp, createWeapon("TheBeartrapIcon", 170, 1, 4000, 1000, 5, 5, 2.2, false, 1, 2, 0)) -- 170dps
+	-- createWeapon(name, dmg, bullet speed, range, clip size, reload time, pickup, fire mode, stance, spread, length)
+	table.insert(gunPickUp, createWeapon("FrontlinerIcon", 25, 0.14, 450, 500, 30, 30, 1.75, false, 2, 2, 40, 140)) -- 171dps
+	table.insert(gunPickUp, createWeapon("PrideIcon", 60, 0.29, 600, 700, 8, 8, 1.9, false, 1, 1, 15, 120)) -- 206.896551724138dps
+	table.insert(gunPickUp, createWeapon("AccelerantIcon", 25, 0.1, 550, 200, 20, 20, 1.2, false, 2, 2, 160, 105)) -- 250dps
+	table.insert(gunPickUp, createWeapon("BoomstickVIIcon", 6, 0.75, 400, 250, 6, 6, 1, false, 1, 2, 400, 120)) -- 187dps
+	table.insert(gunPickUp, createWeapon("StrikeoutIcon", 40, 0.20, 375, 600, 80, 80, 3.3, false, 2, 2, 90, 140)) -- 200dps
+	table.insert(gunPickUp, createWeapon("TheBeartrapIcon", 170, 1, 4000, 1000, 5, 5, 2.2, false, 1, 2, 0, 145)) -- 170dps
 
 
 	for i = 1, #gunPickUp do
