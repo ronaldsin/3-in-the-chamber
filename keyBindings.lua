@@ -5,6 +5,7 @@ input_player_left = "a"
 input_player_right = "d"
 input_player_interact = "e"
 input_player_reload = "r"
+input_player_abilitySwap = "f"
 
 input_player_shoot = 1
 input_player_secondary = 2

@@ -12,7 +12,7 @@ function Player(name)
 
 	-- createAnimation(name, frames, fps, r, c, iframe, fheight, fwidth)
 	player.idle = createAnimation("PonytailIdle", 4, 2, 2, 2, 1, 256, 256)
-	player.legs = createAnimation("PonytailLegs", 14, 20, 4, 4, 1, 256, 256)
+	player.legs = createAnimation("PonytailLegs", 14, 10, 4, 4, 1, 256, 256)
 
 	player.stances = {}
 
@@ -25,8 +25,8 @@ function Player(name)
 	player.invincibleAfterHit = .5 --seconds of invincibiliy after being hit
 
 	-- x and y coord's
-	player.x = 200
-	player.y = 200
+	player.x = 973
+	player.y = 1091
 	player.width = player.idle.frame_width
 	player.height = player.idle.frame_height
 

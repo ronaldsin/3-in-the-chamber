@@ -19,6 +19,7 @@ function love.load()
 	require ("game")
 	require ("hitbox")
 	require ("walls")
+	require ("wallsData")
 	require ("camera")
 
 	sizeScale = 1 -- default 1
@@ -27,6 +28,8 @@ function love.load()
 	hitboxScale = hitboxConst / sizeScale -- based on sizeScale
 
 	displayHitbox = false
+
+
 
 	start()
 

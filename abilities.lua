@@ -23,7 +23,7 @@ function ability(player)
 		end
 
 		--ability cooldown
-		player.abilityCD = 5
+		player.abilityCD = 0
 
 	elseif (pa == "bulletTime") then -- activate to freeze bullets, re-activate to continue moving them
 		--toggle

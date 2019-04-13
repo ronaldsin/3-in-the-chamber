@@ -10,7 +10,7 @@ function gameUpdate(dt)
 		end
 
 		for i = 1, #gunPickUp do
-			gunPickUp[i].update(30 + (i - 1) * 150, 200, 0)
+			gunPickUp[i].update(1220 + (i - 1) * 200, 1320, 0)
 		end
 
 		-- update data for player
@@ -67,10 +67,18 @@ function gameDraw()
 	e.draw()
 	p.draw()
 
+	love.graphics.print("Current ability: " .. p.ability, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 8 * camera.yScale + camera.y))
+
+	love.graphics.print("Current weapon: " .. p.weapon.name, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 5 * camera.yScale + camera.y))
+	love.graphics.print("Ammo: " .. p.weapon.currentAmmo .. " / " .. p.weapon.magazine, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 3.5 * camera.yScale + camera.y))
+
+
+	print("X: " .. camera.getMouseX())
+	print("Y: " .. camera.getMouseY())
 
 	if pause then
 		local font = love.graphics.getFont()
-		local width = font:getWidth("Game is paused")
-		love.graphics.print("Game is paused", camera.width + camera.x - width / 2, camera.height + camera.y)
+		local width = font:getWidth("Game is paused, press Q to quit")
+		love.graphics.print("Game is paused, press Q to quit", (camera.width * camera.xScale + camera.x - width / 2), (camera.height * camera.yScale + camera.y))
 	end
 end

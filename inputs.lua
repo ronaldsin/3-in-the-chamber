@@ -97,6 +97,15 @@ function love.keypressed(key)
 		pause = not pause
 	end
 
+	if key == input_player_abilitySwap then
+		if p.ability == "roll" then
+			p.ability = "bulletTime"
+		else
+			p.ability = "roll"
+		end
+
+	end
+
 	if key == input_debug_resetHealth then
 		e.health = 100
 	end
@@ -155,5 +164,6 @@ function love.mousepressed(x, y, button, isTouch)
 
 	if gameState == "menu" then
 		gameState = "game"
+		love.graphics.setNewFont(40)
 	end
 end

@@ -17,8 +17,8 @@ function Monster(name)
 
 
 	-- x and y coord's
-	monster.x = 100
-	monster.y = 100
+	monster.x = 1906
+	monster.y = 1854
 	monster.width = monster.idle.frame_width
 	monster.height = monster.idle.frame_height
 

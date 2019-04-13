@@ -18,7 +18,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	weapon.rng = rng
 
 
-	weapon.hitbox = createHitbox(weapon.x, weapon.y, weapon.width * 4, weapon.height * 2)
+	weapon.hitbox = createHitbox(weapon.x, weapon.y, weapon.width * 5, weapon.height * 3)
 
 	-- stats
 	-- states:
@@ -62,7 +62,6 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 
 		if weapon.currentAmmo > 0 then
 			weapon.currentAmmo = weapon.currentAmmo - 1
-			print(weapon.name ..": Current Ammo " .. weapon.currentAmmo)
 			return true
 		end
 
@@ -87,7 +86,6 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 				p.shoot = 0.4
 
 				weapon.currentAmmo = weapon.magazine
-				print("current ammo " .. weapon.currentAmmo)
 			end
 		end
 
@@ -119,7 +117,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 		if weapon.counter > 0 then
 			local font = love.graphics.getFont()
 			local width = font:getWidth("Reloading...")
-			love.graphics.print("Reloading...", camera.width + camera.x - width / 2, camera.height + camera.y)
+			love.graphics.print("Reloading...", camera.width * camera.xScale + camera.x - width / 2, camera.height * camera.yScale + camera.y)
 		end
 
 		if weapon.pickedUp == false then

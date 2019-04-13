@@ -19,18 +19,6 @@ function start()
 	end
 
 
-	walls = {}
-
-	table.insert(walls, createWall(108, 51, 605, 55))
-	table.insert(walls, createWall(108, 106, 29, 100))
-	table.insert(walls, createWall(683, 107, 30, 422 ))
-	table.insert(walls, createWall(108, 469, 605, 60))
-	table.insert(walls, createWall(108, 299, 30, 200))
-
-	-- set enemy start temp
-	e.x = 500
-	e.y = 500
-
 	rng = love.math.newRandomGenerator()
 	rng:setSeed(os.time())
 

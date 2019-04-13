@@ -1,10 +1,10 @@
-function createWall(x, y, width, height)
+function createWall(x1, y1, x2, y2)
 	local wall = {}
 
-	wall.left = x
-	wall.right = x + width
-	wall.top = y
-	wall.bottom = y + height
+	wall.left = x1
+	wall.right = x2
+	wall.top = y1
+	wall.bottom = y2
 
 	function wall.check(hitbox)
 		if wall.right > hitbox.left and wall.left < hitbox.right and wall.bottom > hitbox.top and wall.top < hitbox.bottom then
