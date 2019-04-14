@@ -12,7 +12,12 @@ function start()
 	table.insert(gunPickUp, createWeapon("BoomstickVIIcon", 6, 0.75, 400, 250, 6, 6, 1, false, 1, 2, 400, 120)) -- 187dps
 	table.insert(gunPickUp, createWeapon("StrikeoutIcon", 40, 0.20, 375, 600, 80, 80, 3.3, false, 2, 2, 90, 140)) -- 200dps
 	table.insert(gunPickUp, createWeapon("TheBeartrapIcon", 170, 1, 4000, 1000, 5, 5, 2.2, false, 1, 2, 0, 145)) -- 170dps
-
+	table.insert(gunPickUp, createWeapon("SirenIcon", 17, 0.3, 450, 350, 18, 18, 1.3, false, 3, 1, 35, 90)) -- 56.6666666666667dps
+	table.insert(gunPickUp, createWeapon("LongHaulIcon", 27, 0.5, 390, 650, 100, 100, 4, false, 2, 2, 130, 145)) -- 54dps
+	table.insert(gunPickUp, createWeapon("BacklinerIcon", 45, 0.27, 600, 800, 11, 11, 1.75, false, 1, 2, 25, 145)) -- 166.666666666667dps
+	table.insert(gunPickUp, createWeapon("HackslasherIcon", 21, 0.14, 550, 190, 24, 24, 1.5, false, 2, 2, 130, 100)) -- 150.dps
+	--table.insert(gunPickUp, createWeapon("MuscleSpasmIcon", 16, 0.4, 425, 160, 15, 15, 2.1, false, 2, 2, 550, 100)) -- 40dps
+	--table.insert(gunPickUp, createWeapon("BountyHunterIcon", 220, 1.35, 1500, 1200, 7, 7, 2.3, false, 1, 2, 0, 145)) -- 162.962962962963dps
 
 	for i = 1, #gunPickUp do
 		gunPickUp[i].image.idle()
