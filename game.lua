@@ -9,8 +9,16 @@ function gameUpdate(dt)
 			--e.weapon.image.idle()
 		end
 
-		for i = 1, #gunPickUp do
-			gunPickUp[i].update(1220 + (i - 1) * 200, 1320, 0)
+
+		local counter = 0
+		for j = 1, 2 do
+			for i = 1, 5 do
+				if counter > #gunPickUp then
+					break
+				end
+				counter = counter + 1
+				gunPickUp[counter].update(1320 + (i - 1) * 200, 1920 - (j * 200), 0)
+			end
 		end
 
 		-- update data for player
