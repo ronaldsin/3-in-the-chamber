@@ -4,6 +4,7 @@ function createPathNode(x, y)
 
 	pathNode.x = x
 	pathNode.y = y
+	pathNode.parent = 0
 
 	function pathNode.draw()
 		if displayHitbox then

@@ -12,3 +12,6 @@ function createQueue()
 
 		return item
 	end
+
+	return queue
+end
