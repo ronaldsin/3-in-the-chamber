@@ -94,6 +94,8 @@ function love.keypressed(key)
 	end
 
 	if key == input_game_pause then
+		print("X: " .. camera.getMouseX())
+		print("Y: " .. camera.getMouseY())
 		pause = not pause
 	end
 
