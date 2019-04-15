@@ -23,9 +23,9 @@ function createWall(x1, y1, x2, y2)
 	return wall
 end
 
-function checkWallCollision()
+function checkWallCollision(hitbox)
 	for i = 1, #walls do
-		if walls[i].check(p.hitbox) then
+		if walls[i].check(hitbox) then
 			love.audio.play(oof)
 			return true
 		end

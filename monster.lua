@@ -25,7 +25,7 @@ function Monster(name)
 	monster.hitbox = createHitbox(monster.x, monster.y, monster.width, monster.height)
 
 	-- stats
-	monster.speed = 200
+	monster.speed = 300
 	monster.health = 100
 	monster.power = 100
 	monster.armor = 0
@@ -37,11 +37,15 @@ function Monster(name)
 
 	monster.moving = false
 
+	monster.patience = 1
+	monster.patienceCounter = 0
 
 	-- movement and shooting
 	function monster.update(dt)
 
 		ai(monster, dt)
+
+		monster.patienceCounter = monster.patienceCounter + dt
 
 		monster.hitbox.update(monster.x, monster.y)
 
@@ -109,6 +113,7 @@ function Monster(name)
 		monster.moving = false
 
 		if checkWallCollision(monster.hitbox) then
+			monster.lost = true
 			monster.x = monster.lx
 			monster.y = monster.ly
 		else
@@ -116,9 +121,9 @@ function Monster(name)
 			monster.ly = monster.y
 		end
 
-		if distanceF(monster.x, monster.y, pathNodes[index].x, pathNodes[index].y) > 10 then
+		if distanceF(monster.x, monster.y, pathNodes[index].x, pathNodes[index].y) > 30 then
 
-			if distanceF(monster.x, 0, pathNodes[index].x, 0) > 5 then
+			if distanceF(monster.x, 0, pathNodes[index].x, 0) > 20 then
 				if pathNodes[index].x > monster.x then
 					monster.x = monster.x + monster.speed * dt
 					monster.moving = true
@@ -128,7 +133,7 @@ function Monster(name)
 				end
 			end
 
-			if distanceF(0, monster.y, 0, pathNodes[index].y) > 5 then
+			if distanceF(0, monster.y, 0, pathNodes[index].y) > 20 then
 				if pathNodes[index].y > monster.y then
 					monster.y = monster.y + monster.speed * dt
 					monster.moving = true

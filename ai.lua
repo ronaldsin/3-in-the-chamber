@@ -44,6 +44,10 @@ function pathFind(first, goal)
 
 	while true do
 		current = queue.pop()
+
+		if current == goal then
+			return current
+		end
 		--print("pop: " .. current)
 		for i = 1, #pathNodes do
 			-- print("c: " .. current)

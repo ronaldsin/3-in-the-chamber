@@ -2,7 +2,7 @@
 function keyboardDown(dt)
 	-- player wasd movement
 
-	if checkWallCollision() then
+	if checkWallCollision(p.hitbox) then
 		p.x = p.lx
 		p.y = p.ly
 	else

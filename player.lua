@@ -189,9 +189,11 @@ function Player(name)
 
 		--find closest
 		if not (cnIndex == findClosestNode(player.x, player.y, 2)) then
-			e.lost = true
+			if e.patienceCounter > e.patience then
+				e.lost = true
+				e.patienceCounter = 0
+			end
 			cnIndex = findClosestNode(player.x, player.y, 2)
-			print("close: " .. cnIndex)
 		end
 
 		cnIndex = findClosestNode(player.x, player.y, 2)
