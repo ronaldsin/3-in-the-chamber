@@ -25,10 +25,12 @@ function Monster(name)
 	monster.hitbox = createHitbox(monster.x, monster.y, monster.width, monster.height)
 
 	-- stats
-	monster.speed = 300
+	monster.speed = 200
 	monster.health = 100
 	monster.power = 100
 	monster.armor = 0
+
+	monster.lost = true
 
 	-- the rotation of the sprite in radians
 	monster.rotation = 0
@@ -39,7 +41,7 @@ function Monster(name)
 	-- movement and shooting
 	function monster.update(dt)
 
-		monster.ai(dt)
+		ai(monster, dt)
 
 		monster.hitbox.update(monster.x, monster.y)
 
@@ -76,23 +78,70 @@ function Monster(name)
 		end
 	end
 
-	function monster.ai(dt)
-		local index = findClosestNode(monster.x,monster.y,1)
+	-- function monster.ai(dt)
+	--
+	-- 	local index = findClosestNode(monster.x, monster.y, 1)
+	--
+	-- 	monster.moving = false
+	--
+	-- 	if distanceF(monster.x, monster.y, pathNodes[index].x, pathNodes[index].y) > 10 then
+	--
+	-- 		if pathNodes[index].x > monster.x then
+	-- 			monster.x = monster.x + monster.speed * dt
+	-- 			monster.moving = true
+	-- 		elseif pathNodes[index].x < monster.x then
+	-- 			monster.x = monster.x - monster.speed * dt
+	-- 			monster.moving = true
+	-- 		end
+	--
+	-- 		if pathNodes[index].y > monster.y then
+	-- 			monster.y = monster.y + monster.speed * dt
+	-- 			monster.moving = true
+	-- 		elseif pathNodes[index].y < monster.y then
+	-- 			monster.y = monster.y - monster.speed * dt
+	-- 			monster.moving = true
+	-- 		end
+	--
+	-- 	end
+	-- end
 
-		if pathNodes[index].x > monster.x then
-			monster.x = monster.x + monster.speed * dt
-			monster.moving = true
-		elseif pathNodes[index].x < monster.x then
-			monster.x = monster.x - monster.speed * dt
-			monster.moving = true
+	function monster.goToNode(index, dt)
+		monster.moving = false
+
+		if checkWallCollision(monster.hitbox) then
+			monster.x = monster.lx
+			monster.y = monster.ly
+		else
+			monster.lx = monster.x
+			monster.ly = monster.y
 		end
 
-		if pathNodes[index].y > monster.y then
-			monster.y = monster.y + monster.speed * dt
-			monster.moving = true
-		elseif pathNodes[index].y < monster.y then
-			monster.y = monster.y - monster.speed * dt
-			monster.moving = true
+		if distanceF(monster.x, monster.y, pathNodes[index].x, pathNodes[index].y) > 10 then
+
+			if distanceF(monster.x, 0, pathNodes[index].x, 0) > 5 then
+				if pathNodes[index].x > monster.x then
+					monster.x = monster.x + monster.speed * dt
+					monster.moving = true
+				elseif pathNodes[index].x < monster.x then
+					monster.x = monster.x - monster.speed * dt
+					monster.moving = true
+				end
+			end
+
+			if distanceF(0, monster.y, 0, pathNodes[index].y) > 5 then
+				if pathNodes[index].y > monster.y then
+					monster.y = monster.y + monster.speed * dt
+					monster.moving = true
+				elseif pathNodes[index].y < monster.y then
+					monster.y = monster.y - monster.speed * dt
+					monster.moving = true
+				end
+			end
+
+			return true
+
+		else
+			return false
 		end
 	end
 

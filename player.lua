@@ -67,8 +67,12 @@ function Player(name)
 	-- toggle "bullet time" ability
 	player.bulletTime = false
 
+	cnIndex = 1
+
 	-- movement and shooting
 	function player.update(dt)
+
+		player.playerNodeUpdate()
 
 		player.hitbox.update(player.x, player.y)
 
@@ -184,10 +188,17 @@ function Player(name)
 		pathNodes[1].y = player.y
 
 		--find closest
-		cnIndex = findClosestNode(player.x,player.y,2)
+		if not (cnIndex == findClosestNode(player.x, player.y, 2)) then
+			e.lost = true
+			cnIndex = findClosestNode(player.x, player.y, 2)
+			print("close: " .. cnIndex)
+		end
+
+		cnIndex = findClosestNode(player.x, player.y, 2)
+
 
 		--update connection
-		for i=1, #pathNodes, 1 do
+		for i = 1, #pathNodes, 1 do
 			if (adjMat[1][i] == 1) then
 				adjMat[1][i] = 0
 				adjMat[i][1] = 0
@@ -196,7 +207,7 @@ function Player(name)
 				adjMat[1][i] = 1
 				adjMat[i][1] = 1
 			end
-    end
+		end
 
 	end
 
