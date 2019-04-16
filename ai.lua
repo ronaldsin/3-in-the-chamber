@@ -17,9 +17,9 @@ function ai(monster, dt)
 			end
 		end
 
-		for i = #stack, 1, - 1 do
-			print(stack[i])
-		end
+		-- for i = #stack, 1, - 1 do
+		-- 	print(stack[i])
+		-- end
 	else
 
 		if not monster.goToNode(currents, dt) then

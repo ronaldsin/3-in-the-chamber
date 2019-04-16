@@ -40,27 +40,27 @@ function keyboardDown(dt)
 	end
 
 
-	-- monster movement
-	e.moving = false
-	if love.keyboard.isDown(input_monster_down) then
-		e.y = e.y + e.speed * dt
-		e.moving = true
-	end
-
-	if love.keyboard.isDown(input_monster_right) then
-		e.x = e.x + e.speed * dt
-		e.moving = true
-	end
-
-	if love.keyboard.isDown(input_monster_up) then
-		e.y = e.y - e.speed * dt
-		e.moving = true
-	end
-
-	if love.keyboard.isDown(input_monster_left) then
-		e.x = e.x - e.speed * dt
-		e.moving = true
-	end
+	-- -- monster movement debug
+	-- e.moving = false
+	-- if love.keyboard.isDown(input_monster_down) then
+	-- 	e.y = e.y + e.speed * dt
+	-- 	e.moving = true
+	-- end
+	--
+	-- if love.keyboard.isDown(input_monster_right) then
+	-- 	e.x = e.x + e.speed * dt
+	-- 	e.moving = true
+	-- end
+	--
+	-- if love.keyboard.isDown(input_monster_up) then
+	-- 	e.y = e.y - e.speed * dt
+	-- 	e.moving = true
+	-- end
+	--
+	-- if love.keyboard.isDown(input_monster_left) then
+	-- 	e.x = e.x - e.speed * dt
+	-- 	e.moving = true
+	-- end
 
 	if love.mouse.isDown(input_player_shoot) then
 		if cd >= p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
