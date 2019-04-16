@@ -11,9 +11,9 @@ function loadNodes()
 	createRoomNodes(2300, 1650, 2435, 1715)
 	createRoomNodes(2455, 1475, 3270, 2740)--
 	createRoomNodes(3288, 1795, 3365, 1870)
-	createRoomNodes(3410, 1640, 4268, 2024)
+	createRoomNodes(3410, 1670, 4218, 2024)
 	createRoomNodes(3288, 2395, 3355, 2450)
-	createRoomNodes(3398, 2210, 4224, 2747)
+	createRoomNodes(3398, 2210, 4214, 2725)
 end
 
 function connectNodes()
