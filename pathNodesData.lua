@@ -5,29 +5,32 @@ table.insert(pathNodes, createPathNode(0, 0)) -- player node
 adjMat = {{}}
 --wall corners
 
-density = 100
+function loadNodes()
+	createRoomNodes(837, 964, 1172, 1200)
+	createRoomNodes(1192, 964, 2280, 1980)
+	createRoomNodes(2300, 1650, 2435, 1715)
+	createRoomNodes(2455, 1475, 3270, 2740)--
+	createRoomNodes(3288, 1795, 3365, 1870)
+	createRoomNodes(3410, 1640, 4268, 2024)
+	createRoomNodes(3288, 2395, 3355, 2450)
+	createRoomNodes(3398, 2210, 4224, 2747)
+end
 
-
-
-for i = 1, math.floor(((2323 - 1168) / density) + 0.5) + 1 do
-	for j = 1, math.floor(((2021 - 936) / density) + 0.5) + 1 do
-		table.insert(pathNodes, createPathNode(1168 + (i - 1) * density, 936 + (j - 1) * density))
+function connectNodes()
+	for i = 1, #pathNodes do
+		adjMat[1][i] = 0
 	end
-end
 
-for i = 1, #pathNodes do
-	adjMat[1][i] = 0
-end
-
-for i = 2, #pathNodes do
-	adjMat[i] = {}
-	for j = 1, #pathNodes do
-		if i == j then
-			adjMat[i][j] = 0
-		elseif distanceF(pathNodes[i].x, pathNodes[i].y, pathNodes[j].x, pathNodes[j].y ) <= density then
-			adjMat[i][j] = 1
-		else
-			adjMat[i][j] = 0
+	for i = 2, #pathNodes do
+		adjMat[i] = {}
+		for j = 1, #pathNodes do
+			if i == j then
+				adjMat[i][j] = 0
+			elseif distanceF(pathNodes[i].x, pathNodes[i].y, pathNodes[j].x, pathNodes[j].y ) <= math.sqrt(2 * (math.pow(density, 2))) then
+				adjMat[i][j] = 1
+			else
+				adjMat[i][j] = 0
+			end
 		end
 	end
 end

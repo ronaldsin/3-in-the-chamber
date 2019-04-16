@@ -32,12 +32,16 @@ function love.load()
 	hitboxConst = 8 -- ratio to sizescale 5 sizeScale = 5 time smaller size
 	hitboxScale = hitboxConst / sizeScale -- based on sizeScale
 
+	density = 50
+
 	displayHitbox = false
 
 	start()
 
 	gameState = "menu"
 
+	loadNodes()
+	connectNodes()
 
 end
 

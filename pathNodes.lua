@@ -43,3 +43,11 @@ function findClosestNode(x, y, start)--start 1 for enemy, 2 for plater
 	end
 	return close
 end
+
+function createRoomNodes(x1, y1, x2, y2)
+	for i = 1, math.floor(((x2 - x1) / density) + 0.5) + 1 do
+		for j = 1, math.floor(((y2 - y1) / density) + 0.5) + 1 do
+			table.insert(pathNodes, createPathNode(x1 + (i - 1) * density, y1 + (j - 1) * density))
+		end
+	end
+end
