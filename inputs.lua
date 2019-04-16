@@ -2,41 +2,63 @@
 function keyboardDown(dt)
 	-- player wasd movement
 
-	if checkWallCollision(p.hitbox) then
-		p.x = p.lx
-		p.y = p.ly
-	else
-		p.lx = p.x
-		p.ly = p.y
-	end
-
 	p.moving = false
 	if(p.moveControl <= 0) then
 
 		if love.keyboard.isDown(input_player_down) then
-			p.y = p.y + p.speed * dt
-			p.moving = true
+			if not (checkWallCollisionBottom(p.hitbox, p.speed * dt)) then
+				p.y = p.y + p.speed * dt
+				p.moving = true
+			end
 		end
 		if love.keyboard.isDown(input_player_right) then
-			p.x = p.x + p.speed * dt
-			p.moving = true
+			if not (checkWallCollisionRight(p.hitbox, p.speed * dt)) then
+				p.x = p.x + p.speed * dt
+				p.moving = true
+			end
 		end
 
 		if love.keyboard.isDown(input_player_up) then
-			p.y = p.y - p.speed * dt
-			p.moving = true
+			if not (checkWallCollisionTop(p.hitbox, p.speed * dt)) then
+				p.y = p.y - p.speed * dt
+				p.moving = true
+			end
 		end
 		if love.keyboard.isDown(input_player_left) then
-			p.x = p.x - p.speed * dt
-			p.moving = true
+			if not (checkWallCollisionLeft(p.hitbox, p.speed * dt)) then
+				p.x = p.x - p.speed * dt
+				p.moving = true
+			end
 		end
 
 		p.update(dt)
 
 	else
 		--force movement
-		p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
-		p.y = p.y - 2 * p.speed * dt * p.yLock
+
+		if p.xLock > 0 then
+			if not (checkWallCollisionLeft(p.hitbox, 2 * p.speed * dt)) then
+				p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
+				p.moving = true
+			end
+		else
+			if not (checkWallCollisionRight(p.hitbox, 2 * p.speed * dt)) then
+				p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
+				p.moving = true
+			end
+		end
+
+		if p.yLock > 0 then
+			if not (checkWallCollisionTop(p.hitbox, 2 * p.speed * dt)) then
+				p.y = p.y - 2 * p.speed * dt * p.yLock --HARDCODED 2, speedboost
+				p.moving = true
+			end
+		else
+			if not (checkWallCollisionBottom(p.hitbox, 2 * p.speed * dt)) then
+				p.y = p.y - 2 * p.speed * dt * p.yLock --HARDCODED 2, speedboost
+				p.moving = true
+			end
+		end
 	end
 
 

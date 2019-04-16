@@ -133,25 +133,33 @@ function Monster(name)
 			monster.speed = math.abs(monster.speed )
 		end
 
-		if distanceF(monster.x, monster.y, pathNodes[index].x, pathNodes[index].y) > 50 then
+		if distanceF(monster.x, monster.y, pathNodes[index].x, pathNodes[index].y) > 20 then
 
-			if distanceF(monster.x, 0, pathNodes[index].x, 0) > 20 then
+			if distanceF(monster.x, 0, pathNodes[index].x, 0) > 5 then
 				if pathNodes[index].x > monster.x then
-					monster.x = monster.x + monster.speed * dt
-					monster.moving = true
+					if not (checkWallCollisionRight(monster.hitbox, monster.speed * dt)) then
+						monster.x = monster.x + monster.speed * dt
+						monster.moving = true
+					end
 				elseif pathNodes[index].x < monster.x then
-					monster.x = monster.x - monster.speed * dt
-					monster.moving = true
+					if not (checkWallCollisionLeft(monster.hitbox, monster.speed * dt)) then
+						monster.x = monster.x - monster.speed * dt
+						monster.moving = true
+					end
 				end
 			end
 
-			if distanceF(0, monster.y, 0, pathNodes[index].y) > 20 then
+			if distanceF(0, monster.y, 0, pathNodes[index].y) > 5 then
 				if pathNodes[index].y > monster.y then
-					monster.y = monster.y + monster.speed * dt
-					monster.moving = true
+					if not (checkWallCollisionBottom(monster.hitbox, monster.speed * dt)) then
+						monster.y = monster.y + monster.speed * dt
+						monster.moving = true
+					end
 				elseif pathNodes[index].y < monster.y then
-					monster.y = monster.y - monster.speed * dt
-					monster.moving = true
+					if not (checkWallCollisionTop(monster.hitbox, monster.speed * dt)) then
+						monster.y = monster.y - monster.speed * dt
+						monster.moving = true
+					end
 				end
 			end
 
