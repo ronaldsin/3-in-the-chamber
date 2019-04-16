@@ -33,7 +33,7 @@ function Player(name)
 	player.hitbox = createHitbox(player.x, player.y, player.width, player.height)
 
 	-- stats
-	player.speed = 300 -- default 300
+	player.speed = 600 -- default 300
 	player.health = 100
 	player.power = 100
 	player.armor = 0
@@ -52,7 +52,7 @@ function Player(name)
 
 	-- ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
-	player.ability = "bulletTime"
+	player.ability = "roll"
 
 	-- direction lock for forced movement
 	player.xLock = 0
