@@ -48,5 +48,8 @@ function ability(player)
 		--ability cooldown
 		player.abilityCD = 0
 
+	elseif (pa == "slowTime") then
+		player.slowTime = not(player.slowTime)
+		player.abilityCD = 0
 	end
 end

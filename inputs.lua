@@ -122,12 +122,20 @@ function love.keypressed(key)
 	end
 
 	if key == input_player_abilitySwap then
-		if p.ability == "roll" then
-			p.ability = "bulletTime"
+		-- if p.ability == "roll" then
+		-- 	p.ability = "bulletTime"
+		-- else
+		-- 	p.ability = "roll"
+		-- end
+
+		if p.abilityNumber < #p.abilities then
+			p.abilityNumber = p.abilityNumber + 1
 		else
-			p.ability = "roll"
+			p.abilityNumber = 1
+
 		end
 
+		p.ability = p.abilities[p.abilityNumber]
 	end
 
 	if key == input_debug_resetHealth then

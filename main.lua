@@ -49,8 +49,13 @@ function love.update(dt)
 	if gameState == "menu" then
 		menuUpdate(dt)
 	elseif gameState == "game" then
-		camera.update(dt)
-		gameUpdate(dt)
+		timeMod = 1
+		if p.slowTime == true then
+			timeMod = 0.5
+		end
+
+		camera.update(dt * timeMod)
+		gameUpdate(dt * timeMod)
 	end
 end
 

@@ -52,7 +52,14 @@ function Player(name)
 
 	-- ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
-	player.ability = "roll"
+	player.abilities = {}
+
+	table.insert(player.abilities, "roll")
+	table.insert(player.abilities, "bulletTime")
+	table.insert(player.abilities, "slowTime")
+
+	player.abilityNumber = 1
+	player.ability = player.abilities[player.abilityNumber]
 
 	-- direction lock for forced movement
 	player.xLock = 0
@@ -66,6 +73,8 @@ function Player(name)
 
 	-- toggle "bullet time" ability
 	player.bulletTime = false
+
+	player.slowTime = false
 
 	cnIndex = 1
 
