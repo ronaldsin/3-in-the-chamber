@@ -72,7 +72,6 @@ function setCursor(file)
 end
 
 function fire(x, y, r, n, speed, range, spread, length)
-	print(length)
 	if p.weapon.name == "BoomstickVI" then
 		if p.weapon.fire() then
 			fire_ani = 0

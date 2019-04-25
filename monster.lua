@@ -73,7 +73,7 @@ function Monster(name)
 			if hitReg(monster.hitbox, v.hitbox) then
 				if not(monster.name == v.name) then
 					monster.health = monster.health - p.weapon.damage
-					print(monster.health)
+					print("Health:" .. monster.health)
 					hit = true
 					setCursor("resources/Hitmarker.png")
 					playSound(oof)
