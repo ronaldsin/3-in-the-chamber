@@ -87,8 +87,11 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 			if weapon.counter <= 0 then
 				playSound(reloadingEnd)
 				p.shoot = 0.4
-
-				weapon.currentAmmo = weapon.magazine
+				if weapon.name == "BoomstickVI" then
+					weapon.currentAmmo = weapon.currentAmmo + 1
+				else
+					weapon.currentAmmo = weapon.magazine
+				end
 			end
 		end
 
