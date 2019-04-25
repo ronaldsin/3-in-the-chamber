@@ -139,9 +139,13 @@ function love.keypressed(key)
 	end
 
 	if key == input_player_reload then
-		p.weapon.counter = p.weapon.reload
-		for i = 1, 2 do
-			playSound(reloadingStart)
+		if p.weapon.currentAmmo < p.weapon.magazine then
+			if p.weapon.counter <= 0 then
+				p.weapon.counter = p.weapon.reload
+				for i = 1, 2 do
+					playSound(reloadingStart)
+				end
+			end
 		end
 	end
 
