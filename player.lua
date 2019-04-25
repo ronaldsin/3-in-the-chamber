@@ -33,26 +33,26 @@ function Player(name)
 	player.hitbox = createHitbox(player.x, player.y, player.width, player.height)
 
 	-- stats
-	player.speed = 300 -- default 300
+	player.speed = 600 -- default 300
 	player.health = 100
 	player.power = 100
 	player.armor = 0
 
-	--status effects
+	-- status effects
 	player.shoot = 0 -- 0<= means able to shoot
 	player.invincible = 0 -- 0<= means not invincible
 	player.moveControl = 0 --0<= means can move normally
 	player.directionLock = 0 -- 0->neutral, 1->up, 2->right, 3->down, 4->left
 
-	--flat Damage Over Time
+	-- flat Damage Over Time
 	player.flatDOT = 0 --amount of damage
 	player.flatDOTchunk = 0 -- amount DOT does each interval
 	player.flatDOTtimerReset = 3 --seconds for damage to apply
 	player.flatDOTtimer = 0
 
-	--ability
+	-- ability
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
-	player.ability = "bulletTime"
+	player.ability = "roll"
 
 	-- direction lock for forced movement
 	player.xLock = 0
@@ -67,8 +67,12 @@ function Player(name)
 	-- toggle "bullet time" ability
 	player.bulletTime = false
 
+	cnIndex = 1
+
 	-- movement and shooting
 	function player.update(dt)
+
+		player.playerNodeUpdate()
 
 		player.hitbox.update(player.x, player.y)
 
@@ -177,6 +181,36 @@ function Player(name)
 	-- rotate player model to mouse
 	function player.rotate()
 		player.rotation = (math.atan2(camera.getMouseY() - player.y, camera.getMouseX() - player.x) + (math.pi / 2))
+	end
+
+	function player.playerNodeUpdate()
+		pathNodes[1].x = player.x
+		pathNodes[1].y = player.y
+
+		--find closest
+		if not (cnIndex == findClosestNode(player.x, player.y, 2)) then
+			if e.patienceCounter > e.patience then
+				e.lost = true
+				e.patienceCounter = 0
+			end
+			cnIndex = findClosestNode(player.x, player.y, 2)
+		end
+
+		cnIndex = findClosestNode(player.x, player.y, 2)
+
+
+		--update connection
+		for i = 1, #pathNodes, 1 do
+			if (adjMat[1][i] == 1) then
+				adjMat[1][i] = 0
+				adjMat[i][1] = 0
+			end
+			if(i == cnIndex) then
+				adjMat[1][i] = 1
+				adjMat[i][1] = 1
+			end
+		end
+
 	end
 
 	return player

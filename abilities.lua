@@ -27,11 +27,7 @@ function ability(player)
 
 	elseif (pa == "bulletTime") then -- activate to freeze bullets, re-activate to continue moving them
 		--toggle
-		if player.bulletTime == false then
-			player.bulletTime = true
-		else
-			player.bulletTime = false
-		end
+		player.bulletTime = not(player.bulletTime)
 
 		--bullets
 		for i, v in ipairs(bullets) do

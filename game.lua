@@ -71,6 +71,12 @@ function gameDraw()
 		gunPickUp[i].draw()
 	end
 
+	-- nodes and paths
+	for i = 1, #pathNodes do
+		pathNodes[i].draw()
+	end
+	drawPaths()
+
 	-- draw player
 	e.draw()
 	p.draw()
@@ -79,10 +85,6 @@ function gameDraw()
 
 	love.graphics.print("Current weapon: " .. p.weapon.name, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 5 * camera.yScale + camera.y))
 	love.graphics.print("Ammo: " .. p.weapon.currentAmmo .. " / " .. p.weapon.magazine, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 3.5 * camera.yScale + camera.y))
-
-
-	-- print("X: " .. camera.getMouseX())
-	-- print("Y: " .. camera.getMouseY())
 
 	if pause then
 		local font = love.graphics.getFont()

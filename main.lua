@@ -21,20 +21,27 @@ function love.load()
 	require ("walls")
 	require ("wallsData")
 	require ("camera")
+	require ("pathNodes")
+	require ("pathNodesData")
+	require ("queue")
+	require ("ai")
+	require ("stack")
 
 	sizeScale = 1 -- default 1
 
 	hitboxConst = 8 -- ratio to sizescale 5 sizeScale = 5 time smaller size
 	hitboxScale = hitboxConst / sizeScale -- based on sizeScale
 
+	density = 50
+
 	displayHitbox = false
-
-
 
 	start()
 
 	gameState = "menu"
 
+	loadNodes()
+	connectNodes()
 
 end
 
