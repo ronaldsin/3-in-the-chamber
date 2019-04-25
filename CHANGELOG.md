@@ -1,20 +1,33 @@
 # Change Log
 
+## 2019-04-16
+### Added
+- added movement AI for simple enemies (chase player), using nodes and breadth-first search (WIP)
+- covered entire map with invisible nodes for AI pathing 
+
+### Changed
+- fixed movement to allow diagonal movement without interruption!
+
+### Other
+- N/A
+
+
 ## 2019-04-12
 ### Added
-- added camera
 - added text to display:
   - current ability
   - current weapon
   - current ammo
-- added ability to change current ability using "f" key
+- added ability to change current ability using "f" key (for debugging purposes)
 - added new map
 
 ### Changed  
-- N/A
+- bullets now start at the tip of the gun, based on weapon length
+- changed cameras to follow player instead of being fixed
 
 ### Other
 - N/A
+
 
 ## 2019-04-09
 ### Added

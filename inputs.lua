@@ -92,7 +92,7 @@ function keyboardDown(dt)
 				-- print(p.x - spread * constant * math.cos(spread))
 				-- print(p.y + spread * constant * math.sin(spread))
 				-- fire(p.x + spread * constant * math.tan(spread), p.y - spread * constant * math.tan(spread), p.rotation + spread, p.name, p.weapon.speed, p.weapon.range)
-				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng)
+				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length)
 				--fire(e.x, e.y, e.rotation + ((rng:random((p.weapon.rng) * (- 1), (p.weapon.rng))) / 1000), e.name, 2000, 500)
 				cd = 0
 			end
@@ -160,10 +160,21 @@ function love.keypressed(key)
 					-- temp2 is the same as temp1 but for playear weapon
 					local name1 = string.sub(gunPickUp[i].name, 1, - 5)
 					local name2 = p.weapon.name .. "Icon"
-					local temp1 = createWeapon(name1, gunPickUp[i].damage, gunPickUp[i].gunCd, gunPickUp[i].speed, gunPickUp[i].range, gunPickUp[i].magazine, gunPickUp[i].currentAmmo, gunPickUp[i].reload, true, gunPickUp[i].mode, gunPickUp[i].stance, gunPickUp[i].rng)
-					local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, p.weapon.currentAmmo, p.weapon.reload, false, p.weapon.mode, p.weapon.stance, p.weapon.rng)
-					gunPickUp[i] = temp2
-					p.weapon = temp1
+					--local temp1 = createWeapon(name1, gunPickUp[i].damage, gunPickUp[i].gunCd, gunPickUp[i].speed, gunPickUp[i].range, gunPickUp[i].magazine, gunPickUp[i].currentAmmo, gunPickUp[i].reload, true, gunPickUp[i].mode, gunPickUp[i].stance, gunPickUp[i].rng)
+					--local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, p.weapon.currentAmmo, p.weapon.reload, false, p.weapon.mode, p.weapon.stance, p.weapon.rng)
+					p.weapon.pickedUp = false
+					p.weapon.name = name2
+					p.weapon.refreshImage()
+					p.weapon.counter = 0
+
+					gunPickUp[i].pickedUp = true
+					gunPickUp[i].name = name1
+					gunPickUp[i].refreshImage()
+					gunPickUp[i].counter = 0
+
+					local temp = gunPickUp[i]
+					gunPickUp[i] = p.weapon
+					p.weapon = temp
 
 					p.updateStance()
 				end
@@ -179,7 +190,7 @@ function love.mousepressed(x, y, button, isTouch)
 		if cd > p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if button == input_player_shoot then
 				if p.weapon.mode == 1 then
-					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng)
+					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length)
 					--fire(e.x, e.y, e.rotation, e.name, e.weapon.speed, p.weapon.range)
 					cd = 0
 				end
