@@ -42,7 +42,7 @@ function checkWallCollisionRight(hitbox, x)
 		if walls[i].right > hitbox.left + x and walls[i].left < hitbox.right + x and walls[i].bottom > hitbox.top and walls[i].top < hitbox.bottom then
 			-- returns true if moving hitbox to the right still intersects with wall
 			if (walls[i].left < (hitbox.right + x)) and (walls[i].right > (hitbox.right + x)) then
-				love.audio.play(oof)
+				print("test")
 				return true
 			end
 		end
@@ -55,7 +55,6 @@ function checkWallCollisionLeft(hitbox, x)
 	for i = 1, #walls do
 		if walls[i].right > hitbox.left - x and walls[i].left < hitbox.right - x and walls[i].bottom > hitbox.top and walls[i].top < hitbox.bottom then
 			if walls[i].right > hitbox.left - x and walls[i].left < hitbox.left - x then
-				love.audio.play(oof)
 				return true
 			end
 		end
@@ -68,7 +67,6 @@ function checkWallCollisionTop(hitbox, y)
 	for i = 1, #walls do
 		if walls[i].right > hitbox.left and walls[i].left < hitbox.right and walls[i].bottom > hitbox.top - y and walls[i].top < hitbox.bottom - y then
 			if walls[i].bottom > hitbox.top - y and walls[i].top < hitbox.top - y then
-				love.audio.play(oof)
 				return true
 			end
 		end
@@ -81,7 +79,7 @@ function checkWallCollisionBottom(hitbox, y)
 	for i = 1, #walls do
 		if walls[i].right > hitbox.left and walls[i].left < hitbox.right and walls[i].bottom > hitbox.top + y and walls[i].top < hitbox.bottom + y then
 			if walls[i].top < hitbox.bottom + y and walls[i].bottom > hitbox.bottom + y then
-				love.audio.play(oof)
+
 				return true
 			end
 		end

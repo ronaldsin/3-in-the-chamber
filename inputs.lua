@@ -9,12 +9,17 @@ function keyboardDown(dt)
 			if not (checkWallCollisionBottom(p.hitbox, p.speed * dt)) then
 				p.y = p.y + p.speed * dt
 				p.moving = true
+
+			else
+				love.audio.play(oof)
 			end
 		end
 		if love.keyboard.isDown(input_player_right) then
 			if not (checkWallCollisionRight(p.hitbox, p.speed * dt)) then
 				p.x = p.x + p.speed * dt
 				p.moving = true
+			else
+				love.audio.play(oof)
 			end
 		end
 
@@ -22,12 +27,16 @@ function keyboardDown(dt)
 			if not (checkWallCollisionTop(p.hitbox, p.speed * dt)) then
 				p.y = p.y - p.speed * dt
 				p.moving = true
+			else
+				love.audio.play(oof)
 			end
 		end
 		if love.keyboard.isDown(input_player_left) then
 			if not (checkWallCollisionLeft(p.hitbox, p.speed * dt)) then
 				p.x = p.x - p.speed * dt
 				p.moving = true
+			else
+				love.audio.play(oof)
 			end
 		end
 
@@ -193,7 +202,7 @@ end
 
 
 -- press mouse 1 to shoot
-function love.mousepressed(x, y, button, isTouch)
+function love.mousepressed(x, y, button, isTouch, dt)
 	if not pause then
 		if cd > p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if button == input_player_shoot then
@@ -205,7 +214,7 @@ function love.mousepressed(x, y, button, isTouch)
 			end
 		end
 		if button == input_player_secondary and p.abilityCD <= 0 then
-			ability(p)
+			ability(p, dt)
 		end
 	end
 

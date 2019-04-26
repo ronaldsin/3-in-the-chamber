@@ -48,9 +48,12 @@ function proj(x, y, r, name, speed, range, type, spread, length)
 		proj.hitbox.update(proj.x, proj.y)
 
 		local spread = ((rng:random((p.weapon.rng) * ( 1), (p.weapon.rng))) / 1000)
+
 		-- update position of bullet
 		proj.y = proj.y + (proj.yVel) * dt
 		proj.x = proj.x + (proj.xVel) * dt
+
+
 	end
 
 	-- draws projectile on screen

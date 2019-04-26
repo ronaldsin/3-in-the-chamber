@@ -73,7 +73,6 @@ function Player(name)
 
 	-- toggle "bullet time" ability
 	player.bulletTime = false
-
 	player.slowTime = false
 
 	cnIndex = 1
