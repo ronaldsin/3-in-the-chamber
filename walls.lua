@@ -42,7 +42,6 @@ function checkWallCollisionRight(hitbox, x)
 		if walls[i].right > hitbox.left + x and walls[i].left < hitbox.right + x and walls[i].bottom > hitbox.top and walls[i].top < hitbox.bottom then
 			-- returns true if moving hitbox to the right still intersects with wall
 			if (walls[i].left < (hitbox.right + x)) and (walls[i].right > (hitbox.right + x)) then
-				print("test")
 				return true
 			end
 		end
