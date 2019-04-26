@@ -31,8 +31,8 @@ function lineIntersection(x1, x2, x3, x4, y1, y2, y3, y4)
 		return false
 	else
 		-- Intersection
-		xtable = {x1, x2, x3, x4}
-		ytable = {y1, y2, y3, y4}
+		xtable = {x1, x2}
+		ytable = {y1, y2}
 
 		local a = x1 * y2 - y1 * x2;
 		local b = x3 * y4 - y3 * x4;
