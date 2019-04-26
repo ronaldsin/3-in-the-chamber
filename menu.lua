@@ -11,7 +11,7 @@ function start()
 	table.insert(gunPickUp, createWeapon("AccelerantIcon", 25, 0.1, 550, 200, 20, 20, 1.2, false, 2, 2, 160, 105)) -- 250dps
 	table.insert(gunPickUp, createWeapon("BoomstickVIIcon", 6, 0.75, 400, 250, 6, 6, 1, false, 1, 2, 400, 120)) -- 187dps
 	table.insert(gunPickUp, createWeapon("StrikeoutIcon", 40, 0.20, 375, 600, 80, 80, 3.3, false, 2, 2, 90, 140)) -- 200dps
-	table.insert(gunPickUp, createWeapon("TheBeartrapIcon", 170, 1, 4000, 1000, 5, 5, 2.2, false, 1, 2, 0, 145)) -- 170dps
+	table.insert(gunPickUp, createWeapon("TheBeartrapIcon", 170, 1, 4000, 10000, 5, 5, 2.2, false, 1, 2, 0, 145)) -- 170dps
 	table.insert(gunPickUp, createWeapon("SirenIcon", 17, 0.3, 450, 350, 18, 18, 1.3, false, 3, 1, 35, 90)) -- 56.6666666666667dps
 	table.insert(gunPickUp, createWeapon("LongHaulIcon", 27, 0.5, 390, 650, 100, 100, 4, false, 2, 2, 130, 145)) -- 54dps
 	table.insert(gunPickUp, createWeapon("BacklinerIcon", 45, 0.27, 600, 800, 11, 11, 1.75, false, 1, 2, 25, 145)) -- 166.666666666667dps

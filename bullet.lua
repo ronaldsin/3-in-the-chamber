@@ -48,9 +48,26 @@ function proj(x, y, r, name, speed, range, type, spread, length)
 		proj.hitbox.update(proj.x, proj.y)
 
 		local spread = ((rng:random((p.weapon.rng) * ( 1), (p.weapon.rng))) / 1000)
+
+		if(proj.name == p.name) then
+			if(p.ricochet == true) then
+				if checkWallCollisionRight(proj.hitbox, proj.xVel * dt) or checkWallCollisionLeft(proj.hitbox, proj.xVel * dt) then
+					print("x")
+					proj.xVel = proj.xVel * - 1
+					proj.x = proj.x + (proj.xVel) * 2 * dt
+				elseif checkWallCollisionTop(proj.hitbox, proj.yVel * dt) or checkWallCollisionBottom(proj.hitbox, proj.yVel * dt) then
+					print("y")
+					proj.yVel = proj.yVel * - 1
+					proj.y = proj.y + (proj.yVel) * 2 * dt
+				end
+			end
+		end
+
 		-- update position of bullet
 		proj.y = proj.y + (proj.yVel) * dt
 		proj.x = proj.x + (proj.xVel) * dt
+
+
 	end
 
 	-- draws projectile on screen

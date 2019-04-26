@@ -32,7 +32,6 @@ function ability(player)
 		--bullets
 		for i, v in ipairs(bullets) do
 			if(v.name == player.name) then
-				print("bullet")
 				if(player.bulletTime == true) then
 					v.speed = 0
 					v.xVel = 0
@@ -50,6 +49,10 @@ function ability(player)
 
 	elseif (pa == "slowTime") then
 		player.slowTime = not(player.slowTime)
+		player.abilityCD = 0
+
+	elseif (pa == "ricochet") then
+		player.ricochet = not(player.ricochet)
 		player.abilityCD = 0
 	end
 end
