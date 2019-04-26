@@ -57,6 +57,7 @@ function Player(name)
 	table.insert(player.abilities, "roll")
 	table.insert(player.abilities, "bulletTime")
 	table.insert(player.abilities, "slowTime")
+	table.insert(player.abilities, "ricochet")
 
 	player.abilityNumber = 1
 	player.ability = player.abilities[player.abilityNumber]
@@ -74,6 +75,7 @@ function Player(name)
 	-- toggle "bullet time" ability
 	player.bulletTime = false
 	player.slowTime = false
+	player.ricochet = false
 
 	cnIndex = 1
 
