@@ -1,16 +1,15 @@
 function min(table)
-	local x = 999999999999
+	x = table[1]
 	for i, v in pairs(table) do
 		if v < x then
 			v = x
 		end
 	end
-	if x == 999999999999 then return - 1 end
 	return x
 end
 
 function max(table)
-	local x = -1
+	x = table[1]
 	for i, v in pairs(table) do
 		if v > x then
 			v = x
@@ -40,10 +39,7 @@ function lineIntersection(x1, x2, x3, x4, y1, y2, y3, y4)
 
 		local x = (a * x34 - b * x12) / c;
 		local y = (a * y34 - b * y12) / c;
-		if min(xtable) > x or min(ytable) > y or max(xtable) < x or max(ytable) < y then
-			return false
-		end
-		return true
+		return not (min(xtable) > x or min(ytable) > y or max(xtable) < x or max(ytable) < y )
 	end
 end
 -- A = {12, 42}
