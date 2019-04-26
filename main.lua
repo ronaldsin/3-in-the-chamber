@@ -26,6 +26,7 @@ function love.load()
 	require ("queue")
 	require ("ai")
 	require ("stack")
+	require ("lineIntersection")
 
 	sizeScale = 1 -- default 1
 

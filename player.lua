@@ -102,6 +102,17 @@ function Player(name)
 
 		--status updates --note, status duration and "time" hard coded
 		player.statusAbilityUpdate(dt)
+
+		for i, v in ipairs(walls) do
+			if lineIntersection(player.x, e.x, v.left, v.right, player.y, e.y, v.top, v.top) or
+			lineIntersection(player.x, e.x, v.right, v.right, player.y, e.y, v.top, v.bottom) or
+			lineIntersection(player.x, e.x, v.left, v.right, player.y, e.y, v.bottom, v.bottom) or
+			lineIntersection(player.x, e.x, v.left, v.left, player.y, e.y, v.top, v.bottom) then
+
+				print("intersect")
+			end
+
+		end
 	end
 
 	function player.updateStance()
