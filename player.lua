@@ -76,7 +76,8 @@ function Player(name)
 	player.slowTime = false
 	player.ricochet = false
 
-	player.tmp = true
+	player.los = true
+	player.losCounter = 0
 
 	cnIndex = 1
 
@@ -104,17 +105,27 @@ function Player(name)
 
 		--status updates --note, status duration and "time" hard coded
 		player.statusAbilityUpdate(dt)
-		player.temp = true
+
+		player.losCounter = player.losCounter + dt
+
+		player.los = true
 
 		for i, v in ipairs(walls) do
 			if lineIntersection(player.x, e.x, v.left, v.right, player.y, e.y, v.top, v.top) or
 			lineIntersection(player.x, e.x, v.right, v.right, player.y, e.y, v.top, v.bottom) or
 			lineIntersection(player.x, e.x, v.left, v.right, player.y, e.y, v.bottom, v.bottom) or
 			lineIntersection(player.x, e.x, v.left, v.left, player.y, e.y, v.top, v.bottom) then
-				player.temp = false
+				player.los = false
+				player.losCounter = 0
 			end
-
 		end
+
+		if player.los and player.losCounter > 0.05 then
+			player.los = true
+		else
+			player.los = false
+		end
+
 	end
 
 	function player.updateStance()
@@ -197,7 +208,7 @@ function Player(name)
 
 		player.weapon.draw()
 
-		if player.temp then
+		if player.los then
 			love.graphics.print("los", player.x, player.y)
 		end
 
