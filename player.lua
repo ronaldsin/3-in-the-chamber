@@ -88,8 +88,6 @@ function Player(name)
 
 		player.hitbox.update(player.x, player.y)
 
-		player.weapon.update(player.x, player.y, player.rotation, dt)
-
 		if p.moving then
 			player.legs.update(dt)
 		else
@@ -125,6 +123,8 @@ function Player(name)
 		else
 			player.los = false
 		end
+
+		player.weapon.update(player.x, player.y, player.rotation, dt)
 
 	end
 

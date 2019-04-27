@@ -68,6 +68,8 @@ function keyboardDown(dt)
 				p.moving = true
 			end
 		end
+
+		p.weapon.update(p.x, p.y, p.rotation, dt)
 	end
 
 
