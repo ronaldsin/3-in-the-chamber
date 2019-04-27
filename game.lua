@@ -11,8 +11,8 @@ function gameUpdate(dt)
 
 
 		local counter = 0
-		for j = 1, 2 do
-			for i = 1, 5 do
+		for j = 1, 3 do
+			for i = 1, 3 do
 				if counter > #gunPickUp then
 					break
 				end
@@ -45,6 +45,12 @@ function gameUpdate(dt)
 		-- update data for every bullet
 		for i, v in ipairs(bullets) do
 			v.update(dt)
+
+
+			if checkWallCollision(v.hitbox) then
+				table.remove(bullets, i)
+
+			end
 
 			-- remove bullet from array if out of range
 			if v.traveled >= v.range then

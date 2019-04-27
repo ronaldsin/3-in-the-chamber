@@ -104,13 +104,11 @@ function fire(x, y, r, n, speed, range, spread, length)
 			if p.weapon.name == "Strikeout" then
 				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length)
 				playSound(machineGun)
-			elseif p.weapon.name == "Frontliner" then
+			elseif p.weapon.name == "Frontliner" or p.weapon.name == "MuscleSpasm" then
 				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length)
 				playSound(assaultRifle)
-			elseif p.weapon.name == "Pride" then
-				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length)
-				playSound(prideShot)
-			elseif p.weapon.name == "TheBeartrap" then
+
+			elseif p.weapon.name == "TheBeartrap" or p.weapon.name == "BountyHunter" or p.weapon.name == "Pride" then
 				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length)
 				playSound(sniperRifle)
 			else
