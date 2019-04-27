@@ -13,6 +13,13 @@ function max(table)
 		return table[1]
 	end
 end
+
+function abs(x)
+	if x < 0 then
+		return x * -1
+	end
+	return x
+end
 --
 -- function lineIntersection(x1, x2, x3, x4, y1, y2, y3, y4)
 -- 	local x12 = x1 - x2;
@@ -81,12 +88,20 @@ function lineIntersection(x1, x2, x3, x4, y1, y2, y3, y4)
 	e1.x = x2
 	e1.y = y2
 
+<<<<<<< HEAD
 	s2.x = x3
 	s2.y = y3
 	e2.x = x4
 	e2.y = y4
 
 	local x, y = intersection(s1, e1, s2, e2)
+=======
+	if abs(der) < 0.001 then -- if the determinant is roughly 0 then it's parallel -> no intersection
+		return false
+	else
+		local x = (B2 * C1 - B1 * C2) / der
+		local y = (A1 * C1 - A2 * C1) / der
+>>>>>>> 181fa65be591783fa18affd258faf94d3ad4dbc1
 
 	local xtable1 = {x1, x2}
 	local ytable1 = {y1, y2}
