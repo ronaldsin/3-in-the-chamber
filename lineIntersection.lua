@@ -58,15 +58,6 @@ end
 -- --   print("nope")
 -- -- end
 
-function intersection (x1, x2, x3, x4, y1, y2, y3, y4)
-	local d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
-	local a = x1 * y2 - y1 * x2
-	local b = x3 * y4 - y3 * x4
-	local x = (a * (x3 - x4) - (x1 - x2) * b) / d
-	local y = (a * (y3 - y4) - (y1 - y2) * b) / d
-	return x, y
-end
-
 function intersection (s1, e1, s2, e2)
 	local d = (s1.x - e1.x) * (s2.y - e2.y) - (s1.y - e1.y) * (s2.x - e2.x)
 	local a = s1.x * e1.y - s1.y * e1.x
