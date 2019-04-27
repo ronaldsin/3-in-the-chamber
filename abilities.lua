@@ -51,5 +51,17 @@ function ability(player)
 		player.slowTime = not(player.slowTime)
 		player.abilityCD = 0
 
+	elseif (pa == "BTD") then
+		player.BTD = not(player.BTD)
+
+		if player.BTD then
+			returnX = player.x
+			returnY = player.y
+		else
+			player.x = returnX
+			player.y = returnY
+		end
+		player.abilityCD = 0
+
 	end
 end

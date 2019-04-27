@@ -57,6 +57,7 @@ function Player(name)
 	table.insert(player.abilities, "roll")
 	table.insert(player.abilities, "bulletTime")
 	table.insert(player.abilities, "slowTime")
+	table.insert(player.abilities, "BTD")
 
 	player.abilityNumber = 1
 	player.ability = player.abilities[player.abilityNumber]
@@ -75,6 +76,7 @@ function Player(name)
 	player.bulletTime = false
 	player.slowTime = false
 	player.ricochet = false
+	player.BTD = false
 
 	player.los = true
 	player.losCounter = 0
@@ -195,6 +197,10 @@ function Player(name)
 
 	-- drawing to screen
 	function player.draw()
+
+		if player.BTD then
+			love.graphics.rectangle("line", returnX, returnY, 50, 50)
+		end
 
 		if player.health <= 0 then
 			love.graphics.setColor(1, 0, 0)
