@@ -1,5 +1,10 @@
+
 function ai(monster, dt)
-	if monster.lost == true then
+
+	if distanceF(monster.x, monster.y, p.x, p.y) < 700 and p.los and not checkWallCollision(monster.hitbox)then
+		monster.goToNode(1, dt)
+
+	elseif monster.lost == true then
 		local start = findClosestNode(monster.x, monster.y, 1)
 		currents = start
 		stack = createStack()
