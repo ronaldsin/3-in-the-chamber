@@ -1,4 +1,27 @@
 # Change Log
+## 2019-04-26
+### Added
+- added new abilities: 
+	- time slow
+	- BTD
+	- 50M
+- added line of sight for AI to track players
+  - added a buffer for regaining LoS
+- added new weapons:
+	- Bounty Hunter
+	- Muscle Spasm
+	- Hackslasher
+- created button object
+
+### Changed
+- fixed reloading 
+- fixed issue where held weapon would fall behind player
+- removed sound when player collides w/ walls
+
+### Other
+- new map soon™
+- planning to fix AI movement
+
 
 ## 2019-04-16
 ### Added
@@ -6,7 +29,7 @@
 - covered entire map with invisible nodes for AI pathing 
 
 ### Changed
-- fixed movement to allow diagonal movement without interruption!
+- fixed movement to allow diagonal movement without interruption against walls
 
 ### Other
 - N/A
