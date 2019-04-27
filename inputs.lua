@@ -69,7 +69,7 @@ function keyboardDown(dt)
 			end
 		end
 
-		p.weapon.update(p.x, p.y, p.rotation, dt)
+		p.weapon.update(pd.x, pd.y, pd.rotation, dt)
 	end
 
 
