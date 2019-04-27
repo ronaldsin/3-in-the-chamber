@@ -14,12 +14,12 @@ function max(table)
 	end
 end
 
-function abs(x)
-	if x < 0 then
-		return x * - 1
-	end
-	return x
-end
+-- function abs(x)
+-- 	if x < 0 then
+-- 		return x * - 1
+-- 	end
+-- 	return x
+-- end
 --
 -- function lineIntersection(x1, x2, x3, x4, y1, y2, y3, y4)
 -- 	local x12 = x1 - x2;
