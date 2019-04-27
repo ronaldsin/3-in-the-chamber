@@ -76,7 +76,7 @@ function Player(name)
 	player.slowTime = false
 	player.ricochet = false
 
-	player.tmp = false
+	player.tmp = true
 
 	cnIndex = 1
 
@@ -104,15 +104,14 @@ function Player(name)
 
 		--status updates --note, status duration and "time" hard coded
 		player.statusAbilityUpdate(dt)
-		player.temp = false
+		player.temp = true
 
 		for i, v in ipairs(walls) do
 			if lineIntersection(player.x, e.x, v.left, v.right, player.y, e.y, v.top, v.top) or
 			lineIntersection(player.x, e.x, v.right, v.right, player.y, e.y, v.top, v.bottom) or
 			lineIntersection(player.x, e.x, v.left, v.right, player.y, e.y, v.bottom, v.bottom) or
 			lineIntersection(player.x, e.x, v.left, v.left, player.y, e.y, v.top, v.bottom) then
-				player.temp = true
-
+				player.temp = false
 			end
 
 		end
@@ -198,7 +197,7 @@ function Player(name)
 
 		player.weapon.draw()
 
-		if not player.temp then
+		if player.temp then
 			love.graphics.print("los", player.x, player.y)
 		end
 
