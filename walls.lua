@@ -28,7 +28,7 @@ end
 function checkWallCollision(hitbox)
 	for i = 1, #walls do
 		if walls[i].check(hitbox) then
-			love.audio.play(oof)
+
 			return true
 		end
 	end
