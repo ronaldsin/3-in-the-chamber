@@ -58,6 +58,7 @@ function Player(name)
 	table.insert(player.abilities, "bulletTime")
 	table.insert(player.abilities, "slowTime")
 	table.insert(player.abilities, "BTD")
+	table.insert(player.abilities, "50m")
 
 	player.abilityNumber = 1
 	player.ability = player.abilities[player.abilityNumber]
@@ -77,6 +78,7 @@ function Player(name)
 	player.slowTime = false
 	player.ricochet = false
 	player.BTD = false
+	player.fm = false
 
 	player.los = true
 	player.losCounter = 0
@@ -200,6 +202,11 @@ function Player(name)
 
 		if player.BTD then
 			love.graphics.rectangle("line", returnX, returnY, 50, 50)
+		end
+
+		if player.fm then
+			love.graphics.circle("line", player.x, player.y, 200)
+			player.fm = not(player.fm)
 		end
 
 		if player.health <= 0 then

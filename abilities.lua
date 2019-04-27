@@ -63,5 +63,14 @@ function ability(player)
 		end
 		player.abilityCD = 0
 
+	elseif (pa == "50m") then
+		player.fm = not(player.fm)
+
+		if distanceF(player.x, player.y, e.x, e.y) < 200 then
+			e.takeDmg(20)
+		end
+
+		player.abilityCD = 0
+
 	end
 end

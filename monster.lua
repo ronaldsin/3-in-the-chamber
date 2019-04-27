@@ -72,16 +72,20 @@ function Monster(name)
 		for i, v in ipairs(bullets) do
 			if hitReg(monster.hitbox, v.hitbox) then
 				if not(monster.name == v.name) then
-					monster.health = monster.health - p.weapon.damage
-					print("Health:" .. monster.health)
-					hit = true
+					monster.takeDmg(p.weapon.damage)
 					setCursor("resources/Hitmarker.png")
-					playSound(oof)
+					hit = true
 					table.remove(bullets, i)
 
 				end
 			end
 		end
+	end
+
+	function monster.takeDmg(dmg)
+		monster.health = monster.health - dmg
+		print("Health:" .. monster.health)
+		playSound(oof)
 	end
 
 	-- function monster.ai(dt)
