@@ -38,6 +38,8 @@ function love.load()
 
 	displayHitbox = false
 
+	displayNodes = false
+
 	weapons = {}
 	table.insert(weapons, createWeapon("PathfinderIcon", 40, 0.33, 450, 400, 6, 6, 2, false, 1, 1, 30, 100))
 	table.insert(weapons, createWeapon("FrontlinerIcon", 25, 0.14, 450, 500, 30, 30, 1.75, false, 2, 2, 40, 140)) -- 171dps

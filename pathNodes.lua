@@ -7,7 +7,7 @@ function createPathNode(x, y)
 	pathNode.parent = 0
 
 	function pathNode.draw()
-		if displayHitbox then
+		if displayNodes then
 			love.graphics.circle( "fill", x, y, 10, 3)
 		end
 	end
@@ -16,7 +16,7 @@ function createPathNode(x, y)
 end
 
 function drawPaths()
-	if displayHitbox then
+	if displayNodes then
 		for i = 1, #pathNodes, 1 do
 			for j = i, #pathNodes, 1 do
 				if(adjMat[i][j] > 0) then

@@ -116,6 +116,10 @@ function love.keypressed(key)
 		displayHitbox = not(displayHitbox)
 	end
 
+	if key == input_debug_toggleNodes then
+		displayNodes = not(displayNodes)
+	end
+
 	if key == input_debug_sizeScaleUp then
 		sizeScale = sizeScale + 0.2
 		hitboxScale = hitboxConst / sizeScale
