@@ -10,7 +10,7 @@ function createChest(x, y, r)
 
 	chest.opened = false
 
-	chest.hitbox = createHitbox(chest.x, chest.y, chestSide * 5, chestSide * 3)
+	chest.hitbox = createHitbox(chest.x, chest.y, chestSide * 4, chestSide * 2)
 	chest.image = love.graphics.newImage("resources/chest0.png")
 
 	function chest.open()

@@ -17,7 +17,7 @@ function gameUpdate(dt)
 					break
 				end
 				counter = counter + 1
-				gunPickUp[counter].update(1320 + (i - 1) * 200, 1920 - (j * 200), 0)
+				gunPickUp[counter].update(2752.96 + (i - 1) * 300, 350.12 + (j * 200), 0)
 			end
 		end
 
