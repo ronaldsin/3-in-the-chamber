@@ -181,6 +181,8 @@ function love.keypressed(key)
 					local name2 = p.weapon.name .. "Icon"
 					--local temp1 = createWeapon(name1, gunPickUp[i].damage, gunPickUp[i].gunCd, gunPickUp[i].speed, gunPickUp[i].range, gunPickUp[i].magazine, gunPickUp[i].currentAmmo, gunPickUp[i].reload, true, gunPickUp[i].mode, gunPickUp[i].stance, gunPickUp[i].rng)
 					--local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, p.weapon.currentAmmo, p.weapon.reload, false, p.weapon.mode, p.weapon.stance, p.weapon.rng)
+					p.weapon.update(gunPickUp[i].x, gunPickUp[i].y)
+
 					p.weapon.pickedUp = false
 					p.weapon.name = name2
 					p.weapon.refreshImage()
@@ -193,6 +195,7 @@ function love.keypressed(key)
 
 					local temp = gunPickUp[i]
 					gunPickUp[i] = p.weapon
+					gunPickUp[i].r = 0
 					p.weapon = temp
 
 					p.updateStance()

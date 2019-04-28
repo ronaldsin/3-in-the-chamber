@@ -39,7 +39,7 @@ function love.load()
 	displayHitbox = false
 
 	weapons = {}
-	table.insert(weapons, createWeapon("Pathfinder", 40, 0.33, 450, 400, 6, 6, 2, false, 1, 1, 30, 100))
+	table.insert(weapons, createWeapon("PathfinderIcon", 40, 0.33, 450, 400, 6, 6, 2, false, 1, 1, 30, 100))
 	table.insert(weapons, createWeapon("FrontlinerIcon", 25, 0.14, 450, 500, 30, 30, 1.75, false, 2, 2, 40, 140)) -- 171dps
 	table.insert(weapons, createWeapon("PrideIcon", 60, 0.29, 600, 700, 8, 8, 1.9, false, 1, 1, 15, 120)) -- 206.896551724138dps
 	table.insert(weapons, createWeapon("AccelerantIcon", 25, 0.1, 550, 200, 20, 20, 1.2, false, 2, 2, 160, 105)) -- 250dps

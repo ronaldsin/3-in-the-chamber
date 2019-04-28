@@ -18,7 +18,8 @@ function createChest(x, y, r)
 		chest.image = love.graphics.newImage("resources/chest1.png")
 		chest.weapon = weapons[rng:random(1, #weapons)]
 		table.insert(gunPickUp, chest.weapon)
-		gunPickUp[#gunPickUp].update(chest.x, chest.y, 0)
+		gunPickUp[#gunPickUp].image.idle()
+		gunPickUp[#gunPickUp].update(chest.x, chest.y)
 	end
 
 	function chest.draw()
