@@ -1,4 +1,4 @@
-function proj(x, y, r, name, speed, range, type, spread, length)
+function proj(x, y, r, name, speed, range, type, spread, length, dmg, weapon)
 	--[[
 	proj - Object that holds projectile information like coordinates and speed
 	]]
@@ -8,6 +8,7 @@ function proj(x, y, r, name, speed, range, type, spread, length)
 	proj.Image = love.graphics.newImage("resources/".. type ..".png")
 
 	proj.name = name
+	proj.weaponName = weapon
 
 	-- location of bullet
 	proj.x = x + (length * sizeScale) * math.sin(r)
@@ -19,6 +20,8 @@ function proj(x, y, r, name, speed, range, type, spread, length)
 	proj.traveled = 0
 	proj.width = proj.Image:getWidth()
 	proj.height = proj.Image:getHeight()
+
+	proj.dmg = dmg
 
 	proj.hitbox = createHitbox(proj.x, proj.y, proj.width, proj.height)
 

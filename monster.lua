@@ -27,6 +27,7 @@ function Monster(name)
 	-- stats
 	monster.speed = 250
 	monster.health = 100
+	monster.maxHealth = 100
 	monster.power = 100
 	monster.armor = 0
 
@@ -70,9 +71,15 @@ function Monster(name)
 	function monster.hitReg(dt)
 		-- bullet hit reg (does not work rn)
 		for i, v in ipairs(bullets) do
+			local extraDmg = 0
 			if hitReg(monster.hitbox, v.hitbox) then
 				if not(monster.name == v.name) then
-					monster.takeDmg(p.weapon.damage)
+					if v.weaponName == "Pride" and monster.health >= monster.maxHealth * 0.75 then
+						extraDmg = v.dmg * 0.2
+						print("Prejudice")
+					end
+					monster.takeDmg(v.dmg + extraDmg)
+					extraDmg = 0
 					setCursor("resources/Hitmarker.png")
 					hit = true
 					table.remove(bullets, i)
@@ -87,33 +94,6 @@ function Monster(name)
 		print("Health:" .. monster.health)
 		playSound(oof)
 	end
-
-	-- function monster.ai(dt)
-	--
-	-- 	local index = findClosestNode(monster.x, monster.y, 1)
-	--
-	-- 	monster.moving = false
-	--
-	-- 	if distanceF(monster.x, monster.y, pathNodes[index].x, pathNodes[index].y) > 10 then
-	--
-	-- 		if pathNodes[index].x > monster.x then
-	-- 			monster.x = monster.x + monster.speed * dt
-	-- 			monster.moving = true
-	-- 		elseif pathNodes[index].x < monster.x then
-	-- 			monster.x = monster.x - monster.speed * dt
-	-- 			monster.moving = true
-	-- 		end
-	--
-	-- 		if pathNodes[index].y > monster.y then
-	-- 			monster.y = monster.y + monster.speed * dt
-	-- 			monster.moving = true
-	-- 		elseif pathNodes[index].y < monster.y then
-	-- 			monster.y = monster.y - monster.speed * dt
-	-- 			monster.moving = true
-	-- 		end
-	--
-	-- 	end
-	-- end
 
 	function monster.goToNode(index, dt)
 		if monster.movingCounter > monster.movingTimer then

@@ -72,44 +72,44 @@ function keyboardDown(dt)
 		p.weapon.update(p.x, p.y, p.rotation, dt)
 	end
 
+	if love.mouse.isDown(input_player_shoot, dt) then
 
-	-- -- monster movement debug
-	-- e.moving = false
-	-- if love.keyboard.isDown(input_monster_down) then
-	-- 	e.y = e.y + e.speed * dt
-	-- 	e.moving = true
-	-- end
-	--
-	-- if love.keyboard.isDown(input_monster_right) then
-	-- 	e.x = e.x + e.speed * dt
-	-- 	e.moving = true
-	-- end
-	--
-	-- if love.keyboard.isDown(input_monster_up) then
-	-- 	e.y = e.y - e.speed * dt
-	-- 	e.moving = true
-	-- end
-	--
-	-- if love.keyboard.isDown(input_monster_left) then
-	-- 	e.x = e.x - e.speed * dt
-	-- 	e.moving = true
-	-- end
+		if p.weapon.name == "Strikeout" and p.weapon.spoolUpCounter <= 2 then --cd 0.38/s   spread 160/s
+			p.weapon.spoolUpCounter = p.weapon.spoolUpCounter + dt / 2
+			p.weapon.gunCd = p.weapon.ogGunCd - (p.weapon.spoolUpCounter * 0.05)
+			print(p.weapon.spoolUpCounter)
+		end
 
-	if love.mouse.isDown(input_player_shoot) then
 		if cd >= p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if p.weapon.mode == 2 then
-				-- local spread = ((rng:random((p.weapon.rng) * (- 1), (p.weapon.rng))) / 1000)
-				-- constant = 10
-				-- print(p.x - spread * constant * math.cos(spread))
-				-- print(p.y + spread * constant * math.sin(spread))
-				-- fire(p.x + spread * constant * math.tan(spread), p.y - spread * constant * math.tan(spread), p.rotation + spread, p.name, p.weapon.speed, p.weapon.range)
-				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length)
-				--fire(e.x, e.y, e.rotation + ((rng:random((p.weapon.rng) * (- 1), (p.weapon.rng))) / 1000), e.name, 2000, 500)
+				local crit = 0
+				if p.weapon.name == "Frontliner" then
+					local critChance = rng:random(0, 100)
+
+					if critChance <= 20 then
+						crit = 0.5 * p.weapon.damage
+						print("crit")
+					end
+				end
+
+				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, math.abs(p.weapon.rng - (p.weapon.spoolUpCounter * 45)), p.weapon.length, p.weapon.damage + crit, p.weapon.name)
+				crit = 0
 				cd = 0
 			end
 		end
+
 	end
 end
+
+function love.mousereleased(x, y, button)
+	if button == input_player_shoot then
+		p.weapon.spoolUpCounter = 0
+		p.weapon.gunCd = p.weapon.ogGunCd
+	end
+end
+
+
+
 
 function love.keypressed(key)
 	if key == input_debug_toggleHitbox then
@@ -209,7 +209,7 @@ function love.mousepressed(x, y, button, isTouch, dt)
 		if cd > p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if button == input_player_shoot then
 				if p.weapon.mode == 1 then
-					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length)
+					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name)
 					--fire(e.x, e.y, e.rotation, e.name, e.weapon.speed, p.weapon.range)
 					cd = 0
 				end

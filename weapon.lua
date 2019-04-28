@@ -34,6 +34,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	weapon.currentAmmo = currentAmmo
 	weapon.reload = reload
 	weapon.gunCd = cd
+	weapon.ogGunCd = cd
 	weapon.speed = speed
 	weapon.range = range
 	weapon.mode = mode
@@ -41,6 +42,8 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	weapon.length = length
 
 	weapon.counter = 0
+
+	weapon.spoolUpCounter = 0
 
 	-- function weapon.reload()
 	-- 	-- play animation
@@ -78,6 +81,8 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 		weapon.y = y
 		weapon.r = r
 
+
+
 		weapon.hitbox.update(x, y)
 
 		if weapon.counter > 0 then
@@ -86,6 +91,8 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 
 			if weapon.counter <= 0 then
 				playSound(reloadingEnd)
+				weapon.spoolUpCounter = 0
+				weapon.gunCd = p.weapon.ogGunCd
 				p.shoot = 0.4
 				if weapon.name == "BoomstickVI" then
 					weapon.currentAmmo = weapon.currentAmmo + 1
@@ -95,26 +102,6 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 			end
 		end
 
-		-- if clip > 0 and LMB clicked
-		-- shoot, clip -= 1
-		-- elseif clip = 0 and LMB clicked
-		-- reload? (optional)
-		-- maybe even make this a toggleable option
-		-- check if hitbox in player and it isnt player's weapon
-		--[[
-		if hitReg(
-		player.x - player.width / hitboxScale,
-		player.x + player.width / hitboxScale,
-		player.y - player.height / hitboxScale,
-		player.y + player.height / hitboxScale,
-		weapon.x - weapon.width / hitboxScale,
-		weapon.x + weapon.width / hitboxScale,
-		weapon.y - weapon.height / hitboxScale,
-		weapon.y + weapon.height / hitboxScale)
-		then
-			stuff
-		end
-		]]
 	end
 
 	function weapon.draw()
