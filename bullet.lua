@@ -14,7 +14,6 @@ function proj(x, y, r, name, speed, range, type, spread, length, dmg, weapon)
 	proj.x = x + (length * sizeScale) * math.sin(r)
 	proj.y = y - (length * sizeScale) * math.cos(r)
 
-
 	-- range and keeps track of how far the bullet has traveled
 	proj.range = range * sizeScale
 	proj.traveled = 0
@@ -43,6 +42,7 @@ function proj(x, y, r, name, speed, range, type, spread, length, dmg, weapon)
 	proj.OGxVel = proj.xVel
 	proj.OGyVel = proj.yVel
 
+
 	-- updates the projectile on screen, based on ticks with dt length
 	function proj.update(dt)
 		-- traveled distance
@@ -55,9 +55,8 @@ function proj(x, y, r, name, speed, range, type, spread, length, dmg, weapon)
 		-- update position of bullet
 		proj.y = proj.y + (proj.yVel) * dt
 		proj.x = proj.x + (proj.xVel) * dt
-
-
 	end
+
 
 	-- draws projectile on screen
 	function proj.draw()
@@ -67,9 +66,9 @@ function proj(x, y, r, name, speed, range, type, spread, length, dmg, weapon)
 		love.graphics.draw(proj.Image, proj.x, proj.y, proj.r, 1.5 * sizeScale, 1.5 * sizeScale, proj.Image:getWidth() / 2, proj.Image:getHeight() / 20)
 
 		proj.hitbox.draw()
-
 	end
 
 
 	return proj
+
 end

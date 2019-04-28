@@ -4,6 +4,7 @@
 
 -- initialize game
 function love.load()
+
 	-- loading in other files
 	require ("player")
 	require ("bullet")
@@ -65,37 +66,52 @@ function love.load()
 end
 
 function love.update(dt)
+
 	if gameState == "menu" then
 		menuUpdate(dt)
+
 	elseif gameState == "game" then
 		timeMod = 1
+
 		if p.slowTime == true then
 			timeMod = 0.5
+
 		end
 
 		camera.update(dt * timeMod)
 		gameUpdate(dt * timeMod)
 	end
+
 end
+
 
 -- draw elements onto screen
 function love.draw()
+
 	if gameState == "menu" then
 		menuDraw()
+
 	elseif gameState == "game" then
 		camera.draw()
 		gameDraw()
+
 	end
+
 end
+
 
 -- changes cursor to specified image 'file'
 function setCursor(file)
+
 	Image = love.graphics.newImage(file)
 	cursor = love.mouse.newCursor(file, Image:getWidth() / 2, Image:getHeight() / 2)
 	love.mouse.setCursor(cursor)
+
 end
 
+
 function fire(x, y, r, n, speed, range, spread, length, dmg, name)
+
 	if p.weapon.name == "BoomstickVI" or p.weapon.name == "MuscleSpasm" then
 		if p.weapon.fire() then
 			fire_ani = 0
@@ -123,13 +139,16 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name)
 				table.insert(bullets, b)
 
 			end
+
 		end
+
 	elseif p.weapon.fire() then
 		fire_ani = 0
 
 		if p.weapon.name == "Strikeout" then
 			b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length, dmg, name)
 			playSound(machineGun)
+
 		elseif p.weapon.name == "Frontliner" or p.weapon.name == "MuscleSpasm" then
 			b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length, dmg, name)
 			playSound(assaultRifle)
@@ -141,15 +160,20 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name)
 		elseif p.weapon.name == "TheBeartrap" or p.weapon.name == "BountyHunter" then
 			b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length, dmg, name)
 			playSound(sniperRifle)
+
 		else
 			b = proj(x, y, r, n, speed, range, "PistolBullet", spread, length, dmg, name)
 			playSound(gunshot)
 		end
+
 		if(p.bulletTime == true) then
 			b.speed = 0
 			b.xVel = 0
 			b.yVel = 0
 		end
+
 		table.insert(bullets, b)
+
 	end
+
 end

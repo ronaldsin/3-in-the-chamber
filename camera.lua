@@ -16,7 +16,9 @@ camera.yLead = 0
 camera.xScale = 2
 camera.yScale = 2
 
+
 function camera.update(dt)
+
 	-- if math.abs(camera.xLead + (love.mouse.getX() - camera.width) * camera.leadSpeed * dt) < camera.maxXLead then
 	-- 	camera.xLead = camera.xLead + (love.mouse.getX() - camera.width) * camera.leadSpeed * dt
 	-- end
@@ -29,16 +31,25 @@ function camera.update(dt)
 
 end
 
+
 function camera.draw()
+
 	love.graphics.scale(1 / camera.xScale, 1 / camera.yScale)
 	love.graphics.translate(-camera.x, - camera.y)
+
 end
+
 
 function camera.getMouseX()
+
 	return love.mouse.getX() * camera.xScale + camera.x
+
 end
 
+
 function camera.getMouseY()
+
 	--print(love.mouse.getY())
 	return love.mouse.getY() * camera.yScale + camera.y
+
 end

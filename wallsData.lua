@@ -62,8 +62,4 @@ table.insert(walls, createWall(421.32, 811.5, 438.33, 1065.4))
 table.insert(walls, createWall(421.33, 1098.33, 438.33, 1112.55))
 table.insert(walls, createWall(986.17, 972.98, 1003.41, 1112.33))
 
-
-
-
-
 table.insert(walls, createWall(248.84, 258.65, 628, 275))

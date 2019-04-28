@@ -1,4 +1,5 @@
 function start()
+
 	-- create player obj
 	p = Player("lmao")
 	e = Monster("not lmao")
@@ -24,7 +25,6 @@ function start()
 	end
 
 	chests = createChest(3907.02, 504.47, - math.pi / 2)
-
 
 	rng = love.math.newRandomGenerator()
 	rng:setSeed(os.time())
@@ -54,14 +54,20 @@ function start()
 
 	-- setting crosshair cursor
 	setCursor("resources/Crosshair.png")
+
 end
 
+
 function menuUpdate(dt)
+
 	css.update(dt)
+
 end
+
 
 function menuDraw()
 
 	css.draw(camera.width - css.frame_width / 4, camera.height - css.frame_height / 10, 0)
 	love.graphics.print("You are in menu left click to start", camera.width - 20, camera.height)
+
 end

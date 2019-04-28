@@ -1,4 +1,5 @@
 function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, reload, pickup, mode, stance, rng, length)
+
 	local weapon = {}
 
 	-- sprites
@@ -16,7 +17,6 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	weapon.height = 256
 
 	weapon.rng = rng
-
 
 	weapon.hitbox = createHitbox(weapon.x, weapon.y, weapon.width * 5, weapon.height * 3)
 
@@ -54,7 +54,10 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	-- function weapon.fire()
 	--
 	-- end
+
+
 	function weapon.fire()
+
 		if weapon.currentAmmo == 0 then
 			weapon.counter = weapon.reload
 			for i = 1, 2 do
@@ -68,10 +71,14 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 			weapon.currentAmmo = weapon.currentAmmo - 1
 			return true
 		end
+
 	end
 
+
 	function weapon.refreshImage()
+
 		weapon.image = createAnimation(weapon.name, 4, 20 + (5 / (cd * 4)), 2, 2, 1, 256, 256)
+
 	end
 
 
@@ -98,15 +105,19 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 				p.shoot = 0.4
 				if weapon.name == "BoomstickVI" then
 					weapon.currentAmmo = weapon.currentAmmo + 1
+
 				else
 					weapon.currentAmmo = weapon.magazine
 				end
+
 			end
 		end
 
 	end
 
+
 	function weapon.draw()
+
 		weapon.image.draw(weapon.x, weapon.y, weapon.r)
 
 		if weapon.counter > 0 then
@@ -123,4 +134,5 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 	end
 
 	return weapon
+
 end

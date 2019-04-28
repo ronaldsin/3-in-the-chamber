@@ -85,6 +85,7 @@ function Player(name)
 
 	cnIndex = 1
 
+
 	-- movement and shooting
 	function player.update(dt)
 
@@ -94,6 +95,7 @@ function Player(name)
 
 		if p.moving then
 			player.legs.update(dt)
+
 		else
 			player.legs.idle()
 		end
@@ -124,6 +126,7 @@ function Player(name)
 
 		if player.los and player.losCounter > 0.05 then
 			player.los = true
+
 		else
 			player.los = false
 		end
@@ -132,12 +135,16 @@ function Player(name)
 
 	end
 
+
 	function player.updateStance()
+
 		player.idle = player.stances[player.weapon.stance]
 
 	end
 
+
 	function player.statusAbilityUpdate(dt)
+
 		--status updates
 		if(player.shoot > 0) then
 			player.shoot = player.shoot - dt
@@ -162,11 +169,13 @@ function Player(name)
 					player.health = player.health - player.flatDOT
 					player.flatDOT = 0
 					--print("health" .. player.health .. "\n")
+
 				else
 					player.health = player.health - player.flatDOTchunk
 					player.flatDOT = player.flatDOT - player.flatDOTchunk
 					--print("health" .. player.health .. "\n")
 				end
+
 			end
 		end
 
@@ -175,9 +184,12 @@ function Player(name)
 			player.abilityCD = player.abilityCD - dt
 			--print("abilityCD" .. player.abilityCD .. "\n")
 		end
+
 	end
 
+
 	function player.hitReg(dt)
+
 		-- bullet hit reg (does not work rn)
 		for i, v in ipairs(bullets) do
 			if hitReg(player.hitbox, v.hitbox) then
@@ -190,10 +202,10 @@ function Player(name)
 						playSound(oof)
 					end
 					table.remove(bullets, i)
-
 				end
 			end
 		end
+
 	end
 
 
@@ -228,14 +240,20 @@ function Player(name)
 		love.graphics.line(player.x, player.y, e.x, e.y)
 
 		love.graphics.setColor(1, 1, 1 )
+
 	end
+
 
 	-- rotate player model to mouse
 	function player.rotate()
+
 		player.rotation = (math.atan2(camera.getMouseY() - player.y, camera.getMouseX() - player.x) + (math.pi / 2))
+
 	end
 
+
 	function player.playerNodeUpdate()
+
 		pathNodes[1].x = player.x
 		pathNodes[1].y = player.y
 
@@ -250,13 +268,13 @@ function Player(name)
 
 		cnIndex = findClosestNode(player.x, player.y, 2)
 
-
 		--update connection
 		for i = 1, #pathNodes, 1 do
 			if (adjMat[1][i] == 1) then
 				adjMat[1][i] = 0
 				adjMat[i][1] = 0
 			end
+
 			if(i == cnIndex) then
 				adjMat[1][i] = 1
 				adjMat[i][1] = 1
@@ -266,4 +284,5 @@ function Player(name)
 	end
 
 	return player
+
 end

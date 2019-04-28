@@ -6,6 +6,7 @@ adjMat = {{}}
 --wall corners
 
 function loadNodes()
+
 	-- createRoomNodes(837, 964, 1172, 1200)
 	-- createRoomNodes(1192, 964, 2280, 1980)
 	-- createRoomNodes(2300, 1650, 2435, 1715)
@@ -15,9 +16,12 @@ function loadNodes()
 	-- createRoomNodes(3288, 2415, 3365, 2450)
 	-- createRoomNodes(3398, 2210, 4214, 2725)
 	createRoomNodes(0, 0, 5000, 5000)
+
 end
 
+
 function connectNodes()
+
 	for i = 1, #pathNodes do
 		adjMat[1][i] = 0
 	end
@@ -27,13 +31,17 @@ function connectNodes()
 		for j = 1, #pathNodes do
 			if i == j then
 				adjMat[i][j] = 0
+
 			elseif distanceF(pathNodes[i].x, pathNodes[i].y, pathNodes[j].x, pathNodes[j].y ) <= math.sqrt(2 * (math.pow(density, 2))) then
 				adjMat[i][j] = 1
+
 			else
 				adjMat[i][j] = 0
 			end
+
 		end
 	end
+
 end
 --[[
 

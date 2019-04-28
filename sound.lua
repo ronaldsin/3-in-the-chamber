@@ -35,6 +35,8 @@ prideShot:setVolume(0.6)
 prideShot:setPitch(1)
 
 function playSound(source)
+
 	local clone = source:clone()
 	clone:play()
+
 end
