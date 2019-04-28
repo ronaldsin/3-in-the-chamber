@@ -46,7 +46,7 @@ function start()
 	--pause
 	pause = false
 
-	background = love.graphics.newImage("resources/bg.png")
+	background = love.graphics.newImage("resources/Map_1_with_text_5000.png")
 
 	css = createAnimation("Ponytail_CSS", 4, 6, 2, 2, 1, 256, 256)
 

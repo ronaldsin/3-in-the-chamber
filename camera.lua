@@ -13,8 +13,8 @@ camera.height = love.graphics.getHeight() / 2
 camera.xLead = 0
 camera.yLead = 0
 
-camera.xScale = 1.5
-camera.yScale = 1.5
+camera.xScale = 3
+camera.yScale = 3
 
 function camera.update(dt)
 	-- if math.abs(camera.xLead + (love.mouse.getX() - camera.width) * camera.leadSpeed * dt) < camera.maxXLead then

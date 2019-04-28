@@ -62,7 +62,7 @@ function gameUpdate(dt)
 end
 
 function gameDraw()
-	love.graphics.draw(background, 0, 0, 0, 0.9, 0.9)
+	love.graphics.draw(background)
 
 	for i = 1, #walls do
 		walls[i].draw()

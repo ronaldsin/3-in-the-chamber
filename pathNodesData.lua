@@ -6,14 +6,15 @@ adjMat = {{}}
 --wall corners
 
 function loadNodes()
-	createRoomNodes(837, 964, 1172, 1200)
-	createRoomNodes(1192, 964, 2280, 1980)
-	createRoomNodes(2300, 1650, 2435, 1715)
-	createRoomNodes(2455, 1475, 3270, 2740)--
-	createRoomNodes(3288, 1795, 3365, 1870)
-	createRoomNodes(3410, 1670, 4218, 2024)
-	createRoomNodes(3288, 2415, 3365, 2450)
-	createRoomNodes(3398, 2210, 4214, 2725)
+	-- createRoomNodes(837, 964, 1172, 1200)
+	-- createRoomNodes(1192, 964, 2280, 1980)
+	-- createRoomNodes(2300, 1650, 2435, 1715)
+	-- createRoomNodes(2455, 1475, 3270, 2740)--
+	-- createRoomNodes(3288, 1795, 3365, 1870)
+	-- createRoomNodes(3410, 1670, 4218, 2024)
+	-- createRoomNodes(3288, 2415, 3365, 2450)
+	-- createRoomNodes(3398, 2210, 4214, 2725)
+	createRoomNodes(0, 0, 5000, 5000)
 end
 
 function connectNodes()
