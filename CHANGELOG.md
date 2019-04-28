@@ -1,4 +1,19 @@
 # Change Log
+## 2019-04-28
+### Added
+- added new map
+- added bleed status effect
+- added the following abilities:
+	- Spool Up, 
+	- Crit, and 
+	- Prejudice
+### Changed
+- updated Muscle Spasm to shoot pellets
+- fixed Pride gunshot SFX
+
+### Other
+- N/A
+
 ## 2019-04-26
 ### Added
 - added new abilities: 
