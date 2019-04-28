@@ -1,10 +1,27 @@
 function createWall(x1, y1, x2, y2)
 	local wall = {} -- make wall
 
-	wall.left = x1
-	wall.right = x2
-	wall.top = y1
-	wall.bottom = y2
+	wall.newWidth = 5000
+	wall.oldWidth = 1200
+
+	wall.scale = wall.newWidth / wall.oldWidth
+
+
+	if x1 < x2 then
+		wall.left = x1 * wall.scale
+		wall.right = x2 * wall.scale
+	else
+		wall.left = x2 * wall.scale
+		wall.right = x1 * wall.scale
+	end
+
+	if y1 < y2 then
+		wall.top = y1 * wall.scale
+		wall.bottom = y2 * wall.scale
+	else
+		wall.top = y2 * wall.scale
+		wall.bottom = y1 * wall.scale
+	end
 
 	-- wall initialized
 	function wall.check(hitbox)
@@ -17,7 +34,11 @@ function createWall(x1, y1, x2, y2)
 	-- wall drawn
 	function wall.draw()
 		if displayHitbox then
+			love.graphics.setColor(0, 50, 0)
+			love.graphics.setLineWidth(10)
 			love.graphics.rectangle( "line", wall.left, wall.top, wall.right - wall.left, wall.bottom - wall.top )
+			love.graphics.setLineWidth(1)
+			love.graphics.setColor(1, 1, 1)
 		end
 	end
 
