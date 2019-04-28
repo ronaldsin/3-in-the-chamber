@@ -43,8 +43,14 @@ function Monster(name)
 	monster.patience = 0.5
 	monster.patienceCounter = 0
 
+	monster.bleedCounter = 3
+	monster.bleed = false
+	monster.bleedDmg = 0
+	monster.timer = 0
+
 	-- movement and shooting
 	function monster.update(dt)
+		dot(dt)
 
 		ai(monster, dt)
 
@@ -78,6 +84,13 @@ function Monster(name)
 						extraDmg = v.dmg * 0.2
 						print("Prejudice")
 					end
+
+					if v.weaponName == "Hackslasher" then
+						monster.bleedCounter = 0
+						monster.bleed = true
+						monster.bleedDmg = v.dmg * 0.45
+					end
+
 					monster.takeDmg(v.dmg + extraDmg)
 					extraDmg = 0
 					setCursor("resources/Hitmarker.png")
@@ -86,6 +99,27 @@ function Monster(name)
 
 				end
 			end
+		end
+	end
+
+	function dot(dt)
+		if monster.bleedCounter < 3 and monster.timer > 1 then
+			monster.timer = 0
+			monster.bleedCounter = monster.bleedCounter + 1
+			print("bleed")
+			monster.takeDmg(monster.bleedDmg)
+		end
+
+		if monster.bleedTimer == 3 then
+			monster.bleed = false
+		end
+
+		if monster.timer > 1 then
+			monster.timer = 0
+		end
+
+		if monster.bleed then
+			monster.timer = monster.timer + dt
 		end
 	end
 
