@@ -64,6 +64,8 @@ end
 function gameDraw()
 	love.graphics.draw(background)
 
+	chests.draw()
+
 	for i = 1, #walls do
 		walls[i].draw()
 	end

@@ -81,7 +81,9 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 		weapon.y = y
 		weapon.r = r
 
-
+		if not weapon.pickedUp then
+			weapon.r = 0
+		end
 
 		weapon.hitbox.update(x, y)
 
@@ -115,6 +117,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 
 		if weapon.pickedUp == false then
 			weapon.hitbox.draw()
+
 		end
 
 	end

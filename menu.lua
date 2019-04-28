@@ -23,6 +23,7 @@ function start()
 		gunPickUp[i].image.idle()
 	end
 
+	chests = createChest(0, 0, - math.pi / 2)
 
 	rng = love.math.newRandomGenerator()
 	rng:setSeed(os.time())

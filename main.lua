@@ -27,6 +27,7 @@ function love.load()
 	require ("ai")
 	require ("stack")
 	require ("lineIntersection")
+	require("chest")
 
 	sizeScale = 1 -- default 1
 
@@ -36,6 +37,21 @@ function love.load()
 	density = 100
 
 	displayHitbox = false
+
+	weapons = {}
+	table.insert(weapons, createWeapon("Pathfinder", 40, 0.33, 450, 400, 6, 6, 2, false, 1, 1, 30, 100))
+	table.insert(weapons, createWeapon("FrontlinerIcon", 25, 0.14, 450, 500, 30, 30, 1.75, false, 2, 2, 40, 140)) -- 171dps
+	table.insert(weapons, createWeapon("PrideIcon", 60, 0.29, 600, 700, 8, 8, 1.9, false, 1, 1, 15, 120)) -- 206.896551724138dps
+	table.insert(weapons, createWeapon("AccelerantIcon", 25, 0.1, 550, 200, 20, 20, 1.2, false, 2, 2, 160, 105)) -- 250dps
+	table.insert(weapons, createWeapon("BoomstickVIIcon", 6, 0.75, 400, 250, 6, 6, 1, false, 1, 2, 400, 120)) -- 187dps
+	table.insert(weapons, createWeapon("StrikeoutIcon", 40, 0.20, 375, 600, 80, 80, 3.3, false, 2, 2, 90, 140)) -- 200dps
+	table.insert(weapons, createWeapon("TheBeartrapIcon", 170, 1, 4000, 10000, 5, 5, 2.2, false, 1, 2, 0, 145)) -- 170dps
+	--table.insert(weapons, createWeapon("SirenIcon", 17, 0.3, 450, 350, 18, 18, 1.3, false, 3, 1, 35, 90)) -- 56.6666666666667dps
+	--table.insert(weapons, createWeapon("LongHaulIcon", 27, 0.5, 390, 650, 100, 100, 4, false, 2, 2, 130, 145)) -- 54dps
+	--table.insert(weapons, createWeapon("BacklinerIcon", 45, 0.27, 600, 800, 11, 11, 1.75, false, 1, 2, 25, 145)) -- 166.666666666667dps
+	table.insert(weapons, createWeapon("HackslasherIcon", 21, 0.14, 550, 190, 24, 24, 1.5, false, 2, 2, 130, 100)) -- 150.dps
+	table.insert(weapons, createWeapon("MuscleSpasmIcon", 16, 0.4, 425, 160, 15, 15, 2.1, false, 2, 2, 550, 100)) -- 40dps
+	table.insert(weapons, createWeapon("BountyHunterIcon", 220, 1.35, 1500, 1200, 7, 7, 2.3, false, 1, 2, 0, 145)) -- 162.962962962963dps
 
 	start()
 

@@ -199,6 +199,11 @@ function love.keypressed(key)
 				end
 			end
 		end
+		if hitReg(chests.hitbox, p.hitbox) then
+			if chests.opened == false then
+				chests.open()
+			end
+		end
 	end
 end
 
