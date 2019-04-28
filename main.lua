@@ -78,12 +78,22 @@ function setCursor(file)
 end
 
 function fire(x, y, r, n, speed, range, spread, length, dmg, name)
-	if p.weapon.name == "BoomstickVI" then
+	if p.weapon.name == "BoomstickVI" or p.weapon.name == "MuscleSpasm" then
 		if p.weapon.fire() then
 			fire_ani = 0
 			playSound(shotgun)
 
-			for i = 1, 7 do
+			local pellets = 0
+
+			if p.weapon.name == "BoomstickVI" then
+				pellets = 7
+			end
+
+			if p.weapon.name == "MuscleSpasm" then
+				pellets = 6
+			end
+
+			for i = 1, pellets do
 				--b = proj(x + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), y + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 10), r + (rng:random((p.weapon.rng) * (- 1), (p.weapon.rng)) / 800), n, speed, range, "ShotgunShell", , spread)
 				b = proj(x, y, r, n, speed, range, "ShotgunShell", spread, length, dmg, name)
 				--bulletTime ability
@@ -96,31 +106,28 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name)
 
 			end
 		end
-	else
+	elseif p.weapon.fire() then
+		fire_ani = 0
 
-		if p.weapon.fire() then
-			fire_ani = 0
+		if p.weapon.name == "Strikeout" then
+			b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length, dmg, name)
+			playSound(machineGun)
+		elseif p.weapon.name == "Frontliner" or p.weapon.name == "MuscleSpasm" then
+			b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length, dmg, name)
+			playSound(assaultRifle)
 
-			if p.weapon.name == "Strikeout" then
-				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length, dmg, name)
-				playSound(machineGun)
-			elseif p.weapon.name == "Frontliner" or p.weapon.name == "MuscleSpasm" then
-				b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length, dmg, name)
-				playSound(assaultRifle)
-
-			elseif p.weapon.name == "TheBeartrap" or p.weapon.name == "BountyHunter" or p.weapon.name == "Pride" then
-				b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length, dmg, name)
-				playSound(sniperRifle)
-			else
-				b = proj(x, y, r, n, speed, range, "PistolBullet", spread, length, dmg, name)
-				playSound(gunshot)
-			end
-			if(p.bulletTime == true) then
-				b.speed = 0
-				b.xVel = 0
-				b.yVel = 0
-			end
-			table.insert(bullets, b)
+		elseif p.weapon.name == "TheBeartrap" or p.weapon.name == "BountyHunter" or p.weapon.name == "Pride" then
+			b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length, dmg, name)
+			playSound(sniperRifle)
+		else
+			b = proj(x, y, r, n, speed, range, "PistolBullet", spread, length, dmg, name)
+			playSound(gunshot)
 		end
+		if(p.bulletTime == true) then
+			b.speed = 0
+			b.xVel = 0
+			b.yVel = 0
+		end
+		table.insert(bullets, b)
 	end
 end
