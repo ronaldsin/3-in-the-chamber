@@ -116,7 +116,11 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name)
 			b = proj(x, y, r, n, speed, range, "AssaultRifleBullet", spread, length, dmg, name)
 			playSound(assaultRifle)
 
-		elseif p.weapon.name == "TheBeartrap" or p.weapon.name == "BountyHunter" or p.weapon.name == "Pride" then
+		elseif p.weapon.name == "Pride" then
+			b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length, dmg, name)
+			playSound(prideShot)
+
+		elseif p.weapon.name == "TheBeartrap" or p.weapon.name == "BountyHunter" then
 			b = proj(x, y, r, n, speed, range, "SniperRifleBullet", spread, length, dmg, name)
 			playSound(sniperRifle)
 		else
