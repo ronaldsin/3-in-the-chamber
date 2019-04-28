@@ -19,3 +19,5 @@ walls = {}
 -- table.insert(walls, createWall(3291, 1560, 3377, 1760))
 -- table.insert(walls, createWall(3291, 1915, 3377, 2353))
 -- table.insert(walls, createWall(3291, 2502, 3377, 2869))
+
+table.insert(walls, createWall(248 * 4.16, 258 * 4.16, 628 * 4.16, 611 * 4.16))
