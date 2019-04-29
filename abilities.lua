@@ -81,7 +81,6 @@ function ability(player)
 		player.abilityCD = 0
 
 	elseif (pa == "clone" and clone_counter == 0) then
-<<<<<<< HEAD
 		player.clone = true
 		c.moveControl = 1
 		c.invincible = 1
@@ -89,14 +88,5 @@ function ability(player)
 		c.y = player.y
 		c.updateStance()
 	end
-=======
-			player.clone = true
-			c.shoot = 0
-			c.moveControl = 1
-			c.invincible = 1
-			c.x = player.x
-			c.y = player.y
-		end
->>>>>>> 0b0276b22d1151c32a0618d3867326b97c3e2a4d
 
 end
