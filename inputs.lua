@@ -227,6 +227,12 @@ function love.keypressed(key)
 
 	end
 
+	if key == input_game_back then
+		if gameState == "game" then
+			gameState = "menu"
+			love.graphics.setNewFont(14)
+		end
+	end
 end
 
 

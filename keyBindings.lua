@@ -18,6 +18,7 @@ input_monster_right = "right"
 --game commands
 input_game_pause = "escape"
 input_game_quit = "q"
+input_game_back = "b"
 
 --debug
 input_debug_sizeScaleUp = "i"
