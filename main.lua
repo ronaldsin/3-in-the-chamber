@@ -160,6 +160,7 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name)
 			end
 		end
 
+
 	elseif p.weapon.fire() then
 		fire_ani = 0
 

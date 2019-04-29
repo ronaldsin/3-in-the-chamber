@@ -1,6 +1,14 @@
 function gameUpdate(dt)
 
 	if not pause then
+
+		if p.weapon.name == "Pathfinder" then
+			burstFire = true
+		else
+			burstFire = false
+		end
+
+
 		if fire_ani <= fireTimer then
 			--e.weapon.image.update(dt)
 			p.weapon.image.update(dt)
