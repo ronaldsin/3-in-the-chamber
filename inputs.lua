@@ -101,7 +101,11 @@ function keyboardDown(dt)
 					end
 				end
 
-				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, math.abs(p.weapon.rng - (p.weapon.spoolUpCounter * 45)), p.weapon.length, p.weapon.damage + crit, p.weapon.name)
+				if p.clone then
+					fire(c.x, c.y, c.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, c)
+				end
+
+				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, math.abs(p.weapon.rng - (p.weapon.spoolUpCounter * 45)), p.weapon.length, p.weapon.damage + crit, p.weapon.name, p)
 				crit = 0
 				cd = 0
 			end
@@ -248,11 +252,12 @@ function love.mousepressed(x, y, button, isTouch, dt)
 		if cd > p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if button == input_player_shoot then
 				if p.weapon.mode == 1 then
-					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name)
-					--fire(e.x, e.y, e.rotation, e.name, e.weapon.speed, p.weapon.range)
-					if c.weapon.mode == 1 then
-						fire(c.x, c.y, c.rotation, c.name, c.weapon.speed, c.weapon.range, c.weapon.rng, c.weapon.length, c.weapon.damage, c.weapon.name)
+					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, p)
+
+					if p.clone then
+						fire(c.x, c.y, c.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, c)
 					end
+
 					cd = 0
 				end
 			end

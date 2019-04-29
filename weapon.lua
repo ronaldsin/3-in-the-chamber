@@ -58,7 +58,7 @@ function createWeapon(name, damage, cd, speed, range, magazine, currentAmmo, rel
 
 	function weapon.fire()
 
-		if weapon.currentAmmo == 0 then
+		if weapon.currentAmmo <= 0 then
 			weapon.counter = weapon.reload
 			for i = 1, 2 do
 				playSound(reloadingStart)

@@ -9,6 +9,8 @@ function gameUpdate(dt)
 		end
 
 		if p.clone == true then
+			c.weapon.currentAmmo = c.weapon.magazine
+
 			c.update(dt)
 			clone_counter = clone_counter + dt
 			print(clone_counter)
@@ -64,7 +66,11 @@ function gameUpdate(dt)
 		currentBurstCD = currentBurstCD - dt
 
 		if burstCounter < 3 then
-			burstUpdate()
+			if p.weapon.currentAmmo > 0 then
+				burstUpdate()
+			else
+				burstCounter = 3
+			end
 		end
 
 		-- update data for every bullet
