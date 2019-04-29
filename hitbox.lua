@@ -1,5 +1,4 @@
 function createHitbox(x, y, width, height)
-
 	local hitbox = {}
 
 	hitbox.width = width
@@ -10,16 +9,12 @@ function createHitbox(x, y, width, height)
 	hitbox.top = y - hitbox.height / 2 / hitboxScale
 	hitbox.bottom = y + hitbox.height / 2 / hitboxScale
 
-
 	function hitbox.update(x, y)
-
 		hitbox.left = x - hitbox.width / 2 / hitboxScale
 		hitbox.right = x + hitbox.width / 2 / hitboxScale
 		hitbox.top = y - hitbox.height / 2 / hitboxScale
 		hitbox.bottom = y + hitbox.height / 2 / hitboxScale
-
 	end
-
 
 	function hitbox.draw()
 		if displayHitbox then
@@ -27,7 +22,5 @@ function createHitbox(x, y, width, height)
 		end
 	end
 
-
 	return hitbox
-
 end

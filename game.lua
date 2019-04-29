@@ -1,23 +1,23 @@
 function gameUpdate(dt)
-
 	if not pause then
+
 		if fire_ani <= fireTimer then
-			--e.weapon.image.update(dt)
 			p.weapon.image.update(dt)
+			--e.weapon.image.update(dt)
 		else
-			--e.weapon.image.idle()
 			p.weapon.image.idle()
+			--e.weapon.image.idle()
 		end
 
-		local counter = 0
 
+		local counter = 0
 		for j = 1, 3 do
 			for i = 1, 3 do
 				if counter > #gunPickUp then
 					break
 				end
 				counter = counter + 1
-				gunPickUp[counter].update(2752.96 + (i - 1) * 300, 350.12 + (j * 200), 0)
+				gunPickUp[counter].update(1320 + (i - 1) * 200, 1920 - (j * 200), 0)
 			end
 		end
 
@@ -31,7 +31,6 @@ function gameUpdate(dt)
 			if counter > hitTimer then
 				setCursor("resources/Crosshair.png")
 				hit = false
-
 			else
 				counter = counter + dt
 			end
@@ -43,29 +42,33 @@ function gameUpdate(dt)
 
 		cd = cd + dt
 
+		currentBurstCD = currentBurstCD - dt
+
+		if burstCounter < 3 then
+			burstUpdate()
+    end
+
 		-- update data for every bullet
 		for i, v in ipairs(bullets) do
 			v.update(dt)
 
+
 			if checkWallCollision(v.hitbox) then
 				table.remove(bullets, i)
+
 			end
 
 			-- remove bullet from array if out of range
 			if v.traveled >= v.range then
 				table.remove(bullets, i)
 			end
+
 		end
 	end
-
 end
 
-
 function gameDraw()
-
 	love.graphics.draw(background)
-
-	chests.draw()
 
 	for i = 1, #walls do
 		walls[i].draw()
@@ -84,7 +87,6 @@ function gameDraw()
 	for i = 1, #pathNodes do
 		pathNodes[i].draw()
 	end
-
 	drawPaths()
 
 	-- draw player
@@ -101,5 +103,4 @@ function gameDraw()
 		local width = font:getWidth("Game is paused, press Q to quit")
 		love.graphics.print("Game is paused, press Q to quit", (camera.width * camera.xScale + camera.x - width / 2), (camera.height * camera.yScale + camera.y))
 	end
-
 end

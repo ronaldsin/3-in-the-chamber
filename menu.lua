@@ -1,12 +1,11 @@
 function start()
-
 	-- create player obj
 	p = Player("lmao")
 	e = Monster("not lmao")
 
 	gunPickUp = {}
 
-	-- createWeapon(name, dmg, rof, bullet speed, range, clip size, reload time, pickup, fire mode, stance, spread, length)
+	-- createWeapon(name, dmg, bullet speed, range, clip size, reload time, pickup, fire mode, stance, spread, length)
 	table.insert(gunPickUp, createWeapon("FrontlinerIcon", 25, 0.14, 450, 500, 30, 30, 1.75, false, 2, 2, 40, 140)) -- 171dps
 	table.insert(gunPickUp, createWeapon("PrideIcon", 60, 0.29, 600, 700, 8, 8, 1.9, false, 1, 1, 15, 120)) -- 206.896551724138dps
 	table.insert(gunPickUp, createWeapon("AccelerantIcon", 25, 0.1, 550, 200, 20, 20, 1.2, false, 2, 2, 160, 105)) -- 250dps
@@ -24,7 +23,6 @@ function start()
 		gunPickUp[i].image.idle()
 	end
 
-	chests = createChest(3907.02, 504.47, 0)
 
 	rng = love.math.newRandomGenerator()
 	rng:setSeed(os.time())
@@ -55,19 +53,19 @@ function start()
 	-- setting crosshair cursor
 	setCursor("resources/Crosshair.png")
 
+	-- burst fire model
+	burstFire = true;
+	burstCounter = 3;
+	currentBurstCD = 0;
+	ogBurstCD = 0.1;
 end
-
 
 function menuUpdate(dt)
-
 	css.update(dt)
-
 end
-
 
 function menuDraw()
 
 	css.draw(camera.width - css.frame_width / 4, camera.height - css.frame_height / 10, 0)
 	love.graphics.print("You are in menu left click to start", camera.width - 20, camera.height)
-
 end

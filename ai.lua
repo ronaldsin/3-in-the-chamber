@@ -11,6 +11,7 @@ function ai(monster, dt)
 
 		local temp = pathFind(start, 1)
 
+
 		while true do
 			stack.push(temp)
 			temp = pathNodes[temp].parent
@@ -25,20 +26,19 @@ function ai(monster, dt)
 		-- 	print(stack[i])
 		-- end
 	else
-		if not monster.goToNode(currents, dt) then
 
+		if not monster.goToNode(currents, dt) then
 			if not (currents == 1) then
 				currents = stack.pop()
 			end
 			--print("current: " .. current)
 		end
-	end
 
+	end
 end
 
 
 function pathFind(first, goal)
-
 	local current = first
 	local visited = {first}
 	local queue = createQueue()
@@ -70,7 +70,6 @@ function pathFind(first, goal)
 						goto fail
 					end
 				end
-
 				table.insert(visited, i)
 				pathNodes[i].parent = current
 				-- print("push" .. i)
@@ -79,5 +78,4 @@ function pathFind(first, goal)
 			::fail::
 		end
 	end
-
 end

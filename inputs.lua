@@ -3,7 +3,6 @@ function keyboardDown(dt)
 	-- player wasd movement
 
 	p.moving = false
-
 	if(p.moveControl <= 0) then
 
 		if love.keyboard.isDown(input_player_down) then
@@ -20,7 +19,6 @@ function keyboardDown(dt)
 			if not (checkWallCollisionRight(p.hitbox, p.speed * dt)) then
 				p.x = p.x + p.speed * dt
 				p.moving = true
-
 			else
 				love.audio.play(oof)
 			end
@@ -30,7 +28,6 @@ function keyboardDown(dt)
 			if not (checkWallCollisionTop(p.hitbox, p.speed * dt)) then
 				p.y = p.y - p.speed * dt
 				p.moving = true
-
 			else
 				love.audio.play(oof)
 			end
@@ -40,7 +37,6 @@ function keyboardDown(dt)
 			if not (checkWallCollisionLeft(p.hitbox, p.speed * dt)) then
 				p.x = p.x - p.speed * dt
 				p.moving = true
-
 			else
 				love.audio.play(oof)
 			end
@@ -56,7 +52,6 @@ function keyboardDown(dt)
 				p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
 				p.moving = true
 			end
-
 		else
 			if not (checkWallCollisionRight(p.hitbox, 2 * p.speed * dt)) then
 				p.x = p.x - 2 * p.speed * dt * p.xLock --HARDCODED 2, speedboost
@@ -69,7 +64,6 @@ function keyboardDown(dt)
 				p.y = p.y - 2 * p.speed * dt * p.yLock --HARDCODED 2, speedboost
 				p.moving = true
 			end
-
 		else
 			if not (checkWallCollisionBottom(p.hitbox, 2 * p.speed * dt)) then
 				p.y = p.y - 2 * p.speed * dt * p.yLock --HARDCODED 2, speedboost
@@ -91,7 +85,6 @@ function keyboardDown(dt)
 		if cd >= p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if p.weapon.mode == 2 then
 				local crit = 0
-
 				if p.weapon.name == "Frontliner" then
 					local critChance = rng:random(0, 100)
 
@@ -106,28 +99,23 @@ function keyboardDown(dt)
 				cd = 0
 			end
 		end
+
 	end
 end
 
-
 function love.mousereleased(x, y, button)
-
 	if button == input_player_shoot then
 		p.weapon.spoolUpCounter = 0
 		p.weapon.gunCd = p.weapon.ogGunCd
 	end
-
 end
 
 
-function love.keypressed(key)
 
+
+function love.keypressed(key)
 	if key == input_debug_toggleHitbox then
 		displayHitbox = not(displayHitbox)
-	end
-
-	if key == input_debug_toggleNodes then
-		displayNodes = not(displayNodes)
 	end
 
 	if key == input_debug_sizeScaleUp then
@@ -193,11 +181,8 @@ function love.keypressed(key)
 					-- temp2 is the same as temp1 but for playear weapon
 					local name1 = string.sub(gunPickUp[i].name, 1, - 5)
 					local name2 = p.weapon.name .. "Icon"
-
 					--local temp1 = createWeapon(name1, gunPickUp[i].damage, gunPickUp[i].gunCd, gunPickUp[i].speed, gunPickUp[i].range, gunPickUp[i].magazine, gunPickUp[i].currentAmmo, gunPickUp[i].reload, true, gunPickUp[i].mode, gunPickUp[i].stance, gunPickUp[i].rng)
 					--local temp2 = createWeapon(name2, p.weapon.damage, p.weapon.gunCd, p.weapon.speed, p.weapon.range, p.weapon.magazine, p.weapon.currentAmmo, p.weapon.reload, false, p.weapon.mode, p.weapon.stance, p.weapon.rng)
-					p.weapon.update(gunPickUp[i].x, gunPickUp[i].y)
-
 					p.weapon.pickedUp = false
 					p.weapon.name = name2
 					p.weapon.refreshImage()
@@ -210,28 +195,18 @@ function love.keypressed(key)
 
 					local temp = gunPickUp[i]
 					gunPickUp[i] = p.weapon
-					gunPickUp[i].r = 0
 					p.weapon = temp
 
 					p.updateStance()
 				end
 			end
 		end
-
-		if hitReg(chests.hitbox, p.hitbox) then
-			if chests.opened == false then
-				chests.open()
-			end
-		end
-
 	end
-
 end
 
 
 -- press mouse 1 to shoot
 function love.mousepressed(x, y, button, isTouch, dt)
-
 	if not pause then
 		if cd > p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if button == input_player_shoot then
@@ -242,16 +217,13 @@ function love.mousepressed(x, y, button, isTouch, dt)
 				end
 			end
 		end
-
 		if button == input_player_secondary and p.abilityCD <= 0 then
 			ability(p, dt)
 		end
-
 	end
 
 	if gameState == "menu" then
 		gameState = "game"
 		love.graphics.setNewFont(40)
 	end
-
 end

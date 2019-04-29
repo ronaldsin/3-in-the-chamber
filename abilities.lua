@@ -1,7 +1,5 @@
 function ability(player)
-
 	pa = player.ability
-
 	if (pa == "roll") then -- moves player a short distance while invincible and unable to shoot
 		--status
 		player.invincible = .4 -- status' in seconds
@@ -14,15 +12,12 @@ function ability(player)
 
 		if love.keyboard.isDown(input_player_left) then
 			p.xLock = 1
-
 		elseif love.keyboard.isDown(input_player_right) then
 			p.xLock = -1
 		end
 
-
 		if love.keyboard.isDown(input_player_down) then
 			p.yLock = -1
-
 		elseif love.keyboard.isDown(input_player_up) then
 			p.yLock = 1
 		end
@@ -41,7 +36,6 @@ function ability(player)
 					v.speed = 0
 					v.xVel = 0
 					v.yVel = 0
-
 				else
 					v.speed = v.OGspeed
 					v.xVel = v.OGxVel
@@ -63,12 +57,10 @@ function ability(player)
 		if player.BTD then
 			returnX = player.x
 			returnY = player.y
-
 		else
 			player.x = returnX
 			player.y = returnY
 		end
-
 		player.abilityCD = 0
 
 	elseif (pa == "50m") then
@@ -81,5 +73,4 @@ function ability(player)
 		player.abilityCD = 0
 
 	end
-
 end
