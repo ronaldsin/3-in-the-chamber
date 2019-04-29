@@ -15,8 +15,9 @@ function Monster(name)
 	--monster.weapon = createWeapon("Pathfinder", 10, 0.33, 2000, 500, 6, true, 1, 1, 0)
 
 	-- x and y coord's
-	monster.x = 1906
-	monster.y = 1854
+
+	monster.x = 567
+	monster.y = 852
 	monster.width = monster.idle.frame_width
 	monster.height = monster.idle.frame_height
 
@@ -38,7 +39,7 @@ function Monster(name)
 	monster.movingTimer = 0.1
 	monster.movingCounter = 0
 
-	monster.patience = 0.5
+	monster.patience = 1
 	monster.patienceCounter = 0
 
 	monster.bleedCounter = 3

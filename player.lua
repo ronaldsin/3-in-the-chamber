@@ -114,8 +114,6 @@ function Player(name)
 
 		player.losCounter = player.losCounter + dt
 
-		player.los = true
-
 		for i, v in ipairs(walls) do
 			if lineIntersection(player.x, e.x, v.left, v.right, player.y, e.y, v.top, v.top) or
 			lineIntersection(player.x, e.x, v.right, v.right, player.y, e.y, v.top, v.bottom) or
@@ -123,10 +121,12 @@ function Player(name)
 			lineIntersection(player.x, e.x, v.left, v.left, player.y, e.y, v.top, v.bottom) then
 				player.los = false
 				player.losCounter = 0
+				break
 			end
+			player.los = true
 		end
 
-		if player.los and player.losCounter > 0.05 then
+		if player.los and player.losCounter > 0.3 then
 			player.los = true
 
 		else
@@ -282,6 +282,8 @@ function Player(name)
 				adjMat[i][1] = 1
 			end
 		end
+
+		--print(cnIndex)
 
 	end
 

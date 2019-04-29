@@ -1,7 +1,7 @@
 
 function ai(monster, dt)
 
-	if distanceF(monster.x, monster.y, p.x, p.y) < 700 and p.los and not checkWallCollision(monster.hitbox)then
+	if p.los and not checkWallCollision(monster.hitbox)then
 		monster.goToNode(1, dt)
 
 	elseif monster.lost == true then
