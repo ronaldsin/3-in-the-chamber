@@ -250,7 +250,7 @@ function love.mousepressed(x, y, button, isTouch, dt)
 				if p.weapon.mode == 1 then
 					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name)
 					--fire(e.x, e.y, e.rotation, e.name, e.weapon.speed, p.weapon.range)
-					if c.weapon.mode == 1 then
+					if c.weapon.mode == 1 and p.clone == true then
 						fire(c.x, c.y, c.rotation, c.name, c.weapon.speed, c.weapon.range, c.weapon.rng, c.weapon.length, c.weapon.damage, c.weapon.name)
 					end
 					cd = 0
