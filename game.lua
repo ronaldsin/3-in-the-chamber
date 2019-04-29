@@ -8,6 +8,16 @@ function gameUpdate(dt)
 			burstFire = false
 		end
 
+		if p.clone == true then
+			c.update(dt)
+			clone_counter = clone_counter + dt
+			print(clone_counter)
+
+			if clone_counter >= 5 then
+				p.clone = false
+				clone_counter = 0
+			end
+		end
 
 		if fire_ani <= fireTimer then
 			--e.weapon.image.update(dt)
@@ -104,6 +114,7 @@ function gameDraw()
 	-- draw player
 	e.draw()
 	p.draw()
+	-- c.draw()
 
 	love.graphics.print("Current ability: " .. p.ability, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 8 * camera.yScale + camera.y))
 

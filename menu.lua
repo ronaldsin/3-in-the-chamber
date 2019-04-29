@@ -2,6 +2,7 @@ function start()
 
 	-- create player obj
 	p = Player("lmao")
+	c = Player("clone")
 	e = Monster("not lmao")
 
 	gunPickUp = {}
@@ -41,6 +42,8 @@ function start()
 	--fire timer
 	fireTimer = 0.2
 	fire_ani = fireTimer
+
+	clone_counter = 0
 
 	--gun cd timer
 	cd = p.weapon.gunCd

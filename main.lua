@@ -98,6 +98,10 @@ function love.draw()
 
 	end
 
+	if p.clone == true then
+		c.draw()
+	end
+
 end
 
 

@@ -115,7 +115,12 @@ function love.mousereleased(x, y, button)
 	if button == input_player_shoot then
 		p.weapon.spoolUpCounter = 0
 		p.weapon.gunCd = p.weapon.ogGunCd
+		if p.clone == true then
+			c.weapon.spoolUpCounter = 0
+			c.weapon.gunCd = c.weapon.ogGunCd
+		end
 	end
+
 
 end
 
@@ -244,6 +249,9 @@ function love.mousepressed(x, y, button, isTouch, dt)
 				if p.weapon.mode == 1 then
 					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name)
 					--fire(e.x, e.y, e.rotation, e.name, e.weapon.speed, p.weapon.range)
+					if c.weapon.mode == 1 then
+						fire(c.x, c.y, c.rotation, c.name, c.weapon.speed, c.weapon.range, c.weapon.rng, c.weapon.length, c.weapon.damage, c.weapon.name)
+					end
 					cd = 0
 				end
 			end

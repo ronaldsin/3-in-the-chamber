@@ -59,6 +59,7 @@ function Player(name)
 	table.insert(player.abilities, "slowTime")
 	table.insert(player.abilities, "BTD")
 	table.insert(player.abilities, "50m")
+	table.insert(player.abilities, "clone")
 
 	player.abilityNumber = 1
 	player.ability = player.abilities[player.abilityNumber]
@@ -79,6 +80,7 @@ function Player(name)
 	player.ricochet = false
 	player.BTD = false
 	player.fm = false
+	player.clone = false
 
 	player.los = true
 	player.losCounter = 0
