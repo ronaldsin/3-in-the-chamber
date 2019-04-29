@@ -95,7 +95,7 @@ function Player(name)
 
 		player.hitbox.update(player.x, player.y)
 
-		if p.moving then
+		if player.moving then
 			player.legs.update(dt)
 
 		else
@@ -195,7 +195,7 @@ function Player(name)
 		-- bullet hit reg (does not work rn)
 		for i, v in ipairs(bullets) do
 			if hitReg(player.hitbox, v.hitbox) then
-				if not(player.name == v.name) then
+				if e.name == v.name then
 					if(player.invincible <= 0) then
 						player.invincible = player.invincibleAfterHit
 						player.health = player.health - e.weapon.damage
@@ -227,9 +227,15 @@ function Player(name)
 			love.graphics.setColor(1, 0, 0)
 		end
 
+		if player.name == "clone" then
+			love.graphics.setColor(0, 0, 0)
+		end
+
 		player.legs.draw(player.x, player.y, player.rotation)
 		player.idle.draw(player.x, player.y, player.rotation)
 		player.weapon.draw(player.x, player.y, player.rotation)
+
+		love.graphics.setColor(1, 1, 1)
 
 		player.hitbox.draw()
 
