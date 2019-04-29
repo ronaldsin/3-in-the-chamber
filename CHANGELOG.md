@@ -6,6 +6,7 @@
 - added "back to menu" button
 - added manual nodes for new map
 - added walls to the new map
+- added new ability: clone (creates a clone that mimics the player's movement and attacks)
 
 ### Changed
 - nodes and hitbox display are now toggled individually
