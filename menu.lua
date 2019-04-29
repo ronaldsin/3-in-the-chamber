@@ -55,6 +55,11 @@ function start()
 	-- setting crosshair cursor
 	setCursor("resources/Crosshair.png")
 
+	-- burst fire model
+	burstFire = true;
+	burstCounter = 3;
+	currentBurstCD = 0;
+	ogBurstCD = 0.05;
 end
 
 

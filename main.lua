@@ -29,6 +29,7 @@ function love.load()
 	require ("stack")
 	require ("lineIntersection")
 	require("chest")
+	require ("burst")
 
 	sizeScale = 1 -- default 1
 
@@ -140,6 +141,23 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name)
 
 			end
 
+		end
+
+	elseif burstFire then
+		if p.weapon.name == "Pathfinder" then
+
+			if burstCounter == 3 and currentBurstCD <= 0 then
+				b = proj(x, y, r, n, speed, range, "PistolBullet", spread, length, dmg, name)
+
+				print("3")
+				print("CD started")
+				table.insert(bullets, b)
+				playSound(gunshot)
+
+				burstCounter = burstCounter - 1
+
+				currentBurstCD = ogBurstCD
+			end
 		end
 
 	elseif p.weapon.fire() then
