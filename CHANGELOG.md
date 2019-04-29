@@ -1,12 +1,20 @@
 # Change Log
 ## 2019-04-29
 ### Added
-- 
+- added weapon chests 
+- added burst fire for certain weapons
+- added "back to menu" button
+- added manual nodes for new map
+- added walls to the new map
 
 ### Changed
-
+- nodes and hitbox display are now toggled individually
+- fixed whitespacing in code
+- adjusted size of chests and weapons
+- changed AI to use manual nodes
 
 ### Other
+- N/A
 
 
 ## 2019-04-28
@@ -14,9 +22,10 @@
 - added new map
 - added bleed status effect
 - added the following abilities:
-	- Spool Up, 
-	- Crit, and 
+	- Spool Up
+	- Crit
 	- Prejudice
+	
 ### Changed
 - updated Muscle Spasm to shoot pellets
 - fixed Pride gunshot SFX
