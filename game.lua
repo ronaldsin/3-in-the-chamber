@@ -43,6 +43,12 @@ function gameUpdate(dt)
 
 		cd = cd + dt
 
+		currentBurstCD = currentBurstCD - dt
+
+		if burstCounter < 3 then
+			burstUpdate()
+		end
+
 		-- update data for every bullet
 		for i, v in ipairs(bullets) do
 			v.update(dt)
