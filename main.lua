@@ -145,21 +145,22 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name)
 
 	elseif burstFire then
 		if p.weapon.name == "Pathfinder" then
-
 			if burstCounter == 3 and currentBurstCD <= 0 then
-				b = proj(x, y, r, n, speed, range, "PistolBullet", spread, length, dmg, name)
+				if p.weapon.fire() then
+					fire_ani = 0
+					b = proj(x, y, r, n, speed, range, "PistolBullet", spread, length, dmg, name)
 
-				print("3")
-				print("CD started")
-				table.insert(bullets, b)
-				playSound(gunshot)
+					print("3")
+					print("CD started")
+					table.insert(bullets, b)
+					playSound(gunshot)
 
-				burstCounter = burstCounter - 1
+					burstCounter = burstCounter - 1
 
-				currentBurstCD = ogBurstCD
+					currentBurstCD = ogBurstCD
+				end
 			end
 		end
-
 
 	elseif p.weapon.fire() then
 		fire_ani = 0
