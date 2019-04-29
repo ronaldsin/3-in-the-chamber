@@ -281,7 +281,7 @@ function Player(name)
 			end
 		end
 
-		print(cnIndex)
+		--print(cnIndex)
 
 	end
 
