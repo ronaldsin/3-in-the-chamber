@@ -17,6 +17,7 @@ function gameUpdate(dt)
 
 			if clone_counter >= 5 then
 				p.clone = false
+				c.shoot = 1
 				clone_counter = 0
 			end
 		end
@@ -120,7 +121,6 @@ function gameDraw()
 	-- draw player
 	e.draw()
 	p.draw()
-	-- c.draw()
 
 	love.graphics.print("Current ability: " .. p.ability, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 8 * camera.yScale + camera.y))
 

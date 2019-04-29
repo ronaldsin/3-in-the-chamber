@@ -252,10 +252,17 @@ function love.mousepressed(x, y, button, isTouch, dt)
 		if cd > p.weapon.gunCd and p.shoot <= 0 and p.weapon.counter <= 0 then
 			if button == input_player_shoot then
 				if p.weapon.mode == 1 then
+<<<<<<< HEAD
 					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, p)
 
 					if p.clone then
 						fire(c.x, c.y, c.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, c)
+=======
+					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name)
+					--fire(e.x, e.y, e.rotation, e.name, e.weapon.speed, p.weapon.range)
+					if c.weapon.mode == 1 and p.clone == true then
+						fire(c.x, c.y, c.rotation, c.name, c.weapon.speed, c.weapon.range, c.weapon.rng, c.weapon.length, c.weapon.damage, c.weapon.name)
+>>>>>>> 0b0276b22d1151c32a0618d3867326b97c3e2a4d
 					end
 
 					cd = 0
