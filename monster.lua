@@ -51,7 +51,7 @@ function Monster(name)
 
 		dot(dt)
 
-		ai(monster, dt)
+		--ai(monster, dt)
 
 		monster.patienceCounter = monster.patienceCounter + dt
 		monster.movingCounter = monster.movingCounter + dt

@@ -281,6 +281,8 @@ function Player(name)
 			end
 		end
 
+		print(cnIndex)
+
 	end
 
 	return player
