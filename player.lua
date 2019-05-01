@@ -54,6 +54,7 @@ function Player(name)
 	player.abilityCD = 0 --time in seconds for abiliity to go off CD
 	player.abilities = {}
 
+	table.insert(player.abilities, "shield")
 	table.insert(player.abilities, "roll")
 	table.insert(player.abilities, "bulletTime")
 	table.insert(player.abilities, "slowTime")
@@ -81,6 +82,7 @@ function Player(name)
 	player.BTD = false
 	player.fm = false
 	player.clone = false
+	player.shield = false
 
 	player.los = true
 	player.losCounter = 0
@@ -245,7 +247,7 @@ function Player(name)
 			love.graphics.print("los", player.x, player.y)
 		end
 
-		love.graphics.line(player.x, player.y, e.x, e.y)
+		--love.graphics.line(player.x, player.y, e.x, e.y)
 
 		love.graphics.setColor(1, 1, 1 )
 

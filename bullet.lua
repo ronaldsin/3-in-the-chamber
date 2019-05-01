@@ -7,7 +7,7 @@ function proj(x, y, r, name, speed, range, type, spread, length, dmg, weapon)
 	-- image
 	proj.Image = love.graphics.newImage("resources/".. type ..".png")
 
-	proj.name = name
+	proj.name = name -- who shot bullet
 	proj.weaponName = weapon
 
 	-- location of bullet

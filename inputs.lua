@@ -102,7 +102,7 @@ function keyboardDown(dt)
 				end
 
 				if p.clone then
-					fire(c.x, c.y, c.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, c)
+					fire(c.x, c.y, c.rotation, c.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, c)
 				end
 
 				fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, math.abs(p.weapon.rng - (p.weapon.spoolUpCounter * 45)), p.weapon.length, p.weapon.damage + crit, p.weapon.name, p)
@@ -255,7 +255,7 @@ function love.mousepressed(x, y, button, isTouch, dt)
 					fire(p.x, p.y, p.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, p)
 
 					if p.clone then
-						fire(c.x, c.y, c.rotation, p.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, c)
+						fire(c.x, c.y, c.rotation, c.name, p.weapon.speed, p.weapon.range, p.weapon.rng, p.weapon.length, p.weapon.damage, p.weapon.name, c)
 					end
 
 					cd = 0

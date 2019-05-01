@@ -87,6 +87,10 @@ function ability(player)
 		c.x = player.x
 		c.y = player.y
 		c.updateStance()
+
+	elseif (pa == "shield") then
+		player.shield = not(player.shield)
+
 	end
 
 end

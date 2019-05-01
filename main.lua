@@ -158,7 +158,7 @@ function fire(x, y, r, n, speed, range, spread, length, dmg, name, user)
 
 					if p.weapon.currentAmmo > 0 and p.clone then
 						c.weapon.fire()
-						b1 = proj(c.x, c.y, c.rotation, p.name, p.weapon.speed, p.weapon.range, "PistolBullet", math.abs(p.weapon.rng - (p.weapon.spoolUpCounter * 45)), p.weapon.length, p.weapon.damage, p.weapon.name)
+						b1 = proj(c.x, c.y, c.rotation, c.name, p.weapon.speed, p.weapon.range, "PistolBullet", math.abs(p.weapon.rng - (p.weapon.spoolUpCounter * 45)), p.weapon.length, p.weapon.damage, p.weapon.name)
 						-- b1 = proj(x, y, r, n, speed, range, "PistolBullet", spread, length, dmg, name)
 						table.insert(bullets, b1)
 					end

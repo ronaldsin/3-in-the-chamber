@@ -13,12 +13,28 @@ function gameUpdate(dt)
 
 			c.update(dt)
 			clone_counter = clone_counter + dt
-			print(clone_counter)
 
-			if clone_counter >= 5 then
+
+			if clone_counter >= 100 then
 				p.clone = false
 				c.shoot = 1
 				clone_counter = 0
+			end
+		end
+
+		if p.shield then
+			for i, v in ipairs(bullets) do
+				if(v.name == c.name) then
+					local r = (math.atan2(v.y - p.y, v.x - p.x) + (math.pi / 2))
+
+					if distanceF(p.x, p.y, v.x, v.y) <= 200 then
+
+						if r < p.rotation + (math.pi / 4) and r > p.rotation - (math.pi / 4) then
+
+							table.remove(bullets, i)
+						end
+					end
+				end
 			end
 		end
 
@@ -94,6 +110,7 @@ end
 
 function gameDraw()
 
+
 	love.graphics.draw(background)
 
 	chests.draw()
@@ -121,6 +138,19 @@ function gameDraw()
 	-- draw player
 	e.draw()
 	p.draw()
+
+	if p.shield then
+
+		local sX = p.x + (200) * math.sin(p.rotation + (math.pi / 4))
+		local sY = p.y - (200) * math.cos(p.rotation + (math.pi / 4))
+		love.graphics.line(p.x, p.y, sX, sY)
+
+		local sX2 = p.x + (200) * math.sin(p.rotation - (math.pi / 4))
+		local sY2 = p.y - (200) * math.cos(p.rotation - (math.pi / 4))
+		love.graphics.line(p.x, p.y, sX2, sY2)
+
+		love.graphics.line(sX, sY, sX2, sY2)
+	end
 
 	love.graphics.print("Current ability: " .. p.ability, (camera.width / 20 * camera.xScale + camera.x), (camera.height / 8 * camera.yScale + camera.y))
 
