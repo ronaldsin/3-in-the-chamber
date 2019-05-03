@@ -61,6 +61,8 @@ function Player(name)
 	table.insert(player.abilities, "BTD")
 	table.insert(player.abilities, "50m")
 	table.insert(player.abilities, "clone")
+	table.insert(player.abilities, "shield")
+
 
 	player.abilityNumber = 1
 	player.ability = player.abilities[player.abilityNumber]

@@ -28,7 +28,7 @@ function love.load()
 	require ("ai")
 	require ("stack")
 	require ("lineIntersection")
-	require("chest")
+	require ("chest")
 	require ("burst")
 
 	sizeScale = 1 -- default 1
@@ -76,7 +76,6 @@ function love.update(dt)
 
 		if p.slowTime == true then
 			timeMod = 0.5
-
 		end
 
 		camera.update(dt * timeMod)
