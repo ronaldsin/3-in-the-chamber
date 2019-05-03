@@ -41,7 +41,7 @@ table.insert(walls, createWall(851.36, 442.75, 834.3, 485.01))
 table.insert(walls, createWall(719.14, 355.53, 732.46, 462.33))
 table.insert(walls, createWall(719.14, 475.66, 834.34, 462.33))
 
-table.insert(walls, createWall(960.48, 485.01, 881.96, 716.83))
+table.insert(walls, createWall(941.48, 485.01, 881.96, 716.83))
 table.insert(walls, createWall(1034.67, 716.83, 1135.67, 759.58))
 table.insert(walls, createWall(980.33, 759.58, 692.69, 716.83))
 
