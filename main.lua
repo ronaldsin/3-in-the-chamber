@@ -16,6 +16,7 @@ require("game") -- Actual Game
 require("player")
 require("animation")
 require("player")
+require("button")
 
 sizeScale = 1 -- default 1
 
