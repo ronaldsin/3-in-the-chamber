@@ -8,7 +8,7 @@ function menuUpdate(dt)
 
 end
 
--- menuDraw() draws gave visuals based on updated menu changes
+-- menuDraw() draws menu visuals based on updated menu changes
 function menuDraw()
 
 	-- Menu information message

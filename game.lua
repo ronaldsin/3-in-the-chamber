@@ -5,11 +5,12 @@ function gameLoad()
 
 end
 
---
+-- gameUpdate(dt) updates game state real time
 function gameUpdate(dt)
 
 end
 
+-- gameDraw() draws game state and changes onto screen
 function gameDraw()
 
 	love.graphics.draw(background)
