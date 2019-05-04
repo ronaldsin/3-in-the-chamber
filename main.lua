@@ -14,11 +14,16 @@ require("menu") -- Menu screen
 require("camera") -- Player camera
 require("game") -- Actual Game
 require("player")
+require("animation")
+require("player")
+
+sizeScale = 1 -- default 1
 
 -- love.load() is the initial loading function of the game
 function love.load()
 
-	gameState = "menu" -- Gamestate of the game
+	gameState = "menu" -- gamestate of the game; initalizes as menu
+	menuLoad()
 
 end
 
@@ -28,7 +33,11 @@ function love.update(dt)
 
 	-- update game based on gameState
 	if gameState == "menu" then
-		menuUpdate(dt)
+		menuUpdate(dt) -- update menu state -> menu.lua
+
+	elseif gameState == "game" then
+		gameUpdate(dt) -- update game state -> game.lua
+
 	end
 
 end
@@ -38,7 +47,11 @@ function love.draw()
 
 	-- draw game based on gameState
 	if gameState == "menu" then
-		menuDraw()
+		menuDraw() -- redirect to draw menu -> menu.lua
+
+	elseif gameState == "game" then
+		gameDraw() -- redirect to draw game canvas -> game.lua
+
 	end
 
 end
