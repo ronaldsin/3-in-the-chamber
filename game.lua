@@ -11,6 +11,7 @@ end
 -- gameUpdate(dt) updates game state real time
 function gameUpdate(dt)
 
+	-- updates camera -> camera.lua
 	camera.update(dt)
 
 end
@@ -18,6 +19,7 @@ end
 -- gameDraw() draws game state and changes onto screen
 function gameDraw()
 
+	-- draws the camera perspective -> camera.lua
 	camera.draw()
 
 	-- draw the background

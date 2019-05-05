@@ -76,6 +76,7 @@ function createAnimation(name, frames, speed, rows, columns, idleFrame, frameHei
 		love.graphics.draw(animation.image, animation.frames[math.floor(animation.currentFrame)], x, y, r, 1.2 * sizeScale, 1.2 * sizeScale, animation.frameWidth / 2, animation.frameHeight / 2)
 	end
 
+	-- return animation object
 	return animation
 
 end
