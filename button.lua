@@ -1,5 +1,3 @@
-buttonId = 0
-
 --[[
 	demoButton = createButton(x1, y1, x2, y2)
 	demoButton.text = "text"
@@ -20,61 +18,55 @@ buttonId = 0
 	end
 ]]--
 
+-- isolated button id
+buttonId = 0
+
+-- createButton(x1, y1, x2, y2) generates a new button from upper left: (x1,  y1)
+--   to bottom right: (x2,  y2)
 function createButton(x1, y1, x2, y2)
 
-	local button = {} -- create button table
+	-- create button object
+	local button = {}
 
-	-- check which Coordinate is left and which is top
-	if x1 < x2 then
-		button.left = x1
-		button.right = x2
-
-	else
-		button.left = x2
-		button.right = x1
-	end
-
-	if y1 < y2 then
-		button.top = y1
-		button.bottom = y2
-
-	else
-		button.top = y2
-		button.bottom = y1
-	end
+	-- the sides of the button
+	button.left = x1
+	button.right = x2
+	button.top = y1
+	button.down = y2
 
 	-- the width of the button
 	button.width = button.right - button.left
 	button.height = button.bottom - button.top
 
 	-- button properties
-
 	button.hover = false -- if the button changes on hover
 	--button.pressed = false -- if the button changes when pressed
 	button.outline = false -- if the button draws its outline
-
 	button.visable = true -- if button is visable
 
+	-- button images properties
 	button.image = Nil -- what the button displays normally
 	button.hoverImage = Nil -- what the button displays when hovered
 	--button.pressedImage = Nil -- what image the button displays when pressed
 
+	-- button text properties
 	button.text = Nil -- what text the button normally displays
 	button.hoverText = Nil -- what text the button displays when hovered
 	--button.pressedText = Nil -- what text the button displays when pressed
 
+	-- button extra details
 	button.currentImage = Nil -- current image of button
 	button.currentText = Nil -- current text of button
-
 	button.inBounds = Nil -- if the mouse is in the button bounds
 
+	-- button id tag
 	button.id = buttonId -- the button id for event calls
-
 	buttonId = buttonId + 1 -- ensures every button has a diffrent id
 
 	-- draws the button based on the current image and text
 	function button.draw()
-		-- only draw when button is visable
+
+		-- only draw when button is visable to user
 		if button.visable then
 
 			-- draws the image if its not nil
@@ -92,17 +84,21 @@ function createButton(x1, y1, x2, y2)
 			if button.outline then
 				love.graphics.rectangle("line", button.left, button.top, button.width, button.height)
 			end
+
 		end
+
 	end
 
-	-- updates the button images and text once (only call once after initilization)
+	-- Method: update() updates the button images and text once
+	--   (only call once after initilization)
 	function button.update()
 		button.currentImage = button.image
 		button.currentText = button.text
 	end
 
-	-- checks if the mouse is in the button when the mouse moves
-	function love.mousemoved( x, y, dx, dy, istouch )
+	-- Built-In Method: love.mousemoved(x, y, dx, dy, isTouch) checks
+	--   if the mouse is in the button when the mouse moves
+	function love.mousemoved( x, y, dx, dy, isTouch)
 		-- check if mouse is in button
 		if x >= button.left and x <= button.right and y >= button.top and y <= button.bottom then -- if mouse is in bounds
 			button.inBounds = true
@@ -119,7 +115,8 @@ function createButton(x1, y1, x2, y2)
 		end
 	end
 
-	-- when mouse 1 is released push button id event
+	-- Built-In Method: love.mousereleased(x, y, buttons, isTouch) when
+	--   mouse 1 is released push button id event
 	function love.mousereleased(x, y, buttons, isTouch)
 		if buttons == 1 then
 

@@ -4,7 +4,8 @@ function gameLoad()
 	-- load the background image
 	background = love.graphics.newImage("resources/Map_1_with_text_5000.png")
 
-	player = createPlayer()
+	-- generates user controlled player
+	player = createPlayer() --> player.lua
 
 end
 
@@ -13,6 +14,9 @@ function gameUpdate(dt)
 
 	-- updates camera -> camera.lua
 	camera.update(dt)
+
+	-- updates player model -> player.lua
+	player.update(dt)
 
 end
 
@@ -24,5 +28,8 @@ function gameDraw()
 
 	-- draw the background
 	love.graphics.draw(background)
+
+	-- draw player model -> player.lua
+	player.draw()
 
 end

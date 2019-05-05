@@ -4,6 +4,7 @@ function createAnimation(name, frames, speed, rows, columns, idleFrame, frameHei
 
 	local animation = {} -- animation object
 
+	-- image for quads
 	animation.image = love.graphics.newImage("resources/" .. name .. ".png")
 
 	-- frame properties
@@ -14,14 +15,12 @@ function createAnimation(name, frames, speed, rows, columns, idleFrame, frameHei
 	-- default frame for idle animation
 	animation.idleFrame = idleFrame
 
-	-- frame resolution
+	-- frame resolution and container to hold animation images
 	animation.frameWidth = frameWidth
 	animation.frameHeight = frameHeight
-
-	-- frames container to hold animation images
 	animation.frames = {}
 
-	-- animation repetition boolean
+	-- animation booleans
 	animation.isrepeat = isrepeat
 	animation.finished = false
 
@@ -48,7 +47,7 @@ function createAnimation(name, frames, speed, rows, columns, idleFrame, frameHei
 		end
 	end
 
-	-- animation.update(dt) updates animation frame in order to change animation
+	-- Method: update(dt) updates animation frame in order to change animation
 	--   to the next desired image
 	function animation.update(dt)
 
@@ -66,12 +65,12 @@ function createAnimation(name, frames, speed, rows, columns, idleFrame, frameHei
 		end
 	end
 
-	-- set the animation in a idle state
+	-- Method: idle() sets the animation in a idle state
 	function animation.idle()
 		animation.currentFrame = animation.idleFrame
 	end
 
-	-- draws the animation at the specified x, y Coordinate with r rotation
+	-- Method: draw(x, y, r) draws the animation at the specified x, y coordinate with r rotation
 	function animation.draw(x, y, r)
 		love.graphics.draw(animation.image, animation.frames[math.floor(animation.currentFrame)], x, y, r, 1.2 * sizeScale, 1.2 * sizeScale, animation.frameWidth / 2, animation.frameHeight / 2)
 	end

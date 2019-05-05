@@ -2,9 +2,14 @@
 	3 In The Chamber:
 
 	3 In The Chamber is a 2D, topdown shooting game where you shoot
-	enemy marines
+	enemies
 
-	Features:
+	Features: Suicidal code monkies
+	          Underpaid artists
+			  Police officer manager
+			  Scrapegoat worker Jayden
+			  Slacky UOFT boys
+			  Paid playtesters
 ]]
 
 -- Imported files
@@ -13,10 +18,9 @@ require("inputs") -- Reads player input
 require("menu") -- Menu screen
 require("camera") -- Player camera
 require("game") -- Actual Game
-require("player")
-require("animation")
-require("player")
-require("button")
+require("player") -- Player object
+require("animation") -- Animation object
+require("button") -- Button object
 
 sizeScale = 1 -- default 1
 
@@ -24,7 +28,7 @@ sizeScale = 1 -- default 1
 function love.load()
 
 	gameState = "menu" -- gamestate of the game; initalizes as menu
-	menuLoad()
+	menuLoad() --> menu.lua
 
 end
 
