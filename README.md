@@ -14,28 +14,28 @@ To run download the 3-in-the-chamber.love file and run it
 
 ## How to play
 ### Basic controls
-..* up - w
-..* left - a
-..* right - d
-..* down - s
+* up - w
+* left - a
+* right - d
+* down - s
 
-..* shoot - left click
-..* ability - right click
+* shoot - left click
+* ability - right click
 
-..* interact - e
-..* reload - r
-..* ability swap - f
+* interact - e
+* reload - r
+* ability swap - f
 
-..* pause - esc
-..* quit - q
-..* back - b
+* pause - esc
+* quit - q
+* back - b
 
 ### Debug
-..* size scale up - i
-..* size scale down - k
-..* toggle hitboxes - t
-..* toggle nodes - y
-..* reset health - space
+* size scale up - i
+* size scale down - k
+* toggle hitboxes - t
+* toggle nodes - y
+* reset health - space
 
 ## Abilities description
 ### Shield
