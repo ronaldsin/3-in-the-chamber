@@ -3,6 +3,20 @@
 ## Description
 A small demo for a top down shooter done in lua using Love2d.
 
+### Features
+* 10 weapons
+  * Weapon abilities
+* 7 abilities <br /><br />
+
+* Different player stance based on equipped weapon
+* Bullets are shot from the tip of the gun
+* Player various animations <br /><br />
+
+* Enemy is able to navigate the map using node based traversal
+* Enemy recognizes when it has line of sight on player  <br /><br />
+
+* Box that gives random weapon
+
 ## Running
 To run download the 3-in-the-chamber.love file and run it
 
@@ -36,21 +50,6 @@ To run download the 3-in-the-chamber.love file and run it
 * toggle hitboxes - t
 * toggle nodes - y
 * reset health - space
-
-### Features
-* 10 weapons
-  * Weapon abilities
-* 7 abilities <br /><br />
-
-* Different player stance based on equipped weapon
-* Bullets are shot from the tip of the gun
-* Player various animations <br /><br />
-
-* Enemy is able to navigate the map using node based traversal
-* Enemy recognizes when it has line of sight on player  <br /><br />
-
-* Box that gives random weapon
-
 
 ## Abilities description
 ### Shield
