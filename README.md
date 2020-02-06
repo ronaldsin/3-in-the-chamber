@@ -3,7 +3,7 @@
 ## Description
 A small demo for a top down shooter done in lua using Love2d.
 
-### Features
+## Features
 * 10 weapons
   * Weapon abilities
 * 7 abilities <br /><br />
@@ -44,7 +44,7 @@ To run download the 3-in-the-chamber.love file and run it
 * pause - esc
 * quit - q
 * back - b <br /><br />
-=======
+
 * down - s
 
 * shoot - left click
@@ -57,7 +57,6 @@ To run download the 3-in-the-chamber.love file and run it
 * pause - esc
 * quit - q
 * back - b
->>>>>>> 240e9fa5ebe5bfd0084aba88399570ba4d5e4dba
 
 ### Debug
 * size scale up - i
@@ -127,15 +126,15 @@ Creates a clone that mimics the players actions (can be used to test shield)
   * No recoil
   * High reload time
 
-  * BountyHunter - Another sniper
-    * Bullets pierce
-    * Semi auto
-    * Low capacity
-    * Very High damage
-    * Very high Range
-    * Very low rate of fire
-    * No recoil
-    * High reload time
+ * BountyHunter - Another sniper
+   * Bullets pierce
+   * Semi auto
+   * Low capacity
+   * Very High damage
+   * Very high Range
+   * Very low rate of fire
+   * No recoil
+   * High reload time
 
 ### Shotguns
 * Boomstick VI - A basic shotgun
