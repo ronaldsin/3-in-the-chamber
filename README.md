@@ -31,7 +31,6 @@ To run download the 3-in-the-chamber.love file and run it
 * up - w
 * left - a
 * right - d
-<<<<<<< HEAD
 * down - s <br /><br />
 
 * shoot - left click
@@ -44,19 +43,6 @@ To run download the 3-in-the-chamber.love file and run it
 * pause - esc
 * quit - q
 * back - b <br /><br />
-
-* down - s
-
-* shoot - left click
-* ability - right click
-
-* interact - e
-* reload - r
-* ability swap - f
-
-* pause - esc
-* quit - q
-* back - b
 
 ### Debug
 * size scale up - i
@@ -181,15 +167,15 @@ Creates a clone that mimics the players actions (can be used to test shield)
   * High recoil
   * High reload time
 
-  * Pride - A pistol with Prejudice
-    * Prejudice - Deal extra damage to higher health enemies
-    * Semi auto
-    * Low capacity
-    * Medium damage
-    * Medium Range
-    * High rate of fire
-    * Low recoil
-    * Low reload time
+ * Pride - A pistol with Prejudice
+   * Prejudice - Deal extra damage to higher health enemies
+   * Semi auto
+   * Low capacity
+   * Medium damage
+   * Medium Range
+   * High rate of fire
+   * Low recoil
+   * Low reload time
 
 
 ## Credits
