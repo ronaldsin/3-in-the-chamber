@@ -31,6 +31,7 @@ To run download the 3-in-the-chamber.love file and run it
 * up - w
 * left - a
 * right - d
+<<<<<<< HEAD
 * down - s <br /><br />
 
 * shoot - left click
@@ -43,6 +44,20 @@ To run download the 3-in-the-chamber.love file and run it
 * pause - esc
 * quit - q
 * back - b <br /><br />
+=======
+* down - s
+
+* shoot - left click
+* ability - right click
+
+* interact - e
+* reload - r
+* ability swap - f
+
+* pause - esc
+* quit - q
+* back - b
+>>>>>>> 240e9fa5ebe5bfd0084aba88399570ba4d5e4dba
 
 ### Debug
 * size scale up - i
