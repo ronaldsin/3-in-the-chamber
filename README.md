@@ -183,7 +183,7 @@ Creates a clone that mimics the players actions (can be used to test shield)
 [Ronald](https://github.com/ronaldsin) <br />
 [Howard](https://github.com/HongHoward) <br />
 [Phillip](https://github.com/PHIQW) <br />
-[Jyaer](https://github.com/Jyaer) <br />
+[Jier](https://github.com/Jyaer) <br />
 [Jayden](https://github.com/jayden-tse) <br />
 
 ### Art
